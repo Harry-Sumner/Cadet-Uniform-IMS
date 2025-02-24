@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Cadet-Uniform-IMS.props" />
+</Project>

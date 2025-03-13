@@ -19,10 +19,12 @@ namespace Cadet_Uniform_IMS.Pages.StockCRUD
         }
 
         public IList<Stock> Stock { get;set; } = default!;
+        public IList<Uniform> Uniform { get; set; } = default!;
 
         public async Task OnGetAsync()
         {
             Stock = await _context.Stock.ToListAsync();
+            Uniform = await _context.Uniform.ToListAsync();
         }
     }
 }

@@ -1,11 +1,19 @@
 is_global = true
 build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
 build_property.PlatformNeutralAssembly = 
 build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Cadet_Uniform_IMS
 build_property.RootNamespace = Cadet_Uniform_IMS
@@ -34,6 +42,26 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Harry S/source/repos/Harry-Sumner/Cadet-Uniform-IMS/Cadet-Uniform-IMS/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Harry S/source/repos/Harry-Sumner/Cadet-Uniform-IMS/Cadet-Uniform-IMS/Pages/StockCRUD/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RvY2tDUlVEXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Harry S/source/repos/Harry-Sumner/Cadet-Uniform-IMS/Cadet-Uniform-IMS/Pages/StockCRUD/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RvY2tDUlVEXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Harry S/source/repos/Harry-Sumner/Cadet-Uniform-IMS/Cadet-Uniform-IMS/Pages/StockCRUD/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RvY2tDUlVEXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Harry S/source/repos/Harry-Sumner/Cadet-Uniform-IMS/Cadet-Uniform-IMS/Pages/StockCRUD/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RvY2tDUlVEXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Harry S/source/repos/Harry-Sumner/Cadet-Uniform-IMS/Cadet-Uniform-IMS/Pages/StockCRUD/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RvY2tDUlVEXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Harry S/source/repos/Harry-Sumner/Cadet-Uniform-IMS/Cadet-Uniform-IMS/Pages/_ViewImports.cshtml]

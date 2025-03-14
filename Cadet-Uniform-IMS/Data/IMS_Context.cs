@@ -14,5 +14,11 @@ namespace Cadet_Uniform_IMS.Data
         public DbSet<SizeAttribute> SizeAttribute { get; set; } = default!;
         public DbSet<Uniform> Uniform { get; set; } = default!;
         public DbSet<UniformType> UniformType { get; set; } = default!;
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<StockSize>().HasKey(t => new { t.StockID, t.AttributeID });
+        }
     }
 }

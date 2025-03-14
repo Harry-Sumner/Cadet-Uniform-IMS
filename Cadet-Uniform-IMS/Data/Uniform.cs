@@ -12,5 +12,6 @@ namespace Cadet_Uniform_IMS.Data
         public string Name { get; set; }
         [Required]
         public int TypeID { get; set; }
+        public byte[] ?ImageData { get; set; }
     }
 }

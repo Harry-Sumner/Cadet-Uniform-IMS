@@ -4,7 +4,6 @@ namespace Cadet_Uniform_IMS.Data
 {
     public class StockSize
     {
-        [Key]
         [Required]
         public int StockID { get; set; }
         [Required]

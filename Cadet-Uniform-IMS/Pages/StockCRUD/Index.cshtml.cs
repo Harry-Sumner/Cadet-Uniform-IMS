@@ -20,11 +20,17 @@ namespace Cadet_Uniform_IMS.Pages.StockCRUD
 
         public IList<Stock> Stock { get;set; } = default!;
         public IList<Uniform> Uniform { get; set; } = default!;
+        public IList<UniformType> UniformTypes { get; set; } = default!;
+        public IList<SizeAttribute> SizeAttributes { get; set; } = default!;
+        public IList<StockSize> StockSizes { get; set; } = default!;
 
         public async Task OnGetAsync()
         {
             Stock = await _context.Stock.ToListAsync();
             Uniform = await _context.Uniform.ToListAsync();
+            UniformTypes = await _context.UniformType.ToListAsync();
+            SizeAttributes = await _context.SizeAttribute.ToListAsync();
+            StockSizes = await _context.StockSize.ToListAsync();
         }
     }
 }

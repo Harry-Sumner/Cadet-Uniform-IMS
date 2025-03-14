@@ -1,0 +1,72 @@
+﻿
+/* Center website */
+.main {
+    max-width: 1000px;
+    margin: auto;
+}
+
+
+/* Code adapted from W3Schools(n.d.-a) */
+.uniform {
+    margin: 8px -16px;
+}
+
+    .uniform,
+    .uniform > .item {
+        padding: 8px;
+    }
+
+/* Seperates each item into 3 sections */
+.item {
+    padding: 7px;
+    float: left;
+    width: 33.33%;
+    display: none; /* Hide columns by default */
+}
+
+@media only screen and (max-width: 700px) { /* sets the menu to adjust when the width is 700px or less */
+    .item {
+        width: 50%;
+        margin: 5px 0;
+    }
+}
+
+/* Clears floats after each item */
+.uniform:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Content inside the items*/
+.content {
+    padding: 10px;
+    text-align: center;
+}
+
+/* Display class that shows filtered menu items */
+.display {
+    display: block;
+}
+
+/* Styles the buttons */
+.btn {
+    border: none;
+    outline: none;
+    padding: 12px 16px;
+    background-color: white;
+    cursor: pointer;
+}
+
+    /* Adds a colour when hovered over */
+    .btn:hover {
+        background-color: lightgrey;
+    }
+
+/* Add a dark background color to the clicked button */
+.btn.active {
+    background-color: darkgrey;
+    color: white;
+}
+
+/* End of code adapted */

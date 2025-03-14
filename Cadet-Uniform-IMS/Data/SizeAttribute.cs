@@ -1,16 +1,17 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿    using System.ComponentModel.DataAnnotations;
 
-namespace Cadet_Uniform_IMS.Data
-{
-    public class SizeAttribute
+    namespace Cadet_Uniform_IMS.Data
     {
-        [Key]
-        [Required]
-        public int AttributeID { get; set; }
-        [StringLength(100)]
-        [Required]
-        public string Name { get; set; }
-        [Required]
-        public int TypeID { get; set; }
+        public class SizeAttribute
+        {
+            [Key]
+            [Required]
+            public int AttributeID { get; set; }
+            [Required]
+            public int TypeID { get; set; }
+            [StringLength(100)]
+            [Required]
+            public string AttributeName { get; set; }
+
+        }
     }
-}

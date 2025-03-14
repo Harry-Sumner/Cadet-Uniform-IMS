@@ -9,6 +9,6 @@ namespace Cadet_Uniform_IMS.Data
         public int TypeID { get; set; }
         [StringLength(100)]
         [Required]
-        public string Name { get; set; }
+        public string TypeName { get; set; }
     }
 }

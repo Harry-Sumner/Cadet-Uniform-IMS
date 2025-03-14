@@ -18,9 +18,8 @@
 
 /* Seperates each item into 3 sections */
 .item {
-    padding: 7px;
     float: left;
-    width: 33.33%;
+    width: 20%;
     display: none; /* Hide columns by default */
 }
 

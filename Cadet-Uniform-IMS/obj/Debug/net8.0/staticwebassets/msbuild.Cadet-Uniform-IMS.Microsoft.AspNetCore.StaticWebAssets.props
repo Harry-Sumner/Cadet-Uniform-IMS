@@ -48,8 +48,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>mirddk1nye</Fingerprint>
-      <Integrity>cmZDEgiSeTPk6psl96ujcpiS/AydtPatD+Qm46RnTEE=</Integrity>
+      <Fingerprint>yzo2ts0mi8</Fingerprint>
+      <Integrity>Dpguq9uDF50VvA4PJtS6jVv7gHWk7G9TPLtpZcO5m8o=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\StockPage.css'))</OriginalItemSpec>

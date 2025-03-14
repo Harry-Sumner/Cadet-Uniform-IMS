@@ -25,7 +25,7 @@
             {
                 <div class="item @(string.Join(" ", Model.UniformTypes.Where(i => i.TypeID == uniform.TypeID).Select(t => t.TypeName)))">
                     <div class="content">
-                        <h1>@uniform.Name</h1>
+                        <h3>@uniform.Name</h3>
                         @foreach (var attributes in Model.SizeAttributes.Where(i => i.TypeID == uniform.TypeID))
                         {
                             var sizes = string.Join(", ", Model.StockSizes.Where(i => i.StockID == item.StockID && i.AttributeID == attributes.AttributeID).Select(s => s.Size).Distinct());

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "OZSaB6QDNtccPlEM+yMoQfkB8V+dtWQn5EAQqBPCDAk=",
+  "Hash": "3PauTNuv8V/eMndGuV9w7Il9yIPc+D7UPkXeTlw4l94=",
   "Source": "Cadet-Uniform-IMS",
   "BasePath": "_content/Cadet-Uniform-IMS",
   "Mode": "Default",
@@ -94,8 +94,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "yzo2ts0mi8",
-      "Integrity": "Dpguq9uDF50VvA4PJtS6jVv7gHWk7G9TPLtpZcO5m8o=",
+      "Fingerprint": "zdeaifh5yz",
+      "Integrity": "qVr2x/LQohGdRemAXRv/lYfBXyItCEizHpHm7J0tT6U=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\StockPage.css"
@@ -120,6 +120,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\images\\empty.png",
+      "SourceId": "Cadet-Uniform-IMS",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\",
+      "BasePath": "_content/Cadet-Uniform-IMS",
+      "RelativePath": "images/empty#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "leyc087nn5",
+      "Integrity": "LYlKfdDwwgQvkKcBdqcutfQhwKBxt6roYNkhsEVCht8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\empty.png"
     },
     {
       "Identity": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\js\\site.js",
@@ -1598,7 +1619,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1279"
+          "Value": "2460"
         },
         {
           "Name": "Content-Type",
@@ -1606,11 +1627,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Dpguq9uDF50VvA4PJtS6jVv7gHWk7G9TPLtpZcO5m8o=\""
+          "Value": "\"qVr2x/LQohGdRemAXRv/lYfBXyItCEizHpHm7J0tT6U=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 14 Mar 2025 18:36:37 GMT"
+          "Value": "Sun, 16 Mar 2025 21:33:17 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1620,12 +1641,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Dpguq9uDF50VvA4PJtS6jVv7gHWk7G9TPLtpZcO5m8o="
+          "Value": "sha256-qVr2x/LQohGdRemAXRv/lYfBXyItCEizHpHm7J0tT6U="
         }
       ]
     },
     {
-      "Route": "css/StockPage.yzo2ts0mi8.css",
+      "Route": "css/StockPage.zdeaifh5yz.css",
       "AssetFile": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\css\\StockPage.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -1635,7 +1656,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1279"
+          "Value": "2460"
         },
         {
           "Name": "Content-Type",
@@ -1643,11 +1664,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Dpguq9uDF50VvA4PJtS6jVv7gHWk7G9TPLtpZcO5m8o=\""
+          "Value": "\"qVr2x/LQohGdRemAXRv/lYfBXyItCEizHpHm7J0tT6U=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 14 Mar 2025 18:36:37 GMT"
+          "Value": "Sun, 16 Mar 2025 21:33:17 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1657,7 +1678,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "yzo2ts0mi8"
+          "Value": "zdeaifh5yz"
         },
         {
           "Name": "label",
@@ -1665,7 +1686,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-Dpguq9uDF50VvA4PJtS6jVv7gHWk7G9TPLtpZcO5m8o="
+          "Value": "sha256-qVr2x/LQohGdRemAXRv/lYfBXyItCEizHpHm7J0tT6U="
         }
       ]
     },
@@ -1748,6 +1769,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM="
+        }
+      ]
+    },
+    {
+      "Route": "images/empty.leyc087nn5.png",
+      "AssetFile": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\images\\empty.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4230"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"LYlKfdDwwgQvkKcBdqcutfQhwKBxt6roYNkhsEVCht8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Mar 2025 18:09:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "leyc087nn5"
+        },
+        {
+          "Name": "label",
+          "Value": "images/empty.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-LYlKfdDwwgQvkKcBdqcutfQhwKBxt6roYNkhsEVCht8="
+        }
+      ]
+    },
+    {
+      "Route": "images/empty.png",
+      "AssetFile": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\images\\empty.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4230"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"LYlKfdDwwgQvkKcBdqcutfQhwKBxt6roYNkhsEVCht8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Mar 2025 18:09:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-LYlKfdDwwgQvkKcBdqcutfQhwKBxt6roYNkhsEVCht8="
         }
       ]
     },

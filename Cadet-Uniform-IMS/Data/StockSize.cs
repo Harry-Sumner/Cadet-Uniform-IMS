@@ -9,6 +9,6 @@ namespace Cadet_Uniform_IMS.Data
         [Required]
         public int AttributeID { get; set; }
         [Required]
-        public string Size { get; set; }
+        public string ?Size { get; set; }
     }
 }

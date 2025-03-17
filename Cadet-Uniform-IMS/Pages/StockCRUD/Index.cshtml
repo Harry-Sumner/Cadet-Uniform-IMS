@@ -32,19 +32,28 @@
                             try
                             {
                                 <img src="@string.Format("data:image/jpg;base64, {0}", Convert.ToBase64String(uniform.ImageData))" alt="@Html.DisplayFor(modelItem => uniform.Name)" style="width:12vw; height:15vw; max-height: 250px; max-width: 400px" />
-                            } //Try converting data inside sql database into an image, if there are issues then a thumbnail image is used instead
+                            }
                             catch
                             {
                                 <img class="img-thumb" src="~/images/empty.png" alt="No Image Provided" style="width:12vw; height:15vw; max-height: 250px; max-width: 400px" />
                             }
                         }
-
                         <h4>@uniform.Name</h4>
                         @foreach (var attributes in Model.SizeAttributes.Where(i => i.TypeID == uniform.TypeID))
                         {
+                            Model.countAttributes += 1;
                             var sizes = string.Join(", ", Model.StockSizes.Where(i => i.StockID == item.StockID && i.AttributeID == attributes.AttributeID).Select(s => s.Size).Distinct());
 
                             <h5>@attributes.AttributeName: @sizes</h5>
+                        }
+                        @while (Model.countAttributes < 3)
+                        {
+                            <h5 style="color:transparent">H</h5>
+                            Model.countAttributes += 1;
+                        }
+                        @if(Model.countAttributes == 3)
+                        {
+                            Model.countAttributes = 0;
                         }
                         <p style="color:darkgreen">Quantity: @item.Quantity</p>
                     </div>
@@ -54,8 +63,7 @@
     </div>
 
     <script>
-        //Code adapted from W3Schools(n.d.-a)
-        filterSelection("all"); // Calls the filter selection function with 'all' parameter
+        filterSelection("all");
 
         function filterSelection(c) {
             var x, i;
@@ -63,14 +71,12 @@
 
             if (c == "all") c = "";
 
-            // Loop through all items and apply filtering
             for (i = 0; i < x.length; i++) {
                 RemoveClass(x[i], "display");
                 if (x[i].className.indexOf(c) > -1) AddClass(x[i], "display");
             }
         }
 
-        // Add class to display filtered items
         function AddClass(element, name) {
             var arr1 = element.className.split(" ");
             var arr2 = name.split(" ");
@@ -81,7 +87,6 @@
             }
         }
 
-        // Remove class to hide unselected items
         function RemoveClass(element, name) {
             var arr1 = element.className.split(" ");
             var arr2 = name.split(" ");
@@ -93,7 +98,6 @@
             element.className = arr1.join(" ");
         }
 
-        // Add "active" class to the clicked button
         var btnContainer = document.getElementById("btn_container");
         var btns = btnContainer.getElementsByClassName("btn");
 

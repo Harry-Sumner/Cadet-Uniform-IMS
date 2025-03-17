@@ -1,10 +1,8 @@
-﻿
-/* Center website */
+﻿/* Center website */
 .main {
     max-width: 1000px;
     margin: auto;
 }
-
 
 /* Code adapted from W3Schools(n.d.-a) */
 .uniform {
@@ -23,7 +21,21 @@
     display: none; /* Hide columns by default */
 }
 
-@media only screen and (max-width: 700px) { /* sets the menu to adjust when the width is 700px or less */
+@media only screen and (max-width: 1400px) { /* sets the items to adjust when the width is 1400px or less */
+    .item {
+        width: 24.5%;
+        margin: 5px 0;
+    }
+}
+
+@media only screen and (max-width: 1200px) { /* sets the items to adjust when the width is 1200px or less */
+    .item {
+        width: 33%;
+        margin: 5px 0;
+    }
+}
+
+@media only screen and (max-width: 800px) { /* sets the items to adjust when the width is 800px or less */
     .item {
         width: 50%;
         margin: 5px 0;
@@ -62,10 +74,10 @@
         background-color: lightgrey;
     }
 
-/* Add a dark background color to the clicked button */
-.btn.active {
-    background-color: darkgrey;
-    color: white;
-}
+    /* Add a dark background color to the clicked button */
+    .btn.active {
+        background-color: darkgrey;
+        color: white;
+    }
 
 /* End of code adapted */

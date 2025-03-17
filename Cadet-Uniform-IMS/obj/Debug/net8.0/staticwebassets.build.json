@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3PauTNuv8V/eMndGuV9w7Il9yIPc+D7UPkXeTlw4l94=",
+  "Hash": "KA+rZ25DwP/CQ2pGV3g94VkWUbGEF8jOllfmBhKznNY=",
   "Source": "Cadet-Uniform-IMS",
   "BasePath": "_content/Cadet-Uniform-IMS",
   "Mode": "Default",
@@ -73,8 +73,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "c2tiyv64ts",
-      "Integrity": "pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=",
+      "Fingerprint": "028eicmjsu",
+      "Integrity": "SEKFx5f1Sk9D3mbe2J1oSOcKALor4svT4WzO+tL2Of0=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -94,8 +94,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "zdeaifh5yz",
-      "Integrity": "qVr2x/LQohGdRemAXRv/lYfBXyItCEizHpHm7J0tT6U=",
+      "Fingerprint": "gtqj21p6c1",
+      "Integrity": "fPt1S+FKOseY5raV4dLV3gBpr68V+0kySNBPmxdbJx8=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\StockPage.css"
@@ -1527,7 +1527,7 @@
       ]
     },
     {
-      "Route": "css/site.c2tiyv64ts.css",
+      "Route": "css/site.028eicmjsu.css",
       "AssetFile": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\css\\site.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -1537,7 +1537,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "362"
+          "Value": "3653"
         },
         {
           "Name": "Content-Type",
@@ -1545,11 +1545,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=\""
+          "Value": "\"SEKFx5f1Sk9D3mbe2J1oSOcKALor4svT4WzO+tL2Of0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 24 Feb 2025 22:26:06 GMT"
+          "Value": "Mon, 17 Mar 2025 09:26:41 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1559,7 +1559,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "c2tiyv64ts"
+          "Value": "028eicmjsu"
         },
         {
           "Name": "label",
@@ -1567,7 +1567,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0="
+          "Value": "sha256-SEKFx5f1Sk9D3mbe2J1oSOcKALor4svT4WzO+tL2Of0="
         }
       ]
     },
@@ -1582,7 +1582,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "362"
+          "Value": "3653"
         },
         {
           "Name": "Content-Type",
@@ -1590,11 +1590,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=\""
+          "Value": "\"SEKFx5f1Sk9D3mbe2J1oSOcKALor4svT4WzO+tL2Of0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 24 Feb 2025 22:26:06 GMT"
+          "Value": "Mon, 17 Mar 2025 09:26:41 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1604,7 +1604,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0="
+          "Value": "sha256-SEKFx5f1Sk9D3mbe2J1oSOcKALor4svT4WzO+tL2Of0="
         }
       ]
     },
@@ -1619,7 +1619,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2460"
+          "Value": "1475"
         },
         {
           "Name": "Content-Type",
@@ -1627,11 +1627,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"qVr2x/LQohGdRemAXRv/lYfBXyItCEizHpHm7J0tT6U=\""
+          "Value": "\"fPt1S+FKOseY5raV4dLV3gBpr68V+0kySNBPmxdbJx8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 21:33:17 GMT"
+          "Value": "Mon, 17 Mar 2025 16:17:05 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1641,12 +1641,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-qVr2x/LQohGdRemAXRv/lYfBXyItCEizHpHm7J0tT6U="
+          "Value": "sha256-fPt1S+FKOseY5raV4dLV3gBpr68V+0kySNBPmxdbJx8="
         }
       ]
     },
     {
-      "Route": "css/StockPage.zdeaifh5yz.css",
+      "Route": "css/StockPage.gtqj21p6c1.css",
       "AssetFile": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\css\\StockPage.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -1656,7 +1656,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2460"
+          "Value": "1475"
         },
         {
           "Name": "Content-Type",
@@ -1664,11 +1664,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"qVr2x/LQohGdRemAXRv/lYfBXyItCEizHpHm7J0tT6U=\""
+          "Value": "\"fPt1S+FKOseY5raV4dLV3gBpr68V+0kySNBPmxdbJx8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 21:33:17 GMT"
+          "Value": "Mon, 17 Mar 2025 16:17:05 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1678,7 +1678,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "zdeaifh5yz"
+          "Value": "gtqj21p6c1"
         },
         {
           "Name": "label",
@@ -1686,7 +1686,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-qVr2x/LQohGdRemAXRv/lYfBXyItCEizHpHm7J0tT6U="
+          "Value": "sha256-fPt1S+FKOseY5raV4dLV3gBpr68V+0kySNBPmxdbJx8="
         }
       ]
     },

@@ -23,6 +23,7 @@ namespace Cadet_Uniform_IMS.Pages.StockCRUD
         public IList<UniformType> UniformTypes { get; set; } = default!;
         public IList<SizeAttribute> SizeAttributes { get; set; } = default!;
         public IList<StockSize> StockSizes { get; set; } = default!;
+        public int countAttributes = 0;
 
         public async Task OnGetAsync()
         {

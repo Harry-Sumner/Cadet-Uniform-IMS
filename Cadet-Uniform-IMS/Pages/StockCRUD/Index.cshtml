@@ -57,6 +57,11 @@
                         }
                         <p style="color:darkgreen">Quantity: @item.Quantity</p>
                     </div>
+                    <form asp-page-handler="Delete" asp-route-id="@item.StockID" method="post">
+                        <button class="submit">
+                            -
+                        </button>
+                    </form>
                 </div>
             }
         }

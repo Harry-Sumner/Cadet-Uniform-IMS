@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Cadet_Uniform_IMS.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Immutable;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Cadet_Uniform_IMS.Pages.StockCRUD
 {
@@ -42,6 +43,19 @@ namespace Cadet_Uniform_IMS.Pages.StockCRUD
 
         public async Task<IActionResult> OnPostAddAsync(Dictionary<int, string> Attributes)
         {
+            foreach(var entry in Attributes)
+            {
+                if(entry.Value == null)
+                {
+                    await OnGet();
+                    return Page();
+                }
+            }
+            if (!ModelState.IsValid)
+            {
+                await OnGet();
+                return Page();
+            }
             // Find existing stock entries for the same uniform
             var existingStocks = _context.Stock
                 .Where(s => s.UniformID == Stock.UniformID)
@@ -51,7 +65,7 @@ namespace Cadet_Uniform_IMS.Pages.StockCRUD
                     StockSizes = _context.StockSize.Where(ss => ss.StockID == s.StockID).ToList()
                 })
                 .ToList();
-
+           
             // Look for a stock entry that matches exactly in sizes
             var matchingStock = existingStocks.FirstOrDefault(s =>
                 s.StockSizes.Count == Attributes.Count && // Same number of attributes

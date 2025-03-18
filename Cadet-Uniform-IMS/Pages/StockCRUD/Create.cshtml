@@ -5,7 +5,7 @@
     ViewData["Title"] = "Create";
 }
 <head>
-    <link rel='stylesheet' href="~/css/site.css">
+    <link rel='stylesheet' href="~/css/Add.css">
 </head>
 <h1>Create</h1>
 
@@ -57,14 +57,16 @@
                     @foreach (var a in Model.Attributes.Where(i => i.TypeID == uniform.TypeID))
                     {
                         <div class="form-group">
+                            <span class="text-danger">*</span>
                             <label for="Attribute_@a.AttributeID" class="control-label">@a.AttributeName:</label>
                             <input type="text" class="form-control" name="Attributes[@a.AttributeID]" id="Attribute_@a.AttributeID" maxlength="3"/>
                             <br />
                         </div>
                     }
                 }
-                <button class="submit">
-                    +
+                <button type = "submit" class="AddBtn">
+                    <div class="sign">+</div>
+                    <div class="text">Add</div>
                 </button>
             }
         </form>

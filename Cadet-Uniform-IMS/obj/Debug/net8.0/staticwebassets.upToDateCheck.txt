@@ -1,8 +1,9 @@
-wwwroot\css\Add.css
+wwwroot\css\Create.css
 wwwroot\css\site.css
 wwwroot\css\StockPage.css
 wwwroot\favicon.ico
 wwwroot\images\empty.png
+wwwroot\images\squadron_crest.png
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map

@@ -3,48 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|c:\\users\\harry s\\source\\repos\\harry-sumner\\cadet-uniform-ims\\cadet-uniform-ims\\pages\\stockcrud\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|solutionrelative:pages\\stockcrud\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|c:\\users\\harry s\\source\\repos\\harry-sumner\\cadet-uniform-ims\\cadet-uniform-ims\\pages\\stockcrud\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|solutionrelative:pages\\stockcrud\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|c:\\users\\harry s\\source\\repos\\harry-sumner\\cadet-uniform-ims\\cadet-uniform-ims\\wwwroot\\css\\create.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|solutionrelative:wwwroot\\css\\create.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|c:\\users\\harry s\\source\\repos\\harry-sumner\\cadet-uniform-ims\\cadet-uniform-ims\\pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|solutionrelative:pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|c:\\users\\harry s\\source\\repos\\harry-sumner\\cadet-uniform-ims\\cadet-uniform-ims\\pages\\stockcrud\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|solutionrelative:pages\\stockcrud\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|c:\\users\\harry s\\source\\repos\\harry-sumner\\cadet-uniform-ims\\cadet-uniform-ims\\pages\\stockcrud\\create.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|solutionrelative:pages\\stockcrud\\create.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|c:\\users\\harry s\\source\\repos\\harry-sumner\\cadet-uniform-ims\\cadet-uniform-ims\\pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|solutionrelative:pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|c:\\users\\harry s\\source\\repos\\harry-sumner\\cadet-uniform-ims\\cadet-uniform-ims\\pages\\stockcrud\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|solutionrelative:pages\\stockcrud\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|c:\\users\\harry s\\source\\repos\\harry-sumner\\cadet-uniform-ims\\cadet-uniform-ims\\wwwroot\\css\\add.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|solutionrelative:wwwroot\\css\\add.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|c:\\users\\harry s\\source\\repos\\harry-sumner\\cadet-uniform-ims\\cadet-uniform-ims\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|solutionrelative:wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|c:\\users\\harry s\\source\\repos\\harry-sumner\\cadet-uniform-ims\\cadet-uniform-ims\\data\\stocksize.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|solutionrelative:data\\stocksize.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|c:\\users\\harry s\\source\\repos\\harry-sumner\\cadet-uniform-ims\\cadet-uniform-ims\\data\\stock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|solutionrelative:data\\stock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|c:\\users\\harry s\\source\\repos\\harry-sumner\\cadet-uniform-ims\\cadet-uniform-ims\\data\\sizeattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|solutionrelative:data\\sizeattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|c:\\users\\harry s\\source\\repos\\harry-sumner\\cadet-uniform-ims\\cadet-uniform-ims\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|c:\\users\\harry s\\source\\repos\\harry-sumner\\cadet-uniform-ims\\cadet-uniform-ims\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|c:\\users\\harry s\\source\\repos\\harry-sumner\\cadet-uniform-ims\\cadet-uniform-ims\\pages\\stockcrud\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|solutionrelative:pages\\stockcrud\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|c:\\users\\harry s\\source\\repos\\harry-sumner\\cadet-uniform-ims\\cadet-uniform-ims\\data\\ims_context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -63,10 +43,6 @@
       "RelativeMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|solutionrelative:pages\\stockcrud\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|c:\\users\\harry s\\source\\repos\\harry-sumner\\cadet-uniform-ims\\cadet-uniform-ims\\pages\\stockcrud\\edit.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|solutionrelative:pages\\stockcrud\\edit.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|c:\\users\\harry s\\source\\repos\\harry-sumner\\cadet-uniform-ims\\cadet-uniform-ims\\pages\\stockcrud\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{0D728F1C-9548-3B2B-9B81-90B9E3001967}|Cadet-Uniform-IMS.csproj|solutionrelative:pages\\stockcrud\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
@@ -78,22 +54,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 3,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "site.css",
-              "DocumentMoniker": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\css\\site.css",
-              "RelativeDocumentMoniker": "wwwroot\\css\\site.css",
-              "ToolTip": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\css\\site.css",
-              "RelativeToolTip": "wwwroot\\css\\site.css",
-              "ViewState": "AgIAABcAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-03-17T08:55:00.288Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
@@ -104,150 +66,81 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Add.css",
-              "DocumentMoniker": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\css\\Add.css",
-              "RelativeDocumentMoniker": "wwwroot\\css\\Add.css",
-              "ToolTip": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\css\\Add.css",
-              "RelativeToolTip": "wwwroot\\css\\Add.css",
-              "ViewState": "AgIAAJkAAAAAAAAAAAAAAKoAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-03-17T17:15:44.367Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Index.cshtml.cs",
-              "DocumentMoniker": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\Pages\\StockCRUD\\Index.cshtml.cs",
-              "RelativeDocumentMoniker": "Pages\\StockCRUD\\Index.cshtml.cs",
-              "ToolTip": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\Pages\\StockCRUD\\Index.cshtml.cs",
-              "RelativeToolTip": "Pages\\StockCRUD\\Index.cshtml.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAAwwCsAAABxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-17T15:52:12.659Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Create.cshtml.cs",
-              "DocumentMoniker": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\Pages\\StockCRUD\\Create.cshtml.cs",
-              "RelativeDocumentMoniker": "Pages\\StockCRUD\\Create.cshtml.cs",
-              "ToolTip": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\Pages\\StockCRUD\\Create.cshtml.cs",
-              "RelativeToolTip": "Pages\\StockCRUD\\Create.cshtml.cs",
-              "ViewState": "AgIAAF8AAAAAAAAAAADwvyMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-17T09:10:01.932Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\Pages\\StockCRUD\\Create.cshtml",
-              "RelativeDocumentMoniker": "Pages\\StockCRUD\\Create.cshtml",
-              "ToolTip": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\Pages\\StockCRUD\\Create.cshtml",
-              "RelativeToolTip": "Pages\\StockCRUD\\Create.cshtml",
-              "ViewState": "AgIAACUAAAAAAAAAAAAAAD0AAACTAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-13T21:11:22.969Z",
+              "Title": "Create.css",
+              "DocumentMoniker": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\css\\Create.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\Create.css",
+              "ToolTip": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\css\\Create.css",
+              "RelativeToolTip": "wwwroot\\css\\Create.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-04-11T22:45:56.746Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\Pages\\StockCRUD\\Create.cshtml",
+              "RelativeDocumentMoniker": "Pages\\StockCRUD\\Create.cshtml",
+              "ToolTip": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\Pages\\StockCRUD\\Create.cshtml*",
+              "RelativeToolTip": "Pages\\StockCRUD\\Create.cshtml*",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAADMAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-11T22:15:06.914Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\Pages\\Index.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\Pages\\Index.cshtml",
+              "RelativeToolTip": "Pages\\Index.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABEAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-11T21:47:24.566Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\Pages\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\Pages\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Pages\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAB8AAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-11T21:32:04.896Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\Pages\\StockCRUD\\Index.cshtml.cs",
+              "RelativeDocumentMoniker": "Pages\\StockCRUD\\Index.cshtml.cs",
+              "ToolTip": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\Pages\\StockCRUD\\Index.cshtml.cs",
+              "RelativeToolTip": "Pages\\StockCRUD\\Index.cshtml.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAADwvygAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T15:52:12.659Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\Pages\\StockCRUD\\Index.cshtml",
               "RelativeDocumentMoniker": "Pages\\StockCRUD\\Index.cshtml",
               "ToolTip": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\Pages\\StockCRUD\\Index.cshtml",
               "RelativeToolTip": "Pages\\StockCRUD\\Index.cshtml",
-              "ViewState": "AgIAACgAAAAAAAAAAAAAAD8AAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-13T21:11:24.524Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "SizeAttribute.cs",
-              "DocumentMoniker": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\Data\\SizeAttribute.cs",
-              "RelativeDocumentMoniker": "Data\\SizeAttribute.cs",
-              "ToolTip": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\Data\\SizeAttribute.cs",
-              "RelativeToolTip": "Data\\SizeAttribute.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T17:37:59.047Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Stock.cs",
-              "DocumentMoniker": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\Data\\Stock.cs",
-              "RelativeDocumentMoniker": "Data\\Stock.cs",
-              "ToolTip": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\Data\\Stock.cs",
-              "RelativeToolTip": "Data\\Stock.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T18:00:45.777Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T21:11:24.524Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "StockSize.cs",
-              "DocumentMoniker": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\Data\\StockSize.cs",
-              "RelativeDocumentMoniker": "Data\\StockSize.cs",
-              "ToolTip": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\Data\\StockSize.cs",
-              "RelativeToolTip": "Data\\StockSize.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-17T14:48:02.018Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAADDAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-03-17T09:47:32.133Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAASwBsAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T17:11:13.559Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Edit.cshtml.cs",
-              "DocumentMoniker": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\Pages\\StockCRUD\\Edit.cshtml.cs",
-              "RelativeDocumentMoniker": "Pages\\StockCRUD\\Edit.cshtml.cs",
-              "ToolTip": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\Pages\\StockCRUD\\Edit.cshtml.cs",
-              "RelativeToolTip": "Pages\\StockCRUD\\Edit.cshtml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T21:11:23.726Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
               "Title": "IMS_Context.cs",
               "DocumentMoniker": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\Data\\IMS_Context.cs",
               "RelativeDocumentMoniker": "Data\\IMS_Context.cs",
@@ -255,12 +148,11 @@
               "RelativeToolTip": "Data\\IMS_Context.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T17:24:40.535Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T17:24:40.535Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 10,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\Pages\\StockCRUD\\Edit.cshtml",
               "RelativeDocumentMoniker": "Pages\\StockCRUD\\Edit.cshtml",
@@ -268,12 +160,11 @@
               "RelativeToolTip": "Pages\\StockCRUD\\Edit.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-13T21:11:23.616Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T21:11:23.616Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 9,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\Pages\\StockCRUD\\Details.cshtml",
               "RelativeDocumentMoniker": "Pages\\StockCRUD\\Details.cshtml",
@@ -281,12 +172,11 @@
               "RelativeToolTip": "Pages\\StockCRUD\\Details.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-13T21:11:23.86Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T21:11:23.86Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 8,
               "Title": "Delete.cshtml",
               "DocumentMoniker": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\Pages\\StockCRUD\\Delete.cshtml",
               "RelativeDocumentMoniker": "Pages\\StockCRUD\\Delete.cshtml",
@@ -294,12 +184,11 @@
               "RelativeToolTip": "Pages\\StockCRUD\\Delete.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-13T21:11:24.125Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T21:11:24.125Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 7,
               "Title": "Delete.cshtml.cs",
               "DocumentMoniker": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\Pages\\StockCRUD\\Delete.cshtml.cs",
               "RelativeDocumentMoniker": "Pages\\StockCRUD\\Delete.cshtml.cs",
@@ -307,8 +196,7 @@
               "RelativeToolTip": "Pages\\StockCRUD\\Delete.cshtml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T21:11:24.308Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T21:11:24.308Z"
             }
           ]
         }

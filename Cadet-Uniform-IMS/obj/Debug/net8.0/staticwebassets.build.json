@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "WIwzDE8JkkzqhGuZmPJVAciIwx1UpO0nSctBbucNh98=",
+  "Hash": "jtCevN0s8KBPsw24cOJXVy9tbN4dUM58zkqm5c8hD+g=",
   "Source": "Cadet-Uniform-IMS",
   "BasePath": "_content/Cadet-Uniform-IMS",
   "Mode": "Default",
@@ -59,12 +59,12 @@
       "OriginalItemSpec": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Cadet-Uniform-IMS.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\css\\Add.css",
+      "Identity": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\css\\Create.css",
       "SourceId": "Cadet-Uniform-IMS",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\",
       "BasePath": "_content/Cadet-Uniform-IMS",
-      "RelativePath": "css/Add#[.{fingerprint}]?.css",
+      "RelativePath": "css/Create#[.{fingerprint}]?.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -73,11 +73,11 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "8qmbfr2fgj",
-      "Integrity": "0OL3A2ea14hjmSiOzRzotm8YWIYaCkFp2bu5Kiw7giE=",
+      "Fingerprint": "k35i3mhnbi",
+      "Integrity": "sEqxi3OLG3GVcsctssL28LEpf965yOCq9zTy2L7DHY4=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\Add.css"
+      "OriginalItemSpec": "wwwroot\\css\\Create.css"
     },
     {
       "Identity": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\css\\site.css",
@@ -136,8 +136,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "61n19gt1b8",
-      "Integrity": "Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM=",
+      "Fingerprint": "gktrazifut",
+      "Integrity": "cGTv7d9bqBE4GhvHUAWwjJI21EeGj+8UT9LI70tl03w=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
@@ -162,6 +162,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\empty.png"
+    },
+    {
+      "Identity": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\images\\squadron_crest.png",
+      "SourceId": "Cadet-Uniform-IMS",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\",
+      "BasePath": "_content/Cadet-Uniform-IMS",
+      "RelativePath": "images/squadron_crest#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "oryfomhi4y",
+      "Integrity": "xB1JQnjZfJ8MNm0hJF9nMpq36cmZrqypufo1Ks8rink=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\squadron_crest.png"
     },
     {
       "Identity": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\js\\site.js",
@@ -1548,8 +1569,8 @@
       ]
     },
     {
-      "Route": "css/Add.8qmbfr2fgj.css",
-      "AssetFile": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\css\\Add.css",
+      "Route": "css/Create.css",
+      "AssetFile": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\css\\Create.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1558,7 +1579,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5391"
+          "Value": "2209"
         },
         {
           "Name": "Content-Type",
@@ -1566,56 +1587,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"0OL3A2ea14hjmSiOzRzotm8YWIYaCkFp2bu5Kiw7giE=\""
+          "Value": "\"sEqxi3OLG3GVcsctssL28LEpf965yOCq9zTy2L7DHY4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 17:56:42 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "8qmbfr2fgj"
-        },
-        {
-          "Name": "label",
-          "Value": "css/Add.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-0OL3A2ea14hjmSiOzRzotm8YWIYaCkFp2bu5Kiw7giE="
-        }
-      ]
-    },
-    {
-      "Route": "css/Add.css",
-      "AssetFile": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\css\\Add.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "5391"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"0OL3A2ea14hjmSiOzRzotm8YWIYaCkFp2bu5Kiw7giE=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 17:56:42 GMT"
+          "Value": "Fri, 11 Apr 2025 22:51:22 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1625,7 +1601,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-0OL3A2ea14hjmSiOzRzotm8YWIYaCkFp2bu5Kiw7giE="
+          "Value": "sha256-sEqxi3OLG3GVcsctssL28LEpf965yOCq9zTy2L7DHY4="
+        }
+      ]
+    },
+    {
+      "Route": "css/Create.k35i3mhnbi.css",
+      "AssetFile": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\css\\Create.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2209"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"sEqxi3OLG3GVcsctssL28LEpf965yOCq9zTy2L7DHY4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 22:51:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "k35i3mhnbi"
+        },
+        {
+          "Name": "label",
+          "Value": "css/Create.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-sEqxi3OLG3GVcsctssL28LEpf965yOCq9zTy2L7DHY4="
         }
       ]
     },
@@ -1794,7 +1815,7 @@
       ]
     },
     {
-      "Route": "favicon.61n19gt1b8.ico",
+      "Route": "favicon.gktrazifut.ico",
       "AssetFile": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\favicon.ico",
       "Selectors": [],
       "ResponseHeaders": [
@@ -1804,7 +1825,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5430"
+          "Value": "15086"
         },
         {
           "Name": "Content-Type",
@@ -1812,11 +1833,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM=\""
+          "Value": "\"cGTv7d9bqBE4GhvHUAWwjJI21EeGj+8UT9LI70tl03w=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 24 Feb 2025 22:26:06 GMT"
+          "Value": "Fri, 11 Apr 2025 14:21:12 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1826,7 +1847,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "61n19gt1b8"
+          "Value": "gktrazifut"
         },
         {
           "Name": "label",
@@ -1834,7 +1855,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM="
+          "Value": "sha256-cGTv7d9bqBE4GhvHUAWwjJI21EeGj+8UT9LI70tl03w="
         }
       ]
     },
@@ -1849,7 +1870,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5430"
+          "Value": "15086"
         },
         {
           "Name": "Content-Type",
@@ -1857,11 +1878,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM=\""
+          "Value": "\"cGTv7d9bqBE4GhvHUAWwjJI21EeGj+8UT9LI70tl03w=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 24 Feb 2025 22:26:06 GMT"
+          "Value": "Fri, 11 Apr 2025 14:21:12 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1871,7 +1892,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM="
+          "Value": "sha256-cGTv7d9bqBE4GhvHUAWwjJI21EeGj+8UT9LI70tl03w="
         }
       ]
     },
@@ -1954,6 +1975,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-LYlKfdDwwgQvkKcBdqcutfQhwKBxt6roYNkhsEVCht8="
+        }
+      ]
+    },
+    {
+      "Route": "images/squadron_crest.oryfomhi4y.png",
+      "AssetFile": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\images\\squadron_crest.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "340544"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"xB1JQnjZfJ8MNm0hJF9nMpq36cmZrqypufo1Ks8rink=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 15:19:28 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "oryfomhi4y"
+        },
+        {
+          "Name": "label",
+          "Value": "images/squadron_crest.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-xB1JQnjZfJ8MNm0hJF9nMpq36cmZrqypufo1Ks8rink="
+        }
+      ]
+    },
+    {
+      "Route": "images/squadron_crest.png",
+      "AssetFile": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\images\\squadron_crest.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "340544"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"xB1JQnjZfJ8MNm0hJF9nMpq36cmZrqypufo1Ks8rink=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 15:19:28 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-xB1JQnjZfJ8MNm0hJF9nMpq36cmZrqypufo1Ks8rink="
         }
       ]
     },

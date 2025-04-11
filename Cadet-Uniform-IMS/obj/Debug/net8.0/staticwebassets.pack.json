@@ -5,8 +5,8 @@
       "PackagePath": "staticwebassets\\Cadet-Uniform-IMS.3utj3gaglx.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\css\\Add.css",
-      "PackagePath": "staticwebassets\\css\\Add.css"
+      "Id": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\css\\Create.css",
+      "PackagePath": "staticwebassets\\css\\Create.css"
     },
     {
       "Id": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\css\\StockPage.css",
@@ -23,6 +23,10 @@
     {
       "Id": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\images\\empty.png",
       "PackagePath": "staticwebassets\\images\\empty.png"
+    },
+    {
+      "Id": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\images\\squadron_crest.png",
+      "PackagePath": "staticwebassets\\images\\squadron_crest.png"
     },
     {
       "Id": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\js\\site.js",

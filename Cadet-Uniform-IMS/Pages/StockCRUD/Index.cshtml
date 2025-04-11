@@ -2,7 +2,7 @@
 @model Cadet_Uniform_IMS.Pages.StockCRUD.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Browse";
 }
 
 <head>
@@ -16,6 +16,15 @@
         {
             <button class="btn" onclick="filterSelection('@type.TypeName')"> @type.TypeName</button>
         }
+    </div>
+    <!-- End of code adapted -->
+    <br />
+    <div class="body--search--container">
+        <form method="get">
+            <input type="text" name="Search" placeholder="Search for uniform">
+            <button type="submit">Submit</button>
+            <button type="button" onclick="window.location.reload();">Clear</button>
+        </form>
     </div>
     <div>
         <a asp-page="Create">Add New</a>

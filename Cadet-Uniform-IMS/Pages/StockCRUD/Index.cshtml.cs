@@ -26,6 +26,12 @@ namespace Cadet_Uniform_IMS.Pages.StockCRUD
         public IList<StockSize> StockSizes { get; set; } = default!;
         public int countAttributes = 0;
 
+        [BindProperty(SupportsGet = true)]
+        public string? Search { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public string? SelectedSize { get; set; }
+
         public async Task OnGetAsync()
         {
             Stock = await _context.Stock.ToListAsync();
@@ -33,6 +39,26 @@ namespace Cadet_Uniform_IMS.Pages.StockCRUD
             UniformTypes = await _context.UniformType.ToListAsync();
             SizeAttributes = await _context.SizeAttribute.ToListAsync();
             StockSizes = await _context.StockSize.ToListAsync();
+
+            if (!string.IsNullOrWhiteSpace(Search))
+            {
+                var matchingUniformIds = Uniform
+                    .Where(u => u.Name.Contains(Search, StringComparison.OrdinalIgnoreCase))
+                    .Select(u => u.UniformID)
+                    .ToHashSet();
+
+                Stock = Stock.Where(s => matchingUniformIds.Contains(s.UniformID)).ToList();
+            }
+
+            if (!string.IsNullOrWhiteSpace(SelectedSize))
+            {
+                var stockIdsWithSize = StockSizes
+                    .Where(ss => ss.Size.Equals(SelectedSize, StringComparison.OrdinalIgnoreCase))
+                    .Select(ss => ss.StockID)
+                    .ToHashSet();
+
+                Stock = Stock.Where(s => stockIdsWithSize.Contains(s.StockID)).ToList();
+            }
         }
 
         public async Task<IActionResult> OnPostDeleteAsync(int id) //takes id passed from button

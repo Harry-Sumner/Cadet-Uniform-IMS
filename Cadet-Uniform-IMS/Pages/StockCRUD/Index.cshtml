@@ -20,10 +20,39 @@
     <!-- End of code adapted -->
     <br />
     <div class="body--search--container">
-        <form method="get">
-            <input type="text" name="Search" placeholder="Search for uniform">
+        <form method="get" style="display: flex; gap: 10px; align-items: center;">
+            <input type="text" name="Search" value="@Model.Search" placeholder="Search for uniform" />
+
+            <select id="sizeFilter" name="Size">
+                <option value="">All Sizes</option>
+                @foreach (var type in Model.UniformTypes)
+                {
+                    var sizeAttributes = Model.SizeAttributes.Where(sa => sa.TypeID == type.TypeID);
+
+                    foreach (var attr in sizeAttributes)
+                    {
+                        var sizes = Model.StockSizes
+                        .Where(ss => ss.AttributeID == attr.AttributeID)
+                        .Select(ss => ss.Size)
+                        .Distinct()
+                        .OrderBy(s => s)
+                        .ToList();
+
+                        if (sizes.Any())
+                        {
+                            <optgroup label="@type.TypeName - @attr.AttributeName" data-type="@type.TypeName">
+                                @foreach (var size in sizes)
+                                {
+                                    <option value="@size">@size</option>
+                                }
+                            </optgroup>
+                        }
+                    }
+                }
+            </select>
+
             <button type="submit">Submit</button>
-            <button type="button" onclick="window.location.reload();">Clear</button>
+            <a href="/StockCRUD"><button type="button">Clear</button></a>
         </form>
     </div>
     <div>
@@ -89,6 +118,34 @@
                 RemoveClass(x[i], "display");
                 if (x[i].className.indexOf(c) > -1) AddClass(x[i], "display");
             }
+
+            // Show only matching size groups
+            const sizeGroups = document.querySelectorAll("#sizeFilter optgroup");
+            sizeGroups.forEach(group => {
+                const groupType = group.getAttribute("data-type");
+                if (!c || groupType === c) {
+                    group.hidden = false;
+                } else {
+                    group.hidden = true;
+                }
+            });
+
+            // Reset to "All Sizes" when filtering
+            document.getElementById("sizeFilter").selectedIndex = 0;
+
+            // Update active button style
+            var btns = document.getElementsByClassName("btn");
+            for (i = 0; i < btns.length; i++) {
+                btns[i].classList.remove("active");
+            }
+
+            // Reactivate the clicked button (find it by label match)
+            if (!c) {
+                document.querySelector(".btn[onclick*='all']").classList.add("active");
+            } else {
+                var matched = Array.from(btns).find(btn => btn.textContent.trim() === c);
+                if (matched) matched.classList.add("active");
+            }
         }
 
         function AddClass(element, name) {
@@ -110,19 +167,6 @@
                 }
             }
             element.className = arr1.join(" ");
-        }
-
-        var btnContainer = document.getElementById("btn_container");
-        var btns = btnContainer.getElementsByClassName("btn");
-
-        for (var i = 0; i < btns.length; i++) {
-            btns[i].addEventListener("click", function () {
-                var current = document.getElementsByClassName("active");
-                if (current.length > 0) {
-                    current[0].className = current[0].className.replace(" active", "");
-                }
-                this.className += " active";
-            });
         }
     </script>
 </body>

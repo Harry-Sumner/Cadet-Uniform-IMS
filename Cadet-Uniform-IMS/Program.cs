@@ -1,11 +1,22 @@
 using Cadet_Uniform_IMS.Data;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Builder;
 
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+var connectionString = builder.Configuration.GetConnectionString("IMS_Context");
 builder.Services.AddDbContext<IMS_Context>(options => options.UseSqlServer(connectionString));
 
+builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
+    .AddDefaultUI()
+    .AddDefaultTokenProviders()
+    .AddEntityFrameworkStores<IMS_Context>();
+
+builder.Services.AddIdentityCore<Cadet>().AddEntityFrameworkStores<IMS_Context>();
+builder.Services.AddIdentityCore<Staff>().AddEntityFrameworkStores<IMS_Context>();
 
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -23,9 +34,10 @@ if (!app.Environment.IsDevelopment())
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
-
     var context = services.GetRequiredService<IMS_Context>();
-    context.Database.EnsureCreated();
+    context.Database.Migrate();
+    var userMgr = services.GetRequiredService<UserManager<User>>();
+    var roleMgr = services.GetRequiredService<RoleManager<IdentityRole>>();
 }
 
 app.UseHttpsRedirection();

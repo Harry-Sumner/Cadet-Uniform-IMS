@@ -38,6 +38,7 @@ using (var scope = app.Services.CreateScope())
     context.Database.Migrate();
     var userMgr = services.GetRequiredService<UserManager<User>>();
     var roleMgr = services.GetRequiredService<RoleManager<IdentityRole>>();
+    SeedUsers.Initialize(context, userMgr, roleMgr).Wait();
 }
 
 app.UseHttpsRedirection();

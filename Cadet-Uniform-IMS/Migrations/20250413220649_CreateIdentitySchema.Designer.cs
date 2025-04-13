@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cadet_Uniform_IMS.Migrations
 {
     [DbContext(typeof(IMS_Context))]
-    [Migration("20250412124748_CreateIdentitySchema")]
+    [Migration("20250413220649_CreateIdentitySchema")]
     partial class CreateIdentitySchema
     {
         /// <inheritdoc />
@@ -24,6 +24,121 @@ namespace Cadet_Uniform_IMS.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Cadet_Uniform_IMS.Data.IMS_User", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Chest")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<int?>("Head")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Height")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Hips")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Leg")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<int?>("Neck")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<byte[]>("ProfilePicture")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Rank")
+                        .IsRequired()
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)");
+
+                    b.Property<int?>("Seat")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Shoe")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<int?>("Waist")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("WaistKnee")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers", (string)null);
+
+                    b.UseTptMappingStrategy();
+                });
 
             modelBuilder.Entity("Cadet_Uniform_IMS.Data.SizeAttribute", b =>
                 {
@@ -122,91 +237,6 @@ namespace Cadet_Uniform_IMS.Migrations
                     b.HasKey("TypeID");
 
                     b.ToTable("UniformType");
-                });
-
-            modelBuilder.Entity("Cadet_Uniform_IMS.Data.User", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<byte[]>("ProfilePicture")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<string>("Rank")
-                        .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("nvarchar(5)");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Surname")
-                        .IsRequired()
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedEmail")
-                        .HasDatabaseName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasDatabaseName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.ToTable("AspNetUsers", (string)null);
-
-                    b.UseTptMappingStrategy();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -346,9 +376,9 @@ namespace Cadet_Uniform_IMS.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Cadet_Uniform_IMS.Data.Cadet", b =>
+            modelBuilder.Entity("Cadet_Uniform_IMS.Data.IMS_Cadet", b =>
                 {
-                    b.HasBaseType("Cadet_Uniform_IMS.Data.User");
+                    b.HasBaseType("Cadet_Uniform_IMS.Data.IMS_User");
 
                     b.Property<string>("CadetNo")
                         .IsRequired()
@@ -362,9 +392,9 @@ namespace Cadet_Uniform_IMS.Migrations
                     b.ToTable("Cadet", (string)null);
                 });
 
-            modelBuilder.Entity("Cadet_Uniform_IMS.Data.Staff", b =>
+            modelBuilder.Entity("Cadet_Uniform_IMS.Data.IMS_Staff", b =>
                 {
-                    b.HasBaseType("Cadet_Uniform_IMS.Data.User");
+                    b.HasBaseType("Cadet_Uniform_IMS.Data.IMS_User");
 
                     b.Property<string>("StaffNo")
                         .IsRequired()
@@ -385,7 +415,7 @@ namespace Cadet_Uniform_IMS.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Cadet_Uniform_IMS.Data.User", null)
+                    b.HasOne("Cadet_Uniform_IMS.Data.IMS_User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -394,7 +424,7 @@ namespace Cadet_Uniform_IMS.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Cadet_Uniform_IMS.Data.User", null)
+                    b.HasOne("Cadet_Uniform_IMS.Data.IMS_User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -409,7 +439,7 @@ namespace Cadet_Uniform_IMS.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Cadet_Uniform_IMS.Data.User", null)
+                    b.HasOne("Cadet_Uniform_IMS.Data.IMS_User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -418,27 +448,27 @@ namespace Cadet_Uniform_IMS.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Cadet_Uniform_IMS.Data.User", null)
+                    b.HasOne("Cadet_Uniform_IMS.Data.IMS_User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Cadet_Uniform_IMS.Data.Cadet", b =>
+            modelBuilder.Entity("Cadet_Uniform_IMS.Data.IMS_Cadet", b =>
                 {
-                    b.HasOne("Cadet_Uniform_IMS.Data.User", null)
+                    b.HasOne("Cadet_Uniform_IMS.Data.IMS_User", null)
                         .WithOne()
-                        .HasForeignKey("Cadet_Uniform_IMS.Data.Cadet", "Id")
+                        .HasForeignKey("Cadet_Uniform_IMS.Data.IMS_Cadet", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Cadet_Uniform_IMS.Data.Staff", b =>
+            modelBuilder.Entity("Cadet_Uniform_IMS.Data.IMS_Staff", b =>
                 {
-                    b.HasOne("Cadet_Uniform_IMS.Data.User", null)
+                    b.HasOne("Cadet_Uniform_IMS.Data.IMS_User", null)
                         .WithOne()
-                        .HasForeignKey("Cadet_Uniform_IMS.Data.Staff", "Id")
+                        .HasForeignKey("Cadet_Uniform_IMS.Data.IMS_Staff", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

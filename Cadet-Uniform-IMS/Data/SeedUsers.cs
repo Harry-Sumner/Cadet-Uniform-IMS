@@ -5,7 +5,7 @@ namespace Cadet_Uniform_IMS.Data
     public class SeedUsers
     {
         public static async Task Initialize(IMS_Context context,
-            UserManager<User> userManager,
+            UserManager<IMS_User> userManager,
             RoleManager<IdentityRole> roleManager)
         {
             context.Database.EnsureCreated();
@@ -32,7 +32,7 @@ namespace Cadet_Uniform_IMS.Data
 
             if (await userManager.FindByNameAsync("cadet@hawardenaircadets.org") == null)
             {
-                var user = new Cadet
+                var user = new IMS_Cadet
                 {
                     UserName = "cadet@hawardenaircadets.org",
                     Email = "cadet@hawardenaircadets.org",
@@ -51,7 +51,7 @@ namespace Cadet_Uniform_IMS.Data
             }
             if (await userManager.FindByNameAsync("staff@hawardenaircadets.org") == null)
             {
-                var user = new Staff
+                var user = new IMS_Staff
                 {
                     UserName = "staff@hawardenaircadets.org",
                     Email = "staff@hawardenaircadets.org",
@@ -69,7 +69,7 @@ namespace Cadet_Uniform_IMS.Data
             }
             if (await userManager.FindByNameAsync("admin@hawardenaircadets.org") == null)
             {
-                var user = new Staff
+                var user = new IMS_Staff
                 {
                     UserName = "admin@hawardenaircadets.org",
                     Email = "admin@hawardenaircadets.org",

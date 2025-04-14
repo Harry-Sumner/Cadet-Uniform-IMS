@@ -1,19 +1,22 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Cadet_Uniform_IMS.Pages;
-
-public class IndexModel : PageModel
+namespace Cadet_Uniform_IMS.Pages
 {
-    private readonly ILogger<IndexModel> _logger;
-
-    public IndexModel(ILogger<IndexModel> logger)
+    [Authorize]
+    public class IndexModel : PageModel
     {
-        _logger = logger;
-    }
+        private readonly ILogger<IndexModel> _logger;
 
-    public void OnGet()
-    {
+        public IndexModel(ILogger<IndexModel> logger)
+        {
+            _logger = logger;
+        }
 
+        public void OnGet()
+        {
+
+        }
     }
 }

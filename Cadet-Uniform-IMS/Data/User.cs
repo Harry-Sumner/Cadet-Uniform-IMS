@@ -9,7 +9,7 @@ namespace Cadet_Uniform_IMS.Data
         public string FirstName { get; set; }
         [PersonalData, Required, StringLength(60)]
         public string Surname { get; set; }
-        [Required, StringLength(5)]
+        [Required, StringLength(7)]
         public string Rank { get; set; }
         public string Name { get { return $"{Rank} {Surname}"; } }
         public byte[]? ProfilePicture { get; set; }

@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Cadet_Uniform_IMS.Data;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Cadet_Uniform_IMS.Pages.StockCRUD
 {
+    [Authorize]
     public class IndexModel : PageModel
     {
         private readonly Cadet_Uniform_IMS.Data.IMS_Context _context;

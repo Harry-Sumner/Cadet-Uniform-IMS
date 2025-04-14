@@ -80,7 +80,7 @@ namespace Cadet_Uniform_IMS.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
-                    await _userManager.AddToRoleAsync(user, "Student"); // Assign role
+                    await _userManager.AddToRoleAsync(user, "Cadet"); // Assign role
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -123,10 +123,10 @@ namespace Cadet_Uniform_IMS.Areas.Identity.Pages.Account
                 // Create structure and store details from form
                 await _userStore.SetUserNameAsync(user, StaffRegisterInput.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, StaffRegisterInput.Email, CancellationToken.None);
-                user.Rank = CadetRegisterInput.Rank;
-                user.FirstName = CadetRegisterInput.FirstName;
-                user.Surname = CadetRegisterInput.Surname;
-                user.StaffNo = CadetRegisterInput.CadetNo;
+                user.Rank = StaffRegisterInput.Rank;
+                user.FirstName = StaffRegisterInput.FirstName;
+                user.Surname = StaffRegisterInput.Surname;
+                user.StaffNo = StaffRegisterInput.StaffNo;
                 var result = await _userManager.CreateAsync(user, StaffRegisterInput.Password);
 
 

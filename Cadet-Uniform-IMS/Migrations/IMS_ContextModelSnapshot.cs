@@ -92,8 +92,8 @@ namespace Cadet_Uniform_IMS.Migrations
 
                     b.Property<string>("Rank")
                         .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("nvarchar(5)");
+                        .HasMaxLength(7)
+                        .HasColumnType("nvarchar(7)");
 
                     b.Property<int?>("Seat")
                         .HasColumnType("int");

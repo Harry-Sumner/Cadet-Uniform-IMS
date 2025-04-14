@@ -5,7 +5,176 @@
 }
 
 <h1>@ViewData["Title"]</h1>
+<hr />
 
+<!-- Toggle buttons styled like Bootstrap pills -->
+<ul class="nav nav-pills mb-3 body--register--Toggler" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active cadetBtn" type="button">Cadet</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link staffBtn" type="button">Staff</button>
+    </li>
+</ul>
+
+<div class="row">
+    <div class="col-md-4">
+
+        <!-- Cadet Registration Form -->
+        <form class="cadetRegister" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="form-floating mb-3">
+                <select asp-for="CadetRegisterInput.Rank" class="form-select" required>
+                    <option value="">Select Rank</option>
+                    <option value="JCdt">Junior Cadet</option>
+                    <option value="Cdt">Cadet</option>
+                    <option value="Cpl">Corporal</option>
+                    <option value="Sgt">Sergeant</option>
+                    <option value="FS">Flight Sergeant</option>
+                    <option value="CWO">Cadet Warrant Officer</option>
+                </select>
+                <label asp-for="CadetRegisterInput.Rank">Rank</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="CadetRegisterInput.FirstName" class="form-control" placeholder="First Name" required />
+                <label asp-for="CadetRegisterInput.FirstName">First Name</label>
+                <span asp-validation-for="CadetRegisterInput.FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="CadetRegisterInput.Surname" class="form-control" placeholder="Last Name" required />
+                <label asp-for="CadetRegisterInput.Surname">Last Name</label>
+                <span asp-validation-for="CadetRegisterInput.Surname" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="CadetRegisterInput.CadetNo" class="form-control" placeholder="Cadet Number" maxlength="16" required />
+                <label asp-for="CadetRegisterInput.CadetNo">Cadet Number</label>
+                <span asp-validation-for="CadetRegisterInput.CadetNo" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="CadetRegisterInput.Email" class="form-control" placeholder="Email" required />
+                <label asp-for="CadetRegisterInput.Email">Email</label>
+                <span asp-validation-for="CadetRegisterInput.Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <select asp-for="CadetRegisterInput.Flight" class="form-select" required>
+                    <option value="">Select Flight</option>
+                    <option value="Recruit">Recruit Flight</option>
+                    <option value="A">A Flight</option>
+                    <option value="B">B Flight</option>
+                </select>
+                <label asp-for="CadetRegisterInput.Flight">Flight</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="CadetRegisterInput.Password" class="form-control" placeholder="Password" required />
+                <label asp-for="CadetRegisterInput.Password">Password</label>
+                <span asp-validation-for="CadetRegisterInput.Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="CadetRegisterInput.ConfirmPassword" class="form-control" placeholder="Confirm Password" required />
+                <label asp-for="CadetRegisterInput.ConfirmPassword">Confirm Password</label>
+                <span asp-validation-for="CadetRegisterInput.ConfirmPassword" class="text-danger"></span>
+            </div>
+
+            <button id="CadetRegisterSubmit" type="submit" class="w-100 btn btn-lg btn-primary" asp-page-handler="CadetRegister">Register</button>
+        </form>
+
+        <!-- Staff Registration Form (Initially Hidden) -->
+        <form class="registerFormStaff" method="post" style="display: none;">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="form-floating mb-3">
+                <select asp-for="StaffRegisterInput.Rank" class="form-select" required>
+                    <option value="">Select Rank</option>
+                    <option value="CI">Civilian Instructor</option>
+                    <option value="Sgt">Sergeant</option>
+                    <option value="FS">Flight Sergeant</option>
+                    <option value="WO">Warrant Officer</option>
+                </select>
+                <label asp-for="StaffRegisterInput.Rank">Rank</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="StaffRegisterInput.FirstName" class="form-control" placeholder="First Name" required />
+                <label asp-for="StaffRegisterInput.FirstName">First Name</label>
+                <span asp-validation-for="StaffRegisterInput.FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="StaffRegisterInput.Surname" class="form-control" placeholder="Last Name" required />
+                <label asp-for="StaffRegisterInput.Surname">Last Name</label>
+                <span asp-validation-for="StaffRegisterInput.Surname" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="StaffRegisterInput.StaffNo" class="form-control" placeholder="Staff Number" maxlength="9" required />
+                <label asp-for="StaffRegisterInput.StaffNo">Staff Number</label>
+                <span asp-validation-for="StaffRegisterInput.StaffNo" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="StaffRegisterInput.Email" class="form-control" placeholder="Email" required />
+                <label asp-for="StaffRegisterInput.Email">Email</label>
+                <span asp-validation-for="StaffRegisterInput.Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="StaffRegisterInput.Password" class="form-control" placeholder="Password" required />
+                <label asp-for="StaffRegisterInput.Password">Password</label>
+                <span asp-validation-for="StaffRegisterInput.Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="StaffRegisterInput.ConfirmPassword" class="form-control" placeholder="Confirm Password" required />
+                <label asp-for="StaffRegisterInput.ConfirmPassword">Confirm Password</label>
+                <span asp-validation-for="StaffRegisterInput.ConfirmPassword" class="text-danger"></span>
+            </div>
+
+            <button id="StaffRegisterSubmit" type="submit" class="w-100 btn btn-lg btn-primary" asp-page-handler="StaffRegister">Register</button>
+        </form>
+
+    </div>
+</div>
+
+<!-- Toggler Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const cadetBtn = document.querySelector('.cadetBtn');
+        const staffBtn = document.querySelector('.staffBtn');
+        const cadetForm = document.querySelector('.cadetRegister');
+        const staffForm = document.querySelector('.registerFormStaff');
+
+        cadetBtn.addEventListener('click', function () {
+            cadetForm.style.display = 'block';
+            staffForm.style.display = 'none';
+            cadetBtn.classList.add('active');
+            staffBtn.classList.remove('active');
+        });
+
+        staffBtn.addEventListener('click', function () {
+            cadetForm.style.display = 'none';
+            staffForm.style.display = 'block';
+            staffBtn.classList.add('active');
+            cadetBtn.classList.remove('active');
+        });
+    });
+</script>
+
+<!-- Optional: Additional Styling -->
+<style>
+    .body--register--Toggler .nav-link.active {
+        background-color: #003366;
+        color: white;
+        font-weight: bold;
+    }
+</style>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

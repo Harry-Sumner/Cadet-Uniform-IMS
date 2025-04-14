@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cadet_Uniform_IMS.Migrations
 {
     [DbContext(typeof(IMS_Context))]
-    [Migration("20250413220649_CreateIdentitySchema")]
-    partial class CreateIdentitySchema
+    [Migration("20250414114455_CreateIdentity")]
+    partial class CreateIdentity
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -95,8 +95,8 @@ namespace Cadet_Uniform_IMS.Migrations
 
                     b.Property<string>("Rank")
                         .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("nvarchar(5)");
+                        .HasMaxLength(7)
+                        .HasColumnType("nvarchar(7)");
 
                     b.Property<int?>("Seat")
                         .HasColumnType("int");

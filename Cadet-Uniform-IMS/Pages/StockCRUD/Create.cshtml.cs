@@ -9,9 +9,11 @@ using Cadet_Uniform_IMS.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Immutable;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Cadet_Uniform_IMS.Pages.StockCRUD
 {
+    [Authorize(Roles = "Staff")]
     public class CreateModel : PageModel
     {
         private readonly Cadet_Uniform_IMS.Data.IMS_Context _context;

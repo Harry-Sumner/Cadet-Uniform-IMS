@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Cadet_Uniform_IMS.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateIdentitySchema : Migration
+    public partial class CreateIdentity : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -32,7 +32,7 @@ namespace Cadet_Uniform_IMS.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     Surname = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
-                    Rank = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
+                    Rank = table.Column<string>(type: "nvarchar(7)", maxLength: 7, nullable: false),
                     ProfilePicture = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     Height = table.Column<int>(type: "int", nullable: true),
                     Head = table.Column<int>(type: "int", nullable: true),

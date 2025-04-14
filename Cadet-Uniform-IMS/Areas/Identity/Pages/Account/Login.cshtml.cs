@@ -129,7 +129,7 @@ namespace Cadet_Uniform_IMS.Areas.Identity.Pages.Account
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt1.");
+                    ModelState.AddModelError(string.Empty, "Invalid login. Please check email and/or password.");
                     return Page();
                 }
             }

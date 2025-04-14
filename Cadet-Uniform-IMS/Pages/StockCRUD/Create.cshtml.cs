@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Cadet_Uniform_IMS.Pages.StockCRUD
 {
-    [Authorize(Roles = "Staff")]
+    [Authorize(Roles = "Staff, Admin")]
     public class CreateModel : PageModel
     {
         private readonly Cadet_Uniform_IMS.Data.IMS_Context _context;

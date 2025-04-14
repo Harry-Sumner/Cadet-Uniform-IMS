@@ -19,11 +19,11 @@
     </div>
     <!-- End of code adapted -->
     <br />
-    <div class="body--search--container">
-        <form method="get" style="display: flex; gap: 10px; align-items: center;">
-            <input type="text" name="Search" value="@Model.Search" placeholder="Search for uniform" />
+    <div class="body--search--container" style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+        <input type="text" id="clientSearch" placeholder="Search uniform by name..." style="max-width: 250px; padding: 8px;" onkeyup="searchUniforms()" />
 
-            <select id="sizeFilter" name="Size">
+        <form method="get" style="display: flex; gap: 10px; align-items: center;">
+            <select id="sizeFilter" name="Size" style="max-width: 250px; padding: 8px;">
                 <option value="">All Sizes</option>
                 @foreach (var type in Model.UniformTypes)
                 {
@@ -50,10 +50,12 @@
                     }
                 }
             </select>
-
             <button type="submit">Submit</button>
-            <a href="/StockCRUD"><button type="button">Clear</button></a>
         </form>
+
+        <a href="/StockCRUD">
+            <button type="button">Clear</button>
+        </a>
     </div>
 
     <div class="uniform">
@@ -143,6 +145,9 @@
                 var matched = Array.from(btns).find(btn => btn.textContent.trim() === c);
                 if (matched) matched.classList.add("active");
             }
+            // Clear client-side name search
+            document.getElementById('clientSearch').value = "";
+            searchUniforms();
         }
 
         function AddClass(element, name) {
@@ -164,6 +169,25 @@
                 }
             }
             element.className = arr1.join(" ");
+        }
+
+                function searchUniforms() {
+            const input = document.getElementById('clientSearch');
+            const filter = input.value.toLowerCase();
+            const items = document.querySelectorAll('.item');
+
+            items.forEach(item => {
+                const name = item.querySelector('h4')?.textContent.toLowerCase() || '';
+                const isVisible = item.classList.contains('display');
+
+                if (isVisible && name.includes(filter)) {
+                    item.style.display = '';
+                } else if (isVisible) {
+                    item.style.display = 'none';
+                } else {
+                    item.style.display = 'none'; // Hide items not in selected type
+                }
+            });
         }
     </script>
 </body>

@@ -13,9 +13,12 @@ using System.Text.Encodings.Web;
 using System.Text;
 using Cadet_Uniform_IMS.ViewModels;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Cadet_Uniform_IMS.Areas.Identity.Pages.Account
 {
+    [Authorize(Roles = "Admin")]
+
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<IMS_User> _signInManager;
@@ -46,16 +49,16 @@ namespace Cadet_Uniform_IMS.Areas.Identity.Pages.Account
         [BindProperty]
         public StaffView StaffRegisterInput { get; set; }
 
-        public IList<AuthenticationScheme> ExternalLogins { get; set; }
+        [TempData]
+        public string RegistrationMessage { get; set; }
 
         public string ReturnUrl { get; set; }
 
         [TempData]
         public string ErrorMessage { get; set; }
 
-        public async Task OnGetAsync(string returnUrl = null)
+        public void OnGet(string returnUrl = null)
         {
-            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             ReturnUrl = returnUrl;
         }
 
@@ -63,7 +66,6 @@ namespace Cadet_Uniform_IMS.Areas.Identity.Pages.Account
         {
             ModelState.Clear();
             returnUrl ??= Url.Content("~/");
-            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
                 var user = CreateCadet(); // Run function
@@ -100,14 +102,14 @@ namespace Cadet_Uniform_IMS.Areas.Identity.Pages.Account
                     }
                     else
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        return LocalRedirect(returnUrl);
+                        RegistrationMessage = "Account created successfully. Please confirm your email to continue.";
+                        return RedirectToPage("Register");
                     }
                 }
             }
 
             // If we got this far, something failed, redisplay form
-            await OnGetAsync();
+            OnGet();
             return Page();
         }
 
@@ -115,7 +117,6 @@ namespace Cadet_Uniform_IMS.Areas.Identity.Pages.Account
         {
             ModelState.Clear(); // Clear previous errors
             returnUrl ??= Url.Content("~/");
-            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
             if (ModelState.IsValid)
             {
@@ -155,13 +156,12 @@ namespace Cadet_Uniform_IMS.Areas.Identity.Pages.Account
                     }
                     else
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-
-                        return LocalRedirect(returnUrl);
+                        RegistrationMessage = "Account created successfully.";
+                        return RedirectToPage("Register");
                     }
                 }
             }
-            await OnGetAsync();
+            OnGet();
             // If we got this far, something failed, redisplay form
             return Page();
         }

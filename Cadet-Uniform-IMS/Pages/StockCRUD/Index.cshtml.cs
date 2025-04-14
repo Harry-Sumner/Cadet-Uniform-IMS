@@ -29,9 +29,6 @@ namespace Cadet_Uniform_IMS.Pages.StockCRUD
         public int countAttributes = 0;
 
         [BindProperty(SupportsGet = true)]
-        public string? Search { get; set; }
-
-        [BindProperty(SupportsGet = true)]
         public string? SelectedSize { get; set; }
 
         public async Task OnGetAsync()
@@ -41,16 +38,6 @@ namespace Cadet_Uniform_IMS.Pages.StockCRUD
             UniformTypes = await _context.UniformType.ToListAsync();
             SizeAttributes = await _context.SizeAttribute.ToListAsync();
             StockSizes = await _context.StockSize.ToListAsync();
-
-            if (!string.IsNullOrWhiteSpace(Search))
-            {
-                var matchingUniformIds = Uniform
-                    .Where(u => u.Name.Contains(Search, StringComparison.OrdinalIgnoreCase))
-                    .Select(u => u.UniformID)
-                    .ToHashSet();
-
-                Stock = Stock.Where(s => matchingUniformIds.Contains(s.UniformID)).ToList();
-            }
 
             if (!string.IsNullOrWhiteSpace(SelectedSize))
             {

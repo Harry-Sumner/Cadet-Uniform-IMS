@@ -1,0 +1,94 @@
+﻿@page
+@model Cadet_Uniform_IMS.Pages.Admin.EditTypeModel
+
+@{
+    ViewData["Title"] = "Edit Uniform Type";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Edit Uniform Type</h1>
+<hr />
+
+<form method="post">
+    <input type="hidden" asp-for="Type.TypeID" />
+    <input type="hidden" id="DeletedAttributeIds" name="DeletedAttributeIds" value="" />
+
+    <div class="form-group">
+        <label asp-for="Type.TypeName" class="control-label">Type Name</label>
+        <input asp-for="Type.TypeName" class="form-control" />
+        <span asp-validation-for="Type.TypeName" class="text-danger"></span>
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        <label class="control-label">Size Attributes</label>
+        <div id="attributes-container">
+            @for (int i = 0; i < Model.SizeAttributes.Count; i++)
+            {
+                <div class="input-group mb-2 attribute-row" data-attribute-id="@Model.SizeAttributes[i].AttributeID">
+                    <input type="hidden" name="SizeAttributes[@i].AttributeID" value="@Model.SizeAttributes[i].AttributeID" />
+                    <input type="text" name="SizeAttributes[@i].AttributeName" class="form-control" value="@Model.SizeAttributes[i].AttributeName" />
+                    <button type="button" class="btn btn-danger ms-2" onclick="hideAttribute(this, @Model.SizeAttributes[i].AttributeID)">Remove</button>
+                </div>
+            }
+        </div>
+        <button type="button" class="btn btn-secondary mt-2" onclick="addAttribute()">Add Attribute</button>
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+        <a asp-page="BrowseUniform_Types" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        let attributeIndex = @Model.SizeAttributes.Count;
+
+        function addAttribute() {
+            const container = document.getElementById("attributes-container");
+
+            const div = document.createElement("div");
+            div.classList.add("input-group", "mb-2", "attribute-entry");
+
+            div.innerHTML = `
+                <input type="hidden" name="SizeAttributes[${attributeIndex}].AttributeID" value="0" />
+                <input type="text" name="SizeAttributes[${attributeIndex}].AttributeName" class="form-control" />
+                <button type="button" class="btn btn-danger" onclick="removeAttribute(this)">Remove</button>
+            `;
+
+            container.appendChild(div);
+            attributeIndex++;
+        }
+
+        function hideAttribute(button, attributeId) {
+            const row = button.closest(".attribute-row");
+
+            // Add to deleted list if needed
+            if (attributeId !== 0) {
+                const deletedInput = document.getElementById("DeletedAttributeIds");
+                let currentValue = deletedInput.value.trim();
+                const ids = currentValue ? currentValue.split(",") : [];
+
+                if (!ids.includes(attributeId.toString())) {
+                    ids.push(attributeId);
+                    deletedInput.value = ids.join(",");
+                }
+            }
+
+            // Just hide the row
+            row.style.display = "none";
+
+            // Disable input fields so they are not submitted
+            const inputs = row.querySelectorAll("input, select, textarea");
+            inputs.forEach(i => i.disabled = true);
+        }
+    </script>
+    }

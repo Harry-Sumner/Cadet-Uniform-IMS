@@ -13,11 +13,11 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Cadet_Uniform_IMS.Pages.Admin
 {
-    public class CreateModel : PageModel
+    public class CreateUniformModel : PageModel
     {
         private readonly Cadet_Uniform_IMS.Data.IMS_Context _context;
 
-        public CreateModel(Cadet_Uniform_IMS.Data.IMS_Context context)
+        public CreateUniformModel(Cadet_Uniform_IMS.Data.IMS_Context context)
         {
             _context = context;
         }
@@ -33,11 +33,11 @@ namespace Cadet_Uniform_IMS.Pages.Admin
         public Uniform Uniform { get; set; } = default!;
         public IList<UniformType> Types { get; set; } = default!;
 
-        // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
+                await OnGet();
                 return Page();
             }
 
@@ -51,9 +51,19 @@ namespace Cadet_Uniform_IMS.Pages.Admin
                 stream.Dispose();
             }
 
-            var currentUniform = _context.Stock.FromSqlRaw("SELECT * FROM Stock")
-            .OrderByDescending(b => b.StockID)
-            .FirstOrDefault();
+            bool uniformExists = await _context.Uniform
+            .AnyAsync(t => t.Name.ToLower() == Uniform.Name.ToLower());
+
+            if (uniformExists)
+            {
+                ModelState.AddModelError("Uniform.Name", "A uniform with this name already exists.");
+                await OnGet();
+                return Page();
+            }
+
+            var currentUniform = _context.Uniform.FromSqlRaw("SELECT * FROM Uniform")
+                .OrderByDescending(b => b.UniformID)
+                .FirstOrDefault();
 
             if (currentUniform == null)
             {
@@ -67,7 +77,7 @@ namespace Cadet_Uniform_IMS.Pages.Admin
             _context.Uniform.Add(Uniform);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage();
+            return RedirectToPage("./BrowseUniform_Types");
         }
     }
 }

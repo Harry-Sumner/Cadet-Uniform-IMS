@@ -68,20 +68,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Harry S/source/repos/Harry-Sumner/Cadet-Uniform-IMS/Cadet-Uniform-IMS/Pages/Admin/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ3JlYXRlLmNzaHRtbA==
+[C:/Users/Harry S/source/repos/Harry-Sumner/Cadet-Uniform-IMS/Cadet-Uniform-IMS/Pages/Admin/BrowseUniform_Types.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQnJvd3NlVW5pZm9ybV9UeXBlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Harry S/source/repos/Harry-Sumner/Cadet-Uniform-IMS/Cadet-Uniform-IMS/Pages/Admin/CreateType.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ3JlYXRlVHlwZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Harry S/source/repos/Harry-Sumner/Cadet-Uniform-IMS/Cadet-Uniform-IMS/Pages/Admin/CreateUniform.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ3JlYXRlVW5pZm9ybS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Harry S/source/repos/Harry-Sumner/Cadet-Uniform-IMS/Cadet-Uniform-IMS/Pages/Admin/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Harry S/source/repos/Harry-Sumner/Cadet-Uniform-IMS/Cadet-Uniform-IMS/Pages/Admin/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRWRpdC5jc2h0bWw=
+[C:/Users/Harry S/source/repos/Harry-Sumner/Cadet-Uniform-IMS/Cadet-Uniform-IMS/Pages/Admin/EditType.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRWRpdFR5cGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Harry S/source/repos/Harry-Sumner/Cadet-Uniform-IMS/Cadet-Uniform-IMS/Pages/Admin/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cSW5kZXguY3NodG1s
+[C:/Users/Harry S/source/repos/Harry-Sumner/Cadet-Uniform-IMS/Cadet-Uniform-IMS/Pages/Admin/EditUniform.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRWRpdFVuaWZvcm0uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Harry S/source/repos/Harry-Sumner/Cadet-Uniform-IMS/Cadet-Uniform-IMS/Pages/Admin/ManageUsers.cshtml]

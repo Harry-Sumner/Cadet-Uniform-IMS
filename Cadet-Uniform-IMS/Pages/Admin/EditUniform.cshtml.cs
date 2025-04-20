@@ -10,17 +10,21 @@ using Cadet_Uniform_IMS.Data;
 
 namespace Cadet_Uniform_IMS.Pages.Admin
 {
-    public class EditModel : PageModel
+    public class EditUniformModel : PageModel
     {
         private readonly Cadet_Uniform_IMS.Data.IMS_Context _context;
 
-        public EditModel(Cadet_Uniform_IMS.Data.IMS_Context context)
+        public EditUniformModel(Cadet_Uniform_IMS.Data.IMS_Context context)
         {
             _context = context;
         }
 
         [BindProperty]
         public Uniform Uniform { get; set; } = default!;
+
+        public IList<UniformType> Types { get; set; } = default!;
+        public UniformType Type { get; set; } = default!;
+
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -35,6 +39,15 @@ namespace Cadet_Uniform_IMS.Pages.Admin
                 return NotFound();
             }
             Uniform = uniform;
+            var type = await _context.UniformType.FirstOrDefaultAsync(m => m.TypeID == uniform.TypeID);
+            if (type == null) {
+                return Page();
+            }
+            Type = type;
+
+            Types = await _context.UniformType.ToListAsync();
+            Types.Remove(type);
+
             return Page();
         }
 
@@ -44,6 +57,16 @@ namespace Cadet_Uniform_IMS.Pages.Admin
         {
             if (!ModelState.IsValid)
             {
+                await OnGetAsync(Uniform.UniformID);
+                return Page();
+            }
+
+            bool duplicate = await _context.Uniform
+            .AnyAsync(u => u.UniformID != Uniform.UniformID && u.Name.ToLower() == Uniform.Name.ToLower());
+            if (duplicate)
+            {
+                ModelState.AddModelError("Uniform.Name", "A uniform with this name already exists.");
+                await OnGetAsync(Uniform.UniformID);
                 return Page();
             }
 
@@ -65,7 +88,7 @@ namespace Cadet_Uniform_IMS.Pages.Admin
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./BrowseUniform_Types");
         }
 
         private bool UniformExists(int id)

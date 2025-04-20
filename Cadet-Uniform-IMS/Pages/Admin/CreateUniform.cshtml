@@ -1,5 +1,5 @@
 ﻿@page
-@model Cadet_Uniform_IMS.Pages.Admin.CreateModel
+@model Cadet_Uniform_IMS.Pages.Admin.CreateUniformModel
 
 @{
     ViewData["Title"] = "Create";
@@ -25,6 +25,7 @@
                 </select>
                 <span asp-validation-for="Uniform.TypeID" class="text-danger"></span>
             </div>
+            <br />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <span class="text-danger">*</span>
@@ -32,6 +33,7 @@
                 <input asp-for="Uniform.Name" class="form-control" />
                 <span asp-validation-for="Uniform.Name" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="Uniform.ImageData" class="control-label">Upload Uniform Image</label>
 
@@ -39,6 +41,7 @@
                        name="file1"
                        multiple="multiple" />
             </div>
+            <br />
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -47,7 +50,7 @@
 </div>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a asp-page="BrowseUniform_Types">Back to List</a>
 </div>
 
 @section Scripts {

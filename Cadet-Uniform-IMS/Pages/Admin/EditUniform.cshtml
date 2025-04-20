@@ -1,5 +1,5 @@
 ﻿@page
-@model Cadet_Uniform_IMS.Pages.Admin.EditModel
+@model Cadet_Uniform_IMS.Pages.Admin.EditUniformModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -12,7 +12,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Uniform.UniformID" />
             <div class="form-group">
@@ -21,17 +21,28 @@
                 <input asp-for="Uniform.Name" class="form-control" />
                 <span asp-validation-for="Uniform.Name" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <span class="text-danger">*</span>
-                <label asp-for="Uniform.TypeID" class="control-label"></label>
-                <input asp-for="Uniform.TypeID" class="form-control" />
+                <label asp-for="Uniform.TypeID" class="control-label">Uniform Type:</label>
+                <select asp-for="Uniform.TypeID" class="form-control" id="uniformDropdown" name="Uniform.TypeID">
+                    <option value ="@Model.Type.TypeID">@Model.Type.TypeName</option>
+                    @foreach (var type in Model.Types)
+                    {
+                        <option value="@type.TypeID">@type.TypeName</option>
+                    }
+                </select>
                 <span asp-validation-for="Uniform.TypeID" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
-                <label asp-for="Uniform.ImageData" class="control-label"></label>
-                <input asp-for="Uniform.ImageData" class="form-control" />
-                <span asp-validation-for="Uniform.ImageData" class="text-danger"></span>
+                <label asp-for="Uniform.ImageData" class="control-label">Upload Uniform Image</label>
+
+                <input type="file" id="file1"
+                       name="file1"
+                       multiple="multiple" />
             </div>
+            <br />
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
@@ -40,7 +51,7 @@
 </div>
 
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="BrowseUniform_Types">Back to List</a>
 </div>
 
 @section Scripts {

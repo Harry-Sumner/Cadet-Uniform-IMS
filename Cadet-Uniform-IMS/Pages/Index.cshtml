@@ -1,5 +1,12 @@
 ﻿@page
 @model IndexModel
+
+@inject UserManager<IMS_User> UserManager
+
+@using Microsoft.AspNetCore.Identity
+@using Cadet_Uniform_IMS.Data
+
+
 @{
     ViewData["Title"] = "Home";
 }
@@ -9,15 +16,25 @@
         <div class="col-md-4 mb-3">
             <a asp-page="/StockCRUD/Index" class="btn btn-primary btn-lg w-100">Browse Uniform</a>
         </div>
-        <div class="col-md-4 mb-3">
-            <a asp-page="/StockCRUD/Create" class="btn btn-primary btn-lg w-100">Add/Return Uniform</a>
-        </div>
-        <div class="col-md-4 mb-3">
-            <a asp-page="/Admin/ManageUsers" class="btn btn-primary btn-lg w-100">Manage Accounts</a>
-        </div>
-        <div class="col-md-4 mb-3">
-            <a href="#" class="btn btn-primary btn-lg w-100">Page 4</a>
-        </div>
+        @if(User.IsInRole("Admin") || User.IsInRole("Staff"))
+        {
+            <div class="col-md-4 mb-3">
+                <a asp-page="/StockCRUD/Create" class="btn btn-primary btn-lg w-100">Add/Return Uniform</a>
+            </div>
+
+        }
+        @if (User.IsInRole("Admin"))
+        {
+            <div class="col-md-4 mb-3">
+                <a asp-page="/Admin/ManageUsers" class="btn btn-primary btn-lg w-100">Manage Accounts</a>
+            </div>
+        }
+        @if (User.IsInRole("Admin"))
+        {
+            <div class="col-md-4 mb-3">
+                <a asp-page="/Admin/Index" class="btn btn-primary btn-lg w-100">Manage Uniform Categories</a>
+            </div>
+        }
         <div class="col-md-4 mb-3">
             <a href="#" class="btn btn-primary btn-lg w-100">Page 5</a>
         </div>

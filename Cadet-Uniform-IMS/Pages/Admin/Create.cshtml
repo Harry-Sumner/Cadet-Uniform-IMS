@@ -1,0 +1,55 @@
+﻿@page
+@model Cadet_Uniform_IMS.Pages.Admin.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Uniform</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Uniform.TypeID" class="control-label">Uniform Type:</label>
+                <select asp-for="Uniform.TypeID" class="form-control" id="uniformDropdown" name="Uniform.TypeID">
+                    <option value=null></option>
+                    @foreach (var type in Model.Types)
+                    {
+                        <option value="@type.TypeID">@type.TypeName</option>
+                    }
+                </select>
+                <span asp-validation-for="Uniform.TypeID" class="text-danger"></span>
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Uniform.Name" class="control-label"></label>
+                <input asp-for="Uniform.Name" class="form-control" />
+                <span asp-validation-for="Uniform.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Uniform.ImageData" class="control-label">Upload Uniform Image</label>
+
+                <input type="file" id="file1"
+                       name="file1"
+                       multiple="multiple" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

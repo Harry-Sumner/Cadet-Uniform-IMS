@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Cadet_Uniform_IMS.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -23,33 +22,21 @@ namespace Cadet_Uniform_IMS.Pages.Admin
         }
 
         [BindProperty]
-        public List<AdminUserViewModel> Cadets { get; set; } = new();
+        public List<IMS_Cadet> Cadets { get; set; } = new();
 
         [BindProperty]
-        public List<AdminUserViewModel> Staff { get; set; } = new();
+        public List<IMS_Staff> Staff { get; set; } = new();
+
+        public Dictionary<string, bool> Admins { get; set; } = new();
 
         public async Task OnGetAsync()
         {
             var users = await _userManager.Users.ToListAsync();
-
-            foreach (var user in users)
+            Cadets = users.OfType<IMS_Cadet>().ToList();
+            Staff = users.OfType<IMS_Staff>().ToList();
+            foreach (var user in Staff)
             {
-                var roles = await _userManager.GetRolesAsync(user);
-                var viewModel = new AdminUserViewModel
-                {
-                    Id = user.Id,
-                    Rank = user.Rank,
-                    FirstName = user.FirstName,
-                    Surname = user.Surname,
-                    Email = user.Email,
-                    Role = roles.FirstOrDefault(),
-                    IsAdmin = roles.Contains("Admin")
-                };
-
-                if (roles.Contains("Cadet"))
-                    Cadets.Add(viewModel);
-                else
-                    Staff.Add(viewModel);
+                Admins[user.Id] = await _userManager.IsInRoleAsync(user, "Admin");
             }
         }
 

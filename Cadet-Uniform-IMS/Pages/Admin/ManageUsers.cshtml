@@ -1,5 +1,6 @@
 ﻿@page
 @model ManageUsersModel
+
 @{
     ViewData["Title"] = "Manage Users";
     Layout = "~/Pages/Shared/_Layout.cshtml";
@@ -34,7 +35,7 @@
                         <div class="form-group row">
                             <div class="col-12 col-md-8 mb-2 mb-md-0">
                                 <select name="newRole" class="form-control">
-                                    @if (user.IsAdmin)
+                                    @if (Model.Admins[user.Id])
                                     {
                                         <option value="Staff">Staff</option>
                                         <option value="Admin" selected>Admin</option>

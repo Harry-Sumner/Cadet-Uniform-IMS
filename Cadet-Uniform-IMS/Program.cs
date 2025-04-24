@@ -18,6 +18,19 @@ builder.Services.AddDefaultIdentity<IMS_User>(options => options.SignIn.RequireC
 // Add services to the container.
 builder.Services.AddRazorPages();
 
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("RequireAdmins", policy => policy.RequireRole("Admin"));
+});
+
+//Added authorisation so only those with admin role are able to access pages contained in Admin folder
+builder.Services.AddRazorPages()
+    .AddRazorPagesOptions(options =>
+    {
+        options.Conventions.AuthorizeFolder("/Admin", "RequireAdmins");
+    });
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -42,6 +55,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

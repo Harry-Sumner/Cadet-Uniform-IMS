@@ -1,0 +1,94 @@
+﻿@page
+@model ManageMeasurementsModel
+@{
+    ViewData["Title"] = "Manage Measurements";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>@ViewData["Title"]</h1>
+</div>
+
+<ul class="nav nav-tabs mb-3" id="userTabs" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="cadets-tab" data-toggle="tab" href="#cadets" role="tab">Cadets</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="staff-tab" data-toggle="tab" href="#staff" role="tab">Staff</a>
+    </li>
+</ul>
+
+<div class="tab-content" id="userTabsContent">
+    <!-- Cadets Tab -->
+    <div class="tab-pane fade show active" id="cadets" role="tabpanel">
+        <input type="text" class="form-control mb-3" placeholder="Search cadets..." onkeyup="filterUsers(this, 'cadets')">
+        @foreach (var user in Model.Cadets)
+        {
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">@user.Rank @user.FirstName @user.Surname</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@user.Email</h6>
+                    <hr />
+                    <h6 class="mb-3 text-primary">Measurements</h6>
+                    <div class="row">
+                        <div class="col-md-4 mb-2"><b>Height:</b> @(user.Height?.ToString() ?? "N/A")</div>
+                        <div class="col-md-4 mb-2"><b>Head:</b> @(user.Head?.ToString() ?? "N/A")</div>
+                        <div class="col-md-4 mb-2"><b>Neck:</b> @(user.Neck?.ToString() ?? "N/A")</div>
+                        <div class="col-md-4 mb-2"><b>Chest:</b> @(user.Chest?.ToString() ?? "N/A")</div>
+                        <div class="col-md-4 mb-2"><b>Leg:</b> @(user.Leg?.ToString() ?? "N/A")</div>
+                        <div class="col-md-4 mb-2"><b>Waist to Knee:</b> @(user.WaistKnee?.ToString() ?? "N/A")</div>
+                        <div class="col-md-4 mb-2"><b>Waist:</b> @(user.Waist?.ToString() ?? "N/A")</div>
+                        <div class="col-md-4 mb-2"><b>Hips:</b> @(user.Hips?.ToString() ?? "N/A")</div>
+                        <div class="col-md-4 mb-2"><b>Seat:</b> @(user.Seat?.ToString() ?? "N/A")</div>
+                        <div class="col-md-4 mb-2"><b>Shoe Size:</b> @(user.Shoe?.ToString() ?? "N/A")</div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Cadets Tab -->
+    <div class="tab-pane fade" id="staff" role="tabpanel">
+        <input type="text" class="form-control mb-3" placeholder="Search staff..." onkeyup="filterUsers(this, 'staff')">
+        @foreach (var user in Model.Staff)
+        {
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">@user.Rank @user.FirstName @user.Surname</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@user.Email</h6>
+                    <hr />
+                    <h6 class="mb-3 text-primary">Measurements</h6>
+                    <div class="row">
+                        <div class="col-md-4 mb-2"><b>Height:</b> @(user.Height?.ToString() ?? "N/A")</div>
+                        <div class="col-md-4 mb-2"><b>Head:</b> @(user.Head?.ToString() ?? "N/A")</div>
+                        <div class="col-md-4 mb-2"><b>Neck:</b> @(user.Neck?.ToString() ?? "N/A")</div>
+                        <div class="col-md-4 mb-2"><b>Chest:</b> @(user.Chest?.ToString() ?? "N/A")</div>
+                        <div class="col-md-4 mb-2"><b>Leg:</b> @(user.Leg?.ToString() ?? "N/A")</div>
+                        <div class="col-md-4 mb-2"><b>Waist to Knee:</b> @(user.WaistKnee?.ToString() ?? "N/A")</div>
+                        <div class="col-md-4 mb-2"><b>Waist:</b> @(user.Waist?.ToString() ?? "N/A")</div>
+                        <div class="col-md-4 mb-2"><b>Hips:</b> @(user.Hips?.ToString() ?? "N/A")</div>
+                        <div class="col-md-4 mb-2"><b>Seat:</b> @(user.Seat?.ToString() ?? "N/A")</div>
+                        <div class="col-md-4 mb-2"><b>Shoe Size:</b> @(user.Shoe?.ToString() ?? "N/A")</div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $('#userTabs a').on('click', function (e) {
+            e.preventDefault();
+            $(this).tab('show');
+        })
+
+        function filterUsers(input, tabId) {
+            const filter = input.value.toLowerCase();
+            const cards = document.querySelectorAll(`#${tabId} .card`);
+            cards.forEach(card => {
+                const name = card.querySelector('h5').textContent.toLowerCase();
+                card.style.display = name.includes(filter) ? '' : 'none';
+            });
+        }
+    </script>
+}

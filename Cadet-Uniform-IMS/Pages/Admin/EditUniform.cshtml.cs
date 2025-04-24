@@ -72,6 +72,16 @@ namespace Cadet_Uniform_IMS.Pages.Admin
 
             _context.Attach(Uniform).State = EntityState.Modified;
 
+            foreach (var file in Request.Form.Files)
+            {
+                MemoryStream stream = new MemoryStream();
+                file.CopyTo(stream);
+                Uniform.ImageData = stream.ToArray();
+
+                stream.Close();
+                stream.Dispose();
+            }
+
             try
             {
                 await _context.SaveChangesAsync();

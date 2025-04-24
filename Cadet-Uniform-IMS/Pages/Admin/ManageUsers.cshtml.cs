@@ -29,6 +29,9 @@ namespace Cadet_Uniform_IMS.Pages.Admin
 
         public Dictionary<string, bool> Admins { get; set; } = new();
 
+        [TempData]
+        public string Message { get; set; }
+
         public async Task OnGetAsync()
         {
             var users = await _userManager.Users.ToListAsync();
@@ -61,6 +64,7 @@ namespace Cadet_Uniform_IMS.Pages.Admin
                 return Page();
             }
 
+            Message = user.Name + " password has been updated.";
             return RedirectToPage();
         }
 
@@ -76,6 +80,7 @@ namespace Cadet_Uniform_IMS.Pages.Admin
             await _userManager.RemoveFromRolesAsync(user, currentRoles);
             await _userManager.AddToRoleAsync(user, newRole);
 
+            Message = user.Name + " role has been updated.";
             return RedirectToPage();
         }
 
@@ -97,7 +102,7 @@ namespace Cadet_Uniform_IMS.Pages.Admin
                 await OnGetAsync(); // Repopulate the model
                 return Page();
             }
-
+            Message = user.Name + " account has been deleted.";
             return RedirectToPage();
         }
     }

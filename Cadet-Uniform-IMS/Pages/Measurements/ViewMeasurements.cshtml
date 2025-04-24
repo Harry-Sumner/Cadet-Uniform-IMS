@@ -4,8 +4,10 @@
     ViewData["Title"] = "Manage Measurements";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
+
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h1>@ViewData["Title"]</h1>
+    <a asp-page="/Measurements/Create" class="btn btn-lg btn-primary add-user-btn">Measure Me</a>
 </div>
 
 <ul class="nav nav-tabs mb-3" id="userTabs" role="tablist">
@@ -17,58 +19,71 @@
     </li>
 </ul>
 
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <div class="alert alert-success" role="alert">
+        @Model.Message
+    </div>
+}
+
 <div class="tab-content" id="userTabsContent">
-    <!-- Cadets Tab -->
     <div class="tab-pane fade show active" id="cadets" role="tabpanel">
         <input type="text" class="form-control mb-3" placeholder="Search cadets..." onkeyup="filterUsers(this, 'cadets')">
         @foreach (var user in Model.Cadets)
         {
-            <div class="card mb-4 shadow-sm">
+            <div class="card mb-4 shadow-sm" data-user-id="@user.Id">
                 <div class="card-body">
                     <h5 class="card-title">@user.Rank @user.FirstName @user.Surname</h5>
                     <h6 class="card-subtitle mb-2 text-muted">@user.Email</h6>
                     <hr />
-                    <h6 class="mb-3 text-primary">Measurements</h6>
-                    <div class="row">
-                        <div class="col-md-4 mb-2"><b>Height:</b> @(user.Height?.ToString() ?? "N/A")</div>
-                        <div class="col-md-4 mb-2"><b>Head:</b> @(user.Head?.ToString() ?? "N/A")</div>
-                        <div class="col-md-4 mb-2"><b>Neck:</b> @(user.Neck?.ToString() ?? "N/A")</div>
-                        <div class="col-md-4 mb-2"><b>Chest:</b> @(user.Chest?.ToString() ?? "N/A")</div>
-                        <div class="col-md-4 mb-2"><b>Leg:</b> @(user.Leg?.ToString() ?? "N/A")</div>
-                        <div class="col-md-4 mb-2"><b>Waist to Knee:</b> @(user.WaistKnee?.ToString() ?? "N/A")</div>
-                        <div class="col-md-4 mb-2"><b>Waist:</b> @(user.Waist?.ToString() ?? "N/A")</div>
-                        <div class="col-md-4 mb-2"><b>Hips:</b> @(user.Hips?.ToString() ?? "N/A")</div>
-                        <div class="col-md-4 mb-2"><b>Seat:</b> @(user.Seat?.ToString() ?? "N/A")</div>
-                        <div class="col-md-4 mb-2"><b>Shoe Size:</b> @(user.Shoe?.ToString() ?? "N/A")</div>
-                    </div>
+                    <form method="post" asp-page-handler="EditMeasurement" asp-route-id="@user.Id">
+                        <div class="row">
+                            <div class="col-md-4 mb-2"><label>Height (cm):</label><input asp-for = "MeasurementView.Height" type="number" value="@user.Height" class="form-control" /></div>
+                            <div class="col-md-4 mb-2"><label>Head (cm):</label><input asp-for="MeasurementView.Head" type="number" value="@user.Head" class="form-control" /></div>
+                            <div class="col-md-4 mb-2"><label>Neck (cm):</label><input asp-for="MeasurementView.Neck" type="number" value="@user.Neck" class="form-control" /></div>
+                            <div class="col-md-4 mb-2"><label>Chest (cm):</label><input asp-for="MeasurementView.Chest" type="number" value="@user.Chest" class="form-control" /></div>
+                            <div class="col-md-4 mb-2"><label>Leg (cm):</label><input asp-for="MeasurementView.Leg" type="number" value="@user.Leg" class="form-control" /></div>
+                            <div class="col-md-4 mb-2"><label>Waist to Knee (cm):</label><input asp-for="MeasurementView.WaistKnee" type="number" value="@user.WaistKnee" class="form-control" /></div>
+                            <div class="col-md-4 mb-2"><label>Waist (cm):</label><input asp-for="MeasurementView.Waist" type="number" value="@user.Waist" class="form-control" /></div>
+                            <div class="col-md-4 mb-2"><label>Hips (cm):</label><input asp-for="MeasurementView.Hips" type="number" value="@user.Hips" class="form-control" /></div>
+                            <div class="col-md-4 mb-2"><label>Seat (cm):</label><input asp-for="MeasurementView.Seat" type="number" value="@user.Seat" class="form-control" /></div>
+                            <div class="col-md-4 mb-2"><label>Shoe Size:</label><input asp-for="MeasurementView.Shoe" type="number" value="@user.Shoe" class="form-control" /></div>
+                        </div>
+                        <div class="text-end mt-3">
+                            <button type="submit" class="btn btn-success">Save</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         }
     </div>
 
-    <!-- Cadets Tab -->
     <div class="tab-pane fade" id="staff" role="tabpanel">
         <input type="text" class="form-control mb-3" placeholder="Search staff..." onkeyup="filterUsers(this, 'staff')">
         @foreach (var user in Model.Staff)
         {
-            <div class="card mb-4 shadow-sm">
+            <div class="card mb-4 shadow-sm" data-user-id="@user.Id">
                 <div class="card-body">
                     <h5 class="card-title">@user.Rank @user.FirstName @user.Surname</h5>
                     <h6 class="card-subtitle mb-2 text-muted">@user.Email</h6>
                     <hr />
-                    <h6 class="mb-3 text-primary">Measurements</h6>
-                    <div class="row">
-                        <div class="col-md-4 mb-2"><b>Height:</b> @(user.Height?.ToString() ?? "N/A")</div>
-                        <div class="col-md-4 mb-2"><b>Head:</b> @(user.Head?.ToString() ?? "N/A")</div>
-                        <div class="col-md-4 mb-2"><b>Neck:</b> @(user.Neck?.ToString() ?? "N/A")</div>
-                        <div class="col-md-4 mb-2"><b>Chest:</b> @(user.Chest?.ToString() ?? "N/A")</div>
-                        <div class="col-md-4 mb-2"><b>Leg:</b> @(user.Leg?.ToString() ?? "N/A")</div>
-                        <div class="col-md-4 mb-2"><b>Waist to Knee:</b> @(user.WaistKnee?.ToString() ?? "N/A")</div>
-                        <div class="col-md-4 mb-2"><b>Waist:</b> @(user.Waist?.ToString() ?? "N/A")</div>
-                        <div class="col-md-4 mb-2"><b>Hips:</b> @(user.Hips?.ToString() ?? "N/A")</div>
-                        <div class="col-md-4 mb-2"><b>Seat:</b> @(user.Seat?.ToString() ?? "N/A")</div>
-                        <div class="col-md-4 mb-2"><b>Shoe Size:</b> @(user.Shoe?.ToString() ?? "N/A")</div>
-                    </div>
+                    <form method="post" asp-page-handler="EditMeasurement" asp-route-id ="@user.Id">
+                        <div class="row">
+                            <div class="col-md-4 mb-2"><label>Height (cm):</label><input asp-for="MeasurementView.Height" type="number" value="@user.Height" class="form-control" /></div>
+                            <div class="col-md-4 mb-2"><label>Head (cm):</label><input asp-for="MeasurementView.Head" type="number" value="@user.Head" class="form-control" /></div>
+                            <div class="col-md-4 mb-2"><label>Neck (cm):</label><input asp-for="MeasurementView.Neck" type="number" value="@user.Neck" class="form-control" /></div>
+                            <div class="col-md-4 mb-2"><label>Chest (cm):</label><input asp-for="MeasurementView.Chest" type="number" value="@user.Chest" class="form-control" /></div>
+                            <div class="col-md-4 mb-2"><label>Leg (cm):</label><input asp-for="MeasurementView.Leg" type="number" value="@user.Leg" class="form-control" /></div>
+                            <div class="col-md-4 mb-2"><label>Waist to Knee (cm):</label><input asp-for="MeasurementView.WaistKnee" type="number" value="@user.WaistKnee" class="form-control" /></div>
+                            <div class="col-md-4 mb-2"><label>Waist (cm):</label><input asp-for="MeasurementView.Waist" type="number" value="@user.Waist" class="form-control" /></div>
+                            <div class="col-md-4 mb-2"><label>Hips (cm):</label><input asp-for="MeasurementView.Hips" type="number" value="@user.Hips" class="form-control" /></div>
+                            <div class="col-md-4 mb-2"><label>Seat (cm):</label><input asp-for="MeasurementView.Seat" type="number" value="@user.Seat" class="form-control" /></div>
+                            <div class="col-md-4 mb-2"><label>Shoe Size:</label><input asp-for="MeasurementView.Shoe" type="number" value="@user.Shoe" class="form-control" /></div>
+                        </div>
+                        <div class="text-end mt-3">
+                            <button type="submit" class="btn btn-success">Save</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         }
@@ -80,7 +95,7 @@
         $('#userTabs a').on('click', function (e) {
             e.preventDefault();
             $(this).tab('show');
-        })
+        });
 
         function filterUsers(input, tabId) {
             const filter = input.value.toLowerCase();

@@ -1,0 +1,210 @@
+﻿@page
+@model Cadet_Uniform_IMS.Pages.Measurements.CreateModel
+@{
+    ViewData["Title"] = "Uniform Measurements";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1 class="mb-4">Uniform Measurements</h1>
+
+<!-- Progress Bar -->
+<div class="progress mb-4">
+    <div id="progressBar" class="progress-bar" style="width: 0%" role="progressbar"></div>
+</div>
+
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+    <div class="step" id="step-0">
+        <label><strong>Select Gender:</strong></label>
+        <div class="d-flex gap-3 mt-3">
+            <button type="button" class="btn btn-outline-primary btn-lg w-100" onclick="setGender('Male')">Male</button>
+            <button type="button" class="btn btn-outline-danger btn-lg w-100" onclick="setGender('Female')">Female</button>
+        </div>
+    </div>
+
+    <div class="step" id="step-1">
+        <label asp-for="Measurements.Height"></label>
+        <small class="form-text text-muted">Measure from the top of the head to the floor while standing straight, without shoes.</small>
+        <div class="input-group">
+            <input asp-for="Measurements.Height" class="form-control" />
+            <span class="input-group-text">cm</span>
+        </div>
+        <span asp-validation-for="Measurements.Height" class="text-danger"></span>
+    </div>
+
+    <div class="step" id="step-2">
+        <label asp-for="Measurements.Head"></label>
+        <small class="form-text text-muted">Wrap the tape measure around the forehead and just above the ears.</small>
+        <div class="input-group">
+            <input asp-for="Measurements.Head" class="form-control" />
+            <span class="input-group-text">cm</span>
+        </div>
+        <span asp-validation-for="Measurements.Head" class="text-danger"></span>
+    </div>
+
+    <div class="step" id="step-3">
+        <label asp-for="Measurements.Neck"></label>
+        <small class="form-text text-muted">Measure around the base of the neck where a shirt collar would sit.</small>
+        <div class="input-group">
+            <input asp-for="Measurements.Neck" class="form-control" />
+            <span class="input-group-text">cm</span>
+        </div>
+        <span asp-validation-for="Measurements.Neck" class="text-danger"></span>
+    </div>
+
+    <div class="step" id="step-4">
+        <label asp-for="Measurements.Chest"></label>
+        <small class="form-text text-muted">Measure around the fullest part of the chest, keeping the tape level under the arms.</small>
+        <div class="input-group">
+            <input asp-for="Measurements.Chest" class="form-control" />
+            <span class="input-group-text">cm</span>
+        </div>
+        <span asp-validation-for="Measurements.Chest" class="text-danger"></span>
+    </div>
+
+    <div class="step" id="step-5">
+        <label asp-for="Measurements.Leg"></label>
+        <small class="form-text text-muted">Measure from the top of the inner thigh down to the ankle bone.</small>
+        <div class="input-group">
+            <input asp-for="Measurements.Leg" class="form-control" />
+            <span class="input-group-text">cm</span>
+        </div>
+        <span asp-validation-for="Measurements.Leg" class="text-danger"></span>
+    </div>
+
+    <div class="step" id="step-6" data-female-only>
+        <label asp-for="Measurements.WaistKnee"></label>
+        <small class="form-text text-muted">Measure from the waistline to the center of the knee, following the contour of the leg.</small>
+        <div class="input-group">
+            <input asp-for="Measurements.WaistKnee" class="form-control" />
+            <span class="input-group-text">cm</span>
+        </div>
+        <span asp-validation-for="Measurements.WaistKnee" class="text-danger"></span>
+    </div>
+
+    <div class="step" id="step-7">
+        <label asp-for="Measurements.Waist"></label>
+        <small class="form-text text-muted">Measure around the natural waistline, just above the belly button.</small>
+        <div class="input-group">
+            <input asp-for="Measurements.Waist" class="form-control" />
+            <span class="input-group-text">cm</span>
+        </div>
+        <span asp-validation-for="Measurements.Waist" class="text-danger"></span>
+    </div>
+
+    <div class="step" id="step-8" data-female-only>
+        <label asp-for="Measurements.Hips"></label>
+        <small class="form-text text-muted">Measure around the fullest part of the hips while standing with feet together.</small>
+        <div class="input-group">
+            <input asp-for="Measurements.Hips" class="form-control" />
+            <span class="input-group-text">cm</span>
+        </div>
+        <span asp-validation-for="Measurements.Hips" class="text-danger"></span>
+    </div>
+
+    <div class="step" id="step-9" data-male-only>
+        <label asp-for="Measurements.Seat"></label>
+        <small class="form-text text-muted">Measure around the widest part of the seat (buttocks) while standing naturally.</small>
+        <div class="input-group">
+            <input asp-for="Measurements.Seat" class="form-control" />
+            <span class="input-group-text">cm</span>
+        </div>
+        <span asp-validation-for="Measurements.Seat" class="text-danger"></span>
+    </div>
+
+    <div class="step" id="step-10">
+        <label asp-for="Measurements.Shoe"></label>
+        <small class="form-text text-muted">Enter UK shoe size as a whole or half number (e.g., 8 or 8.5).</small>
+        <input asp-for="Measurements.Shoe" class="form-control" />
+        <span asp-validation-for="Measurements.Shoe" class="text-danger"></span>
+    </div>
+
+    <div class="d-flex justify-content-between mt-4">
+        <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
+        <button type="button" class="btn btn-primary" onclick="nextStep()">Next</button>
+        <button type="submit" class="btn btn-success d-none" id="submitButton">Save Measurements</button>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        let currentStep = 0;
+        let gender = "";
+
+        const steps = [...document.querySelectorAll('.step')];
+        const progressBar = document.getElementById("progressBar");
+        const submitButton = document.getElementById("submitButton");
+        const nextButton = document.querySelector('.btn-primary');
+
+        function getVisibleSteps() {
+            return steps.filter(s =>
+                !(gender === "Male" && s.hasAttribute('data-female-only')) &&
+                !(gender === "Female" && s.hasAttribute('data-male-only'))
+            );
+        }
+
+        function showStep(index) {
+            steps.forEach((step, i) => {
+                if ((gender === "Male" && step.hasAttribute('data-female-only')) ||
+                    (gender === "Female" && step.hasAttribute('data-male-only'))) {
+                    step.style.display = "none";
+                } else {
+                    step.style.display = (i === index) ? "block" : "none";
+                }
+            });
+
+            const visibleSteps = getVisibleSteps();
+            const currentVisibleIndex = visibleSteps.indexOf(steps[index]);
+            const totalSteps = visibleSteps.length;
+
+            progressBar.style.width = `${((currentVisibleIndex + 1) / totalSteps) * 100}%`;
+
+            const isLastStep = currentVisibleIndex === totalSteps - 1;
+            const isGenderStep = steps[index].id === "step-0";
+
+            nextButton.style.display = (isLastStep || isGenderStep) ? 'none' : 'inline-block';
+            submitButton.classList.toggle("d-none", !isLastStep);
+        }
+
+        function setGender(value) {
+            gender = value;
+            currentStep = 1;
+            showStep(currentStep);
+        }
+
+        function nextStep() {
+            do {
+                currentStep++;
+            } while (
+                currentStep < steps.length &&
+                ((gender === "Male" && steps[currentStep].hasAttribute('data-female-only')) ||
+                 (gender === "Female" && steps[currentStep].hasAttribute('data-male-only')))
+            );
+
+            if (currentStep < steps.length) {
+                showStep(currentStep);
+            }
+        }
+
+        function prevStep() {
+            do {
+                currentStep--;
+            } while (
+                currentStep > 0 &&
+                ((gender === "Male" && steps[currentStep].hasAttribute('data-female-only')) ||
+                 (gender === "Female" && steps[currentStep].hasAttribute('data-male-only')))
+            );
+
+            if (currentStep >= 0) {
+                showStep(currentStep);
+            }
+        }
+
+        showStep(currentStep);
+    </script>
+}

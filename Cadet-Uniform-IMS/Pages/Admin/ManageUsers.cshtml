@@ -19,6 +19,23 @@
     </li>
 </ul>
 
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <div class="alert alert-success" role="alert">
+        @Model.Message
+    </div>
+}
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <div>@error.ErrorMessage</div>
+        }
+    </div>
+}
+
 <div class="tab-content" id="userTabsContent">
     <!-- Staff Tab -->
     <div class="tab-pane fade show active" id="staff" role="tabpanel">

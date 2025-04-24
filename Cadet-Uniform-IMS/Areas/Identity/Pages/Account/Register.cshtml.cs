@@ -102,7 +102,7 @@ namespace Cadet_Uniform_IMS.Areas.Identity.Pages.Account
                     }
                     else
                     {
-                        RegistrationMessage = "Account created successfully. Please confirm your email to continue.";
+                        RegistrationMessage = "Account created successfully.";
                         return RedirectToPage("Register");
                     }
                 }

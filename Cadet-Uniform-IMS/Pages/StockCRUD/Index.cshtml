@@ -6,10 +6,9 @@
 }
 
 <head>
-    <link rel='stylesheet' href="~/css/StockPage.css">
+    <link rel="stylesheet" href="~/css/StockPage.css" />
 </head>
 <body>
-    <!-- Code adapted from W3Schools(n.d.-a) -->
     <div id="btn_container">
         <button class="btn active" onclick="filterSelection('all')"> Show all</button>
         @foreach (var type in Model.UniformTypes)
@@ -17,7 +16,7 @@
             <button class="btn" onclick="filterSelection('@type.TypeName')"> @type.TypeName</button>
         }
     </div>
-    <!-- End of code adapted -->
+
     <br />
     <div class="body--search--container" style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
         <input type="text" id="clientSearch" placeholder="Search uniform by name..." style="max-width: 250px; padding: 8px;" onkeyup="searchUniforms()" />
@@ -50,6 +49,11 @@
                     }
                 }
             </select>
+            <label>
+                <input type="checkbox" name="FilterByUserMeasurements" value="true" @(Model.FilterByUserMeasurements ? "checked" : "") onchange="this.form.submit()" />
+                My Size Only
+            </label>
+
             <button type="submit">Submit</button>
         </form>
 
@@ -61,43 +65,50 @@
     <div class="uniform">
         @foreach (var item in Model.Stock)
         {
-            @foreach (var uniform in Model.Uniform.Where(i => i.UniformID == item.UniformID))
+            var uniform = Model.Uniform.FirstOrDefault(i => i.UniformID == item.UniformID);
+            if (uniform != null)
             {
                 <div class="item @(string.Join(" ", Model.UniformTypes.Where(i => i.TypeID == uniform.TypeID).Select(t => t.TypeName)))">
                     <div class="content">
                         @{
                             try
                             {
-                                <img src="@string.Format("data:image/jpg;base64, {0}", Convert.ToBase64String(uniform.ImageData))" alt="@Html.DisplayFor(modelItem => uniform.Name)" style="width:12vw; height:15vw; max-height: 250px; max-width: 400px" />
+                                <img src="@string.Format("data:image/jpg;base64,{0}", Convert.ToBase64String(uniform.ImageData))" alt="@uniform.Name" style="width:12vw; height:15vw; max-height: 250px; max-width: 400px" />
                             }
                             catch
                             {
-                                <img class="img-thumb" src="~/images/empty.png" alt="No Image Provided" style="width:12vw; height:15vw; max-height: 250px; max-width: 400px" />
+                                <img src="~/images/empty.png" alt="No Image Provided" style="width:12vw; height:15vw; max-height: 250px; max-width: 400px" />
                             }
                         }
                         <h4>@uniform.Name</h4>
+
                         @foreach (var attributes in Model.SizeAttributes.Where(i => i.TypeID == uniform.TypeID))
                         {
-                            Model.countAttributes += 1;
-                            var sizes = string.Join(", ", Model.StockSizes.Where(i => i.StockID == item.StockID && i.AttributeID == attributes.AttributeID).Select(s => s.Size).Distinct());
+                            Model.countAttributes++;
+                            var sizes = string.Join(", ", Model.StockSizes
+                            .Where(i => i.StockID == item.StockID && i.AttributeID == attributes.AttributeID)
+                            .Select(s => s.Size)
+                            .Distinct());
 
                             <h5>@attributes.AttributeName: @sizes</h5>
                         }
+
                         @while (Model.countAttributes < 3)
                         {
-                            <h5 style="color:transparent">H</h5>
-                            Model.countAttributes += 1;
+                            <h5 style="color: transparent;">H</h5>
+                            Model.countAttributes++;
                         }
-                        @if(Model.countAttributes == 3)
+
+                        @if (Model.countAttributes == 3)
                         {
                             Model.countAttributes = 0;
                         }
+
                         <p style="color:darkgreen">Quantity: @item.Quantity</p>
                     </div>
+
                     <form asp-page-handler="Delete" asp-route-id="@item.StockID" method="post">
-                        <button class="submit">
-                            -
-                        </button>
+                        <button class="submit">-</button>
                     </form>
                 </div>
             }
@@ -108,44 +119,35 @@
         filterSelection("all");
 
         function filterSelection(c) {
-            var x, i;
-            x = document.getElementsByClassName("item");
+            var x = document.getElementsByClassName("item");
 
             if (c == "all") c = "";
 
-            for (i = 0; i < x.length; i++) {
+            for (let i = 0; i < x.length; i++) {
                 RemoveClass(x[i], "display");
                 if (x[i].className.indexOf(c) > -1) AddClass(x[i], "display");
             }
 
-            // Show only matching size groups
             const sizeGroups = document.querySelectorAll("#sizeFilter optgroup");
             sizeGroups.forEach(group => {
                 const groupType = group.getAttribute("data-type");
-                if (!c || groupType === c) {
-                    group.hidden = false;
-                } else {
-                    group.hidden = true;
-                }
+                group.hidden = c && groupType !== c;
             });
 
-            // Reset to "All Sizes" when filtering
             document.getElementById("sizeFilter").selectedIndex = 0;
 
-            // Update active button style
             var btns = document.getElementsByClassName("btn");
-            for (i = 0; i < btns.length; i++) {
+            for (let i = 0; i < btns.length; i++) {
                 btns[i].classList.remove("active");
             }
 
-            // Reactivate the clicked button (find it by label match)
             if (!c) {
                 document.querySelector(".btn[onclick*='all']").classList.add("active");
             } else {
                 var matched = Array.from(btns).find(btn => btn.textContent.trim() === c);
                 if (matched) matched.classList.add("active");
             }
-            // Clear client-side name search
+
             document.getElementById('clientSearch').value = "";
             searchUniforms();
         }
@@ -153,7 +155,7 @@
         function AddClass(element, name) {
             var arr1 = element.className.split(" ");
             var arr2 = name.split(" ");
-            for (var i = 0; i < arr2.length; i++) {
+            for (let i = 0; i < arr2.length; i++) {
                 if (arr1.indexOf(arr2[i]) == -1) {
                     element.className += " " + arr2[i];
                 }
@@ -163,7 +165,7 @@
         function RemoveClass(element, name) {
             var arr1 = element.className.split(" ");
             var arr2 = name.split(" ");
-            for (var i = 0; i < arr2.length; i++) {
+            for (let i = 0; i < arr2.length; i++) {
                 while (arr1.indexOf(arr2[i]) > -1) {
                     arr1.splice(arr1.indexOf(arr2[i]), 1);
                 }
@@ -171,7 +173,7 @@
             element.className = arr1.join(" ");
         }
 
-                function searchUniforms() {
+        function searchUniforms() {
             const input = document.getElementById('clientSearch');
             const filter = input.value.toLowerCase();
             const items = document.querySelectorAll('.item');
@@ -180,13 +182,7 @@
                 const name = item.querySelector('h4')?.textContent.toLowerCase() || '';
                 const isVisible = item.classList.contains('display');
 
-                if (isVisible && name.includes(filter)) {
-                    item.style.display = '';
-                } else if (isVisible) {
-                    item.style.display = 'none';
-                } else {
-                    item.style.display = 'none'; // Hide items not in selected type
-                }
+                item.style.display = (isVisible && name.includes(filter)) ? '' : 'none';
             });
         }
     </script>

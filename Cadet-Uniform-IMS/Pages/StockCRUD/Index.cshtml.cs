@@ -14,22 +14,27 @@ namespace Cadet_Uniform_IMS.Pages.StockCRUD
     [Authorize]
     public class IndexModel : PageModel
     {
-        private readonly Cadet_Uniform_IMS.Data.IMS_Context _context;
+        private readonly IMS_Context _context;
+        private readonly UserManager<IMS_User> _userManager;
 
-        public IndexModel(Cadet_Uniform_IMS.Data.IMS_Context context)
+        public IndexModel(IMS_Context context, UserManager<IMS_User> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
-        public IList<Stock> Stock { get;set; } = default!;
-        public IList<Uniform> Uniform { get; set; } = default!;
-        public IList<UniformType> UniformTypes { get; set; } = default!;
-        public IList<SizeAttribute> SizeAttributes { get; set; } = default!;
-        public IList<StockSize> StockSizes { get; set; } = default!;
+        public IList<Stock> Stock { get; set; } = new List<Stock>();
+        public IList<Uniform> Uniform { get; set; } = new List<Uniform>();
+        public IList<UniformType> UniformTypes { get; set; } = new List<UniformType>();
+        public IList<SizeAttribute> SizeAttributes { get; set; } = new List<SizeAttribute>();
+        public IList<StockSize> StockSizes { get; set; } = new List<StockSize>();
         public int countAttributes = 0;
 
         [BindProperty(SupportsGet = true)]
         public string? SelectedSize { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public bool FilterByUserMeasurements { get; set; } = false;
 
         public async Task OnGetAsync()
         {
@@ -48,33 +53,103 @@ namespace Cadet_Uniform_IMS.Pages.StockCRUD
 
                 Stock = Stock.Where(s => stockIdsWithSize.Contains(s.StockID)).ToList();
             }
+
+            if (FilterByUserMeasurements)
+            {
+                var currentUser = await _userManager.GetUserAsync(User);
+                if (currentUser != null)
+                {
+                    var attributeToUserMeasurement = new Dictionary<string, int?>
+                    {
+                        { "Collar", currentUser.Neck },
+                        { "Length", currentUser.Height },
+                        { "Chest", currentUser.Chest },
+                        { "Waist", currentUser.Waist },
+                        { "Waist Knee", currentUser.WaistKnee },
+                        { "Leg", currentUser.Leg },
+                        { "Hips", currentUser.Hips },
+                        { "Seat", currentUser.Seat },
+                        { "Head", currentUser.Head },
+                        { "Shoe Size", currentUser.Shoe }
+                    };
+
+                    var filteredStock = new List<Stock>();
+
+                    foreach (var stockItem in Stock)
+                    {
+                        var uniform = Uniform.FirstOrDefault(u => u.UniformID == stockItem.UniformID);
+                        if (uniform == null) continue;
+
+                        var attributes = SizeAttributes.Where(sa => sa.TypeID == uniform.TypeID).ToList();
+                        bool matchesAll = true;
+
+                        foreach (var attr in attributes)
+                        {
+                            if (!attributeToUserMeasurement.TryGetValue(attr.AttributeName, out int? userMeasurement) || userMeasurement == null)
+                            {
+                                matchesAll = false;
+                                break;
+                            }
+
+                            var stockSizes = StockSizes
+                                .Where(ss => ss.StockID == stockItem.StockID && ss.AttributeID == attr.AttributeID)
+                                .Select(ss => ss.Size)
+                                .ToList();
+
+                            bool sizeMatch = false;
+                            foreach (var sizeStr in stockSizes)
+                            {
+                                if (int.TryParse(sizeStr, out int sizeVal))
+                                {
+                                    int threshold = attr.AttributeName.Equals("Shoe Size", StringComparison.OrdinalIgnoreCase) ? 1 : 3;
+                                    if (Math.Abs(sizeVal - userMeasurement.Value) <= threshold)
+                                    {
+                                        sizeMatch = true;
+                                        break;
+                                    }
+                                }
+                            }
+
+                            if (!sizeMatch)
+                            {
+                                matchesAll = false;
+                                break;
+                            }
+                        }
+
+                        if (matchesAll)
+                        {
+                            filteredStock.Add(stockItem);
+                        }
+                    }
+                    Stock = filteredStock;
+                }
+            }
         }
 
-        public async Task<IActionResult> OnPostDeleteAsync(int id) //takes id passed from button
+        public async Task<IActionResult> OnPostDeleteAsync(int id)
         {
-            var stock = await _context.Stock.FindAsync(id); //locate stock in Stock database and save in variable
+            var stock = await _context.Stock.FindAsync(id);
 
             if (stock != null)
             {
-                if (stock.Quantity == 1) //If there is only 1 item then remove it from stock file and remove size
+                if (stock.Quantity == 1)
                 {
-                    foreach(var size in _context.StockSize.Where(i=> i.StockID == stock.StockID))
-                    {
-                        _context.StockSize.Remove(size);
-                    }
-                    await _context.SaveChangesAsync();
+                    var sizesToRemove = _context.StockSize.Where(i => i.StockID == stock.StockID);
+                    _context.StockSize.RemoveRange(sizesToRemove);
                     _context.Stock.Remove(stock);
                 }
-                else //if more than 1 then decrease the quantity by 1 and update data
+                else
                 {
                     stock.Quantity -= 1;
-                    _context.Stock.Update(stock); //update with new item details
+                    _context.Stock.Update(stock);
                 }
 
-                await _context.SaveChangesAsync(); //save changes
+                await _context.SaveChangesAsync();
             }
+
             await OnGetAsync();
-            return Page(); //return to page
+            return Page();
         }
     }
 }

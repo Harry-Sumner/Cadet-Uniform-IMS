@@ -28,6 +28,7 @@ namespace Cadet_Uniform_IMS.Pages.StockCRUD
         public IList<UniformType> UniformTypes { get; set; } = new List<UniformType>();
         public IList<SizeAttribute> SizeAttributes { get; set; } = new List<SizeAttribute>();
         public IList<StockSize> StockSizes { get; set; } = new List<StockSize>();
+
         public int countAttributes = 0;
 
         [BindProperty(SupportsGet = true)]

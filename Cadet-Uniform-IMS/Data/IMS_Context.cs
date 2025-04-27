@@ -20,6 +20,7 @@ namespace Cadet_Uniform_IMS.Data
             modelBuilder.Entity<IMS_Staff>().ToTable("Staff");
             modelBuilder.Entity<IMS_Cadet>().ToTable("Cadet");
             modelBuilder.Entity<StockSize>().HasKey(t => new { t.StockID, t.AttributeID });
+            modelBuilder.Entity<BasketStock>().HasKey(t => new { t.StockID, t.UID });
         }
 
         public DbSet<IMS_User> User { get; set; }
@@ -30,5 +31,7 @@ namespace Cadet_Uniform_IMS.Data
         public DbSet<SizeAttribute> SizeAttribute { get; set; } = default!;
         public DbSet<Uniform> Uniform { get; set; } = default!;
         public DbSet<UniformType> UniformType { get; set; } = default!;
+        public DbSet<BasketStock> BasketStock { get; set; }
+
     }
 }

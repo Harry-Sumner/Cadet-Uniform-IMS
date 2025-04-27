@@ -6,6 +6,9 @@
 @using Microsoft.AspNetCore.Identity
 @using Cadet_Uniform_IMS.Data
 
+@{
+    var user = await UserManager.GetUserAsync(User);
+}
 
 @{
     ViewData["Title"] = "Home";
@@ -31,11 +34,20 @@
             <div class="col-md-4 mb-3">
                 <a asp-page="/Admin/ManageUsers" class="btn btn-primary btn-lg w-100">Manage Accounts</a>
             </div>
-        }
-        @if (User.IsInRole("Admin"))
-        {
             <div class="col-md-4 mb-3">
                 <a asp-page="/Admin/BrowseUniform_Types" class="btn btn-primary btn-lg w-100">Manage Uniform Categories</a>
+            </div>
+        }
+        @if (User.IsInRole("Cadet") && user.Head == null)
+        {
+            <div class="col-md-4 mb-3">
+                <a asp-page="/Measurements/Create" class="btn btn-primary btn-lg w-100">Measure Me</a>
+            </div>
+
+        } else if (User.IsInRole("Cadet") && user.Head > 0)
+        {
+            <div class="col-md-4 mb-3">
+                <a asp-page="/Measurements/ViewMeasurementsCadet" class="btn btn-primary btn-lg w-100">View Measurements</a>
             </div>
         }
         <div class="col-md-4 mb-3">

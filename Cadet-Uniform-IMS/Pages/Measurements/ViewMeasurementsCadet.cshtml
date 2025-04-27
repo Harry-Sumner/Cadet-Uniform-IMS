@@ -1,0 +1,63 @@
+﻿@page
+@model ManageMeasurementsCadetModel
+
+@{
+    ViewData["Title"] = "Manage Measurements";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>@ViewData["Title"]</h1>
+    <a asp-page="/Measurements/Create" class="btn btn-lg btn-primary add-user-btn">Measure Me</a>
+</div>
+
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <div class="alert alert-success" role="alert">
+        @Model.Message
+    </div>
+}
+
+<div class="tab-content" id="userTabsContent">
+    <div class="tab-pane fade show active" id="cadets" role="tabpanel">
+        <input type="text" class="form-control mb-3" placeholder="Search cadets..." onkeyup="filterUsers(this, 'cadets')">
+
+        <div class="card mb-4 shadow-sm" data-user-id="@Model.user.Id">
+            <div class="card-body">
+                <h5 class="card-title">@Model.user.Name</h5>
+                <hr />
+                <form method="post" asp-page-handler="EditMeasurement">
+                    <div class="row">
+                        <div class="col-md-4 mb-2"><label>Height (cm):</label><input asp-for="MeasurementView.Height" type="number" value="@Model.user.Height" class="form-control" /></div>
+                        <div class="col-md-4 mb-2"><label>Head (cm):</label><input asp-for="MeasurementView.Head" type="number" value="@Model.user.Head" class="form-control" /></div>
+                        <div class="col-md-4 mb-2"><label>Neck (cm):</label><input asp-for="MeasurementView.Neck" type="number" value="@Model.user.Neck" class="form-control" /></div>
+                        <div class="col-md-4 mb-2"><label>Chest (cm):</label><input asp-for="MeasurementView.Chest" type="number" value="@Model.user.Chest" class="form-control" /></div>
+                        <div class="col-md-4 mb-2"><label>Leg (cm):</label><input asp-for="MeasurementView.Leg" type="number" value="@Model.user.Leg" class="form-control" /></div>
+                        @if (Model.user.WaistKnee != null)
+                        {
+                            <div class="col-md-4 mb-2"><label>Waist to Knee (cm):</label><input asp-for="MeasurementView.WaistKnee" type="number" value="@Model.user.WaistKnee" class="form-control" /></div>
+                        }
+                        <div class="col-md-4 mb-2"><label>Waist (cm):</label><input asp-for="MeasurementView.Waist" type="number" value="@Model.user.Waist" class="form-control" /></div>
+                        @if (Model.user.Hips != null)
+                        {
+                            <div class="col-md-4 mb-2"><label>Hips (cm):</label><input asp-for="MeasurementView.Hips" type="number" value="@Model.user.Hips" class="form-control" /></div>
+                        }
+                        @if (Model.user.Seat != null)
+                        {
+                            <div class="col-md-4 mb-2"><label>Seat (cm):</label><input asp-for="MeasurementView.Seat" type="number" value="@Model.user.Seat" class="form-control" /></div>
+                        }
+                        <div class="col-md-4 mb-2"><label>Shoe Size:</label><input asp-for="MeasurementView.Shoe" type="number" value="@Model.user.Shoe" class="form-control" /></div>
+                    </div>
+
+                    <div class="text-end mt-3">
+                        <button type="submit" class="btn btn-success">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    @section Scripts {
+    }

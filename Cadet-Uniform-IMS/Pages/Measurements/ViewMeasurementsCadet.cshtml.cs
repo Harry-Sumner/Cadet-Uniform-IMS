@@ -10,20 +10,16 @@ using Microsoft.CodeAnalysis.Elfie.Serialization;
 using System.Collections;
 using Cadet_Uniform_IMS.ViewModels;
 
-[Authorize(Roles = "Staff, Admin")]
 
-public class ManageMeasurementsModel : PageModel
+[Authorize(Roles = "Cadet")]
+public class ManageMeasurementsCadetModel : PageModel
 {
-
     private readonly UserManager<IMS_User> _userManager;
 
-    public ManageMeasurementsModel(UserManager<IMS_User> userManager)
+    public ManageMeasurementsCadetModel(UserManager<IMS_User> userManager)
     {
         _userManager = userManager;
     }
-
-    public List<IMS_Cadet> Cadets { get; set; } = new();
-    public List<IMS_Staff> Staff { get; set; } = new();
 
     [BindProperty]
     public MeasurementView MeasurementView { get; set; }
@@ -31,16 +27,15 @@ public class ManageMeasurementsModel : PageModel
     [TempData]
     public string Message { get; set; }
 
+    public IMS_User user { get; set; }
+
     public async Task OnGetAsync()
     {
-        var users = await _userManager.Users.ToListAsync();
-        Cadets = users.OfType<IMS_Cadet>().ToList();
-        Staff = users.OfType<IMS_Staff>().ToList();
+        user = await _userManager.GetUserAsync(User);
     }
 
-    public async Task<IActionResult> OnPostEditMeasurementAsync(string id)
+    public async Task<IActionResult> OnPostEditMeasurementAsync()
     {
-        var user = await _userManager.FindByIdAsync(id);
         if (user == null) return NotFound();
 
         user.Head = MeasurementView.Head;

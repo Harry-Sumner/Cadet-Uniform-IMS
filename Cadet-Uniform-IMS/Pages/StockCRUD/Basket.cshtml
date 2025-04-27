@@ -1,0 +1,72 @@
+﻿@page
+@model Cadet_Uniform_IMS.Pages.StockCRUD.BasketModel
+@{
+}
+
+
+<head>
+    <link rel="stylesheet" href="~/css/StockPage.css" />
+</head>
+<body>
+    <div class="uniform">
+        @if (Model.Items.Count == 0)
+        {
+            <p>There are no items in your order. Please visit the browse uniform page to add items to your order.</p>
+        }
+        else
+        {
+            @foreach (var item in Model.Items)
+            {
+                var stock = Model.Stock.FirstOrDefault(i => i.StockID == item.StockID);
+                var uniform = Model.Uniform.FirstOrDefault(i => i.UniformID == stock.UniformID);
+                if (uniform != null)
+                {
+                    <div class="content">
+                        @{
+                            try
+                            {
+                                <img src="@string.Format("data:image/jpg;base64,{0}", Convert.ToBase64String(uniform.ImageData))" alt="@uniform.Name" style="width:12vw; height:15vw; max-height: 250px; max-width: 400px" />
+                            }
+                            catch
+                            {
+                                <img src="~/images/empty.png" alt="No Image Provided" style="width:12vw; height:15vw; max-height: 250px; max-width: 400px" />
+                            }
+                        }
+                        <h4>@uniform.Name</h4>
+
+                        @foreach (var attributes in Model.SizeAttributes.Where(i => i.TypeID == uniform.TypeID))
+                        {
+                            Model.countAttributes++;
+                            var sizes = string.Join(", ", Model.StockSizes
+                            .Where(i => i.StockID == item.StockID && i.AttributeID == attributes.AttributeID)
+                            .Select(s => s.Size)
+                            .Distinct());
+
+                            <h5>@attributes.AttributeName: @sizes</h5>
+                        }
+
+                        @while (Model.countAttributes < 3)
+                        {
+                            <h5 style="color: transparent;">H</h5>
+                            Model.countAttributes++;
+                        }
+
+                        @if (Model.countAttributes == 3)
+                        {
+                            Model.countAttributes = 0;
+                        }
+
+                        <p style="color:darkgreen">Quantity: @item.Quantity</p>
+
+                    </div>
+                    <form asp-page-handler="Delete" asp-route-stockID="@item.StockID" method="post">
+                        <button class="submit">-</button>
+                    </form>
+                }
+            }
+        }
+    </div>
+</body>
+
+
+

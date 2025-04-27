@@ -3,11 +3,19 @@
 
 @inject SignInManager<IMS_User> SignInManager
 @inject UserManager<IMS_User> UserManager
+@inject IMS_Context IMS_Context
+
 
 <ul class="navbar-nav d-flex align-items-center">
     @if (SignInManager.IsSignedIn(User))
     {
         var user = await UserManager.GetUserAsync(User);
+        var basket = IMS_Context.BasketStock.Where(i => i.UID == user.Id).FirstOrDefault();
+        @if (basket != null){
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-page="/StockCRUD/Basket">Basket</a>
+            </li>
+        }
 
         <li class="nav-item me-3">
             <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">

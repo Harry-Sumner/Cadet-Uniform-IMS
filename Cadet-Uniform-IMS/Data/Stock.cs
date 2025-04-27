@@ -11,5 +11,6 @@ namespace Cadet_Uniform_IMS.Data
         public int UniformID { get; set; }
         [Required]
         public int Quantity { get; set; }
+        public int Available {  get; set; }
     }
 }

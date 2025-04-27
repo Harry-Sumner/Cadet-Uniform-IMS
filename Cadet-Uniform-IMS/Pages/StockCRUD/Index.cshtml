@@ -63,7 +63,7 @@
     </div>
 
     <div class="uniform">
-        @foreach (var item in Model.Stock.Where(i=> i.Quantity > 0))
+        @foreach (var item in Model.Stock.Where(i=> i.Available > 0))
         {
             var uniform = Model.Uniform.FirstOrDefault(i => i.UniformID == item.UniformID);
             if (uniform != null)
@@ -104,7 +104,7 @@
                             Model.countAttributes = 0;
                         }
 
-                        <p style="color:darkgreen">Quantity: @item.Quantity</p>
+                        <p style="color:darkgreen">Quantity: @item.Available</p>
                     </div>
 
                     <form asp-page-handler="Add" asp-route-stockID="@item.StockID" method="post">

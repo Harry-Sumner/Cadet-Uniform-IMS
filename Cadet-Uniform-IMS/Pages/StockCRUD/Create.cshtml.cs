@@ -78,6 +78,7 @@ namespace Cadet_Uniform_IMS.Pages.StockCRUD
             {
                 // If stock already exists, increase the quantity
                 matchingStock.Stock.Quantity += Stock.Quantity;
+                matchingStock.Stock.Available += Stock.Available;
                 await _context.SaveChangesAsync();
             }
             else
@@ -94,6 +95,7 @@ namespace Cadet_Uniform_IMS.Pages.StockCRUD
                 {
                     Stock.StockID = currentStock.StockID + 1;
                 }
+                Stock.Available += Stock.Quantity;
                 // If no exact match, create a new Stock entry
                 _context.Stock.Add(Stock);
                 await _context.SaveChangesAsync(); // Generates StockID

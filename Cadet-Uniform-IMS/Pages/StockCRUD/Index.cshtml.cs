@@ -161,7 +161,7 @@ namespace Cadet_Uniform_IMS.Pages.StockCRUD
             {
                 var stockItem = await _context.Stock.FirstOrDefaultAsync(s => s.StockID == stockID);
 
-                if (stockItem == null || stockItem.Quantity <= 0)
+                if (stockItem == null || stockItem.Available <= 0)
                 {
                     return NotFound(); 
                 }
@@ -184,12 +184,11 @@ namespace Cadet_Uniform_IMS.Pages.StockCRUD
                     item.Quantity += 1;
                     _context.Attach(item).State = EntityState.Modified;
                 }
-                stockItem.Quantity -= 1;
+                stockItem.Available -= 1;
                 _context.Stock.Update(stockItem);
 
                 await _context.SaveChangesAsync();
             }
-
             await OnGetAsync();
             return Page();
         }

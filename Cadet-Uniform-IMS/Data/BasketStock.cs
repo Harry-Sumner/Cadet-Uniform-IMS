@@ -13,6 +13,6 @@ namespace Cadet_Uniform_IMS.Data
         public string UID { get; set; }
 
         [Required]
-        public string Quantity { get; set; }
+        public int Quantity { get; set; }
     }
 }

@@ -63,7 +63,7 @@
     </div>
 
     <div class="uniform">
-        @foreach (var item in Model.Stock)
+        @foreach (var item in Model.Stock.Where(i=> i.Quantity > 0))
         {
             var uniform = Model.Uniform.FirstOrDefault(i => i.UniformID == item.UniformID);
             if (uniform != null)
@@ -106,6 +106,10 @@
 
                         <p style="color:darkgreen">Quantity: @item.Quantity</p>
                     </div>
+
+                    <form asp-page-handler="Add" asp-route-stockID="@item.StockID" method="post">
+                        <button class="submit">Add</button>
+                    </form>
 
                     <form asp-page-handler="Delete" asp-route-id="@item.StockID" method="post">
                         <button class="submit">-</button>

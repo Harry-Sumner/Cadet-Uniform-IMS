@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Cadet_Uniform_IMS.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Cadet_Uniform_IMS.Pages.StockCRUD
 {
@@ -145,6 +146,46 @@ namespace Cadet_Uniform_IMS.Pages.StockCRUD
                     stock.Quantity -= 1;
                     _context.Stock.Update(stock);
                 }
+
+                await _context.SaveChangesAsync();
+            }
+
+            await OnGetAsync();
+            return Page();
+        }
+
+        public async Task<IActionResult> OnPostAddAsync(int stockID)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user != null)
+            {
+                var stockItem = await _context.Stock.FirstOrDefaultAsync(s => s.StockID == stockID);
+
+                if (stockItem == null || stockItem.Quantity <= 0)
+                {
+                    return NotFound(); 
+                }
+
+                var item = await _context.BasketStock
+                    .FirstOrDefaultAsync(bs => bs.StockID == stockID && bs.UID == user.Id);
+
+                if (item == null)
+                {
+                    BasketStock newStock = new BasketStock
+                    {
+                        StockID = stockID,
+                        UID = user.Id,
+                        Quantity = 1
+                    };
+                    _context.BasketStock.Add(newStock);
+                }
+                else
+                {
+                    item.Quantity += 1;
+                    _context.Attach(item).State = EntityState.Modified;
+                }
+                stockItem.Quantity -= 1;
+                _context.Stock.Update(stockItem);
 
                 await _context.SaveChangesAsync();
             }

@@ -2305,6 +2305,88 @@
       ]
     },
     {
+      "Route": "css/Basket.css",
+      "AssetFile": "css/Basket.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1127"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"T3LJoI2OAyg5Pz8onMNihGJlkhP/QiOtHNLNlxobp5U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 29 Apr 2025 22:22:02 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-T3LJoI2OAyg5Pz8onMNihGJlkhP/QiOtHNLNlxobp5U="
+        }
+      ]
+    },
+    {
+      "Route": "css/Basket.jjp09i0zst.css",
+      "AssetFile": "css/Basket.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1127"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"T3LJoI2OAyg5Pz8onMNihGJlkhP/QiOtHNLNlxobp5U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 29 Apr 2025 22:22:02 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "jjp09i0zst"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-T3LJoI2OAyg5Pz8onMNihGJlkhP/QiOtHNLNlxobp5U="
+        },
+        {
+          "Name": "label",
+          "Value": "css/Basket.css"
+        }
+      ]
+    },
+    {
       "Route": "css/Create.css",
       "AssetFile": "css/Create.css",
       "Selectors": [],
@@ -2413,7 +2495,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 13:22:52 GMT"
+          "Value": "Tue, 29 Apr 2025 22:20:45 GMT"
         }
       ],
       "EndpointProperties": [
@@ -2450,7 +2532,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 13:22:52 GMT"
+          "Value": "Tue, 29 Apr 2025 22:20:45 GMT"
         }
       ],
       "EndpointProperties": [

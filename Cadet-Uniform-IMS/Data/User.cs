@@ -11,7 +11,7 @@ namespace Cadet_Uniform_IMS.Data
         public string Surname { get; set; }
         [Required, StringLength(7)]
         public string Rank { get; set; }
-        public string Name { get { return $"{Rank} {Surname}"; } }
+        public string Name { get { return $"{Rank} {FirstName[0]} {Surname}"; } }
         public byte[]? ProfilePicture { get; set; }
         [PersonalData]
         public int? Height { get; set; }

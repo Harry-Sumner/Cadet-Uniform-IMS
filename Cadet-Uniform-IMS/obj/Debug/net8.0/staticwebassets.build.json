@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2OrnWgWwNVClUQdFJi0BGoq6Iy5DmNvYcI9TC7J9jVo=",
+  "Hash": "VoiU0jczFX93FstnAR4/LbC21rsPGY+b+/QMo4nFUJ0=",
   "Source": "Cadet-Uniform-IMS",
   "BasePath": "_content/Cadet-Uniform-IMS",
   "Mode": "Default",
@@ -1317,6 +1317,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Cadet-Uniform-IMS.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\css\\Basket.css",
+      "SourceId": "Cadet-Uniform-IMS",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\",
+      "BasePath": "_content/Cadet-Uniform-IMS",
+      "RelativePath": "css/Basket#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "jjp09i0zst",
+      "Integrity": "T3LJoI2OAyg5Pz8onMNihGJlkhP/QiOtHNLNlxobp5U=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Basket.css"
     },
     {
       "Identity": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\css\\Create.css",
@@ -2829,6 +2850,88 @@
       ]
     },
     {
+      "Route": "css/Basket.css",
+      "AssetFile": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\css\\Basket.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1127"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"T3LJoI2OAyg5Pz8onMNihGJlkhP/QiOtHNLNlxobp5U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 29 Apr 2025 22:22:02 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-T3LJoI2OAyg5Pz8onMNihGJlkhP/QiOtHNLNlxobp5U="
+        }
+      ]
+    },
+    {
+      "Route": "css/Basket.jjp09i0zst.css",
+      "AssetFile": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\css\\Basket.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1127"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"T3LJoI2OAyg5Pz8onMNihGJlkhP/QiOtHNLNlxobp5U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 29 Apr 2025 22:22:02 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "jjp09i0zst"
+        },
+        {
+          "Name": "label",
+          "Value": "css/Basket.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-T3LJoI2OAyg5Pz8onMNihGJlkhP/QiOtHNLNlxobp5U="
+        }
+      ]
+    },
+    {
       "Route": "css/Create.css",
       "AssetFile": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\wwwroot\\css\\Create.css",
       "Selectors": [],
@@ -3015,7 +3118,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 13:22:52 GMT"
+          "Value": "Tue, 29 Apr 2025 22:20:45 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3052,7 +3155,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 13:22:52 GMT"
+          "Value": "Tue, 29 Apr 2025 22:20:45 GMT"
         },
         {
           "Name": "Cache-Control",

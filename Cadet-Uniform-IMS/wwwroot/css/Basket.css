@@ -1,0 +1,58 @@
+﻿/* Center website */
+.main {
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* Code adapted from W3Schools(n.d.-a) */
+.uniform {
+    margin: 8px -16px;
+}
+
+    .uniform,
+    .uniform > .item {
+        padding: 8px;
+    }
+
+/* Seperates each item into 3 sections */
+.item {
+    float: left;
+    width: 20%;
+    display: block;
+}
+
+@media only screen and (max-width: 1400px) { /* sets the items to adjust when the width is 1400px or less */
+    .item {
+        width: 24.5%;
+        margin: 5px 0;
+    }
+}
+
+@media only screen and (max-width: 1200px) { /* sets the items to adjust when the width is 1200px or less */
+    .item {
+        width: 33%;
+        margin: 5px 0;
+    }
+}
+
+@media only screen and (max-width: 800px) { /* sets the items to adjust when the width is 800px or less */
+    .item {
+        width: 50%;
+        margin: 5px 0;
+    }
+}
+
+/* Clears floats after each item */
+.uniform:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Content inside the items*/
+.content {
+    padding: 10px;
+    text-align: center;
+}
+
+/* End of code adapted */

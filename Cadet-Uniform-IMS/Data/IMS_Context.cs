@@ -21,6 +21,8 @@ namespace Cadet_Uniform_IMS.Data
             modelBuilder.Entity<IMS_Cadet>().ToTable("Cadet");
             modelBuilder.Entity<StockSize>().HasKey(t => new { t.StockID, t.AttributeID });
             modelBuilder.Entity<BasketStock>().HasKey(t => new { t.StockID, t.UID });
+            modelBuilder.Entity<PendingOrderItem>().HasKey(t => new { t.PendingOrderID, t.StockID });
+            modelBuilder.Entity<OrderItem>().HasKey(t => new { t.OrderID, t.StockID });
         }
 
         public DbSet<IMS_User> User { get; set; }
@@ -31,7 +33,12 @@ namespace Cadet_Uniform_IMS.Data
         public DbSet<SizeAttribute> SizeAttribute { get; set; } = default!;
         public DbSet<Uniform> Uniform { get; set; } = default!;
         public DbSet<UniformType> UniformType { get; set; } = default!;
-        public DbSet<BasketStock> BasketStock { get; set; }
+        public DbSet<BasketStock> BasketStock { get; set; } = default!;
+        public DbSet<OrderHistory> OrderHistory { get; set; } = default!;
+        public DbSet<PendingOrder> PendingOrder { get; set; } = default!;
+        public DbSet<PendingOrderItem> PendingOrderItems { get; set; } = default!;
+        public DbSet<OrderItem> OrderItems { get; set; } = default!;
+
 
     }
 }

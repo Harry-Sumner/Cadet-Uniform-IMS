@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Cadet_Uniform_IMS.Data;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Immutable;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Authorization;
 
 namespace Cadet_Uniform_IMS.Pages.StockCRUD
@@ -16,102 +12,138 @@ namespace Cadet_Uniform_IMS.Pages.StockCRUD
     [Authorize(Roles = "Staff, Admin")]
     public class CreateModel : PageModel
     {
-        private readonly Cadet_Uniform_IMS.Data.IMS_Context _context;
+        private readonly IMS_Context _context;
 
-        public CreateModel(Cadet_Uniform_IMS.Data.IMS_Context context)
+        public CreateModel(IMS_Context context)
         {
             _context = context;
         }
+
+        public IList<Uniform> Uniform { get; set; }
+        public IList<SizeAttribute> Attributes { get; set; }
+
+        [BindProperty]
+        public Stock Stock { get; set; }
+
+        [TempData]
+        public string Message { get; set; }
 
         public async Task<IActionResult> OnGet()
         {
             Uniform = await _context.Uniform.ToListAsync();
             Attributes = await _context.SizeAttribute.ToListAsync();
-
             return Page();
         }
 
-        [BindProperty]
-        public Stock Stock { get; set; } = default!;
-        public IList<Uniform> Uniform { get; set; } = default!;
-        public StockSize StockSize { get; set; } = default!;
-
-        public IList<SizeAttribute> Attributes { get; set; } = default!;
         public async Task<IActionResult> OnPostAsync()
         {
             await OnGet();
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAddAsync(Dictionary<int, string> Attributes)
+        public async Task<IActionResult> OnPostAddAsync(Dictionary<int, string> Attributes, string switchValue)
         {
-            foreach(var entry in Attributes)
+            if (switchValue == "return")
             {
-                if(entry.Value == null)
-                {
-                    await OnGet();
-                    return Page();
-                }
-            }
-            if (!ModelState.IsValid)
-            {
-                await OnGet();
-                return Page();
-            }
-            // Find existing stock entries for the same uniform
-            var existingStocks = _context.Stock
-                .Where(s => s.UniformID == Stock.UniformID)
-                .Select(s => new
-                {
-                    Stock = s,
-                    StockSizes = _context.StockSize.Where(ss => ss.StockID == s.StockID).ToList()
-                })
-                .ToList();
-           
-            // Look for a stock entry that matches exactly in sizes
-            var matchingStock = existingStocks.FirstOrDefault(s =>
-                s.StockSizes.Count == Attributes.Count && // Same number of attributes
-                s.StockSizes.All(ss => Attributes.ContainsKey(ss.AttributeID) && Attributes[ss.AttributeID] == ss.Size) // Exact match
-            );
+                var existingReturns = _context.ReturnStock
+                    .Where(r => r.UniformID == Stock.UniformID)
+                    .Select(r => new
+                    {
+                        Return = r,
+                        Sizes = _context.ReturnSize.Where(rs => rs.ReturnID == r.ReturnID).ToList()
+                    })
+                    .ToList();
 
-            if (matchingStock != null)
-            {
-                // If stock already exists, increase the quantity
-                matchingStock.Stock.Quantity += Stock.Quantity;
-                matchingStock.Stock.Available += Stock.Available;
-                await _context.SaveChangesAsync();
-            }
-            else
-            {
-                var currentStock = _context.Stock.FromSqlRaw("SELECT * FROM Stock")
-                    .OrderByDescending(b => b.StockID)
-                    .FirstOrDefault();
+                var matchingReturn = existingReturns.FirstOrDefault(r =>
+                    r.Sizes.Count == Attributes.Count &&
+                    r.Sizes.All(rs => Attributes.ContainsKey(rs.AttributeID) && Attributes[rs.AttributeID] == rs.Size)
+                );
 
-                if (currentStock == null)
+                if (matchingReturn != null)
                 {
-                    Stock.StockID = 1;
+                    matchingReturn.Return.Quantity += Stock.Quantity;
+                    await _context.SaveChangesAsync();
+                    Message = "Return stock updated successfully.";
                 }
                 else
                 {
-                    Stock.StockID = currentStock.StockID + 1;
-                }
-                Stock.Available += Stock.Quantity;
-                // If no exact match, create a new Stock entry
-                _context.Stock.Add(Stock);
-                await _context.SaveChangesAsync(); // Generates StockID
+                    var currentReturn = await _context.ReturnStock
+                              .OrderByDescending(r => r.ReturnID)
+                              .FirstOrDefaultAsync();
 
-                // Add StockSize entries for the new stock
-                foreach (var entry in Attributes)
-                {
-                    var stockSize = new StockSize
+                    var newReturn = new ReturnStock
                     {
-                        StockID = Stock.StockID,  // Foreign key reference to Stock
-                        AttributeID = entry.Key,  // Attribute ID
-                        Size = entry.Value        // User input size
+                        ReturnID = currentReturn == null ? 1 : currentReturn.ReturnID + 1,
+                        UniformID = Stock.UniformID,
+                        Quantity = Stock.Quantity
                     };
-                    _context.StockSize.Add(stockSize);
+
+                    _context.ReturnStock.Add(newReturn);
+                    await _context.SaveChangesAsync();
+
+                    foreach (var entry in Attributes)
+                    {
+                        var returnSize = new ReturnSize
+                        {
+                            ReturnID = newReturn.ReturnID,
+                            AttributeID = entry.Key,
+                            Size = entry.Value
+                        };
+                        _context.ReturnSize.Add(returnSize);
+                    }
+
+                    await _context.SaveChangesAsync();
+                    Message = "New return stock added successfully.";
                 }
-                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                var existingStocks = _context.Stock
+                    .Where(s => s.UniformID == Stock.UniformID)
+                    .Select(s => new
+                    {
+                        Stock = s,
+                        Sizes = _context.StockSize.Where(ss => ss.StockID == s.StockID).ToList()
+                    })
+                    .ToList();
+
+                var matchingStock = existingStocks.FirstOrDefault(s =>
+                    s.Sizes.Count == Attributes.Count &&
+                    s.Sizes.All(ss => Attributes.ContainsKey(ss.AttributeID) && Attributes[ss.AttributeID] == ss.Size)
+                );
+
+                if (matchingStock != null)
+                {
+                    matchingStock.Stock.Quantity += Stock.Quantity;
+                    matchingStock.Stock.Available += Stock.Quantity;
+                    await _context.SaveChangesAsync();
+                    Message = "Existing stock updated successfully.";
+                }
+                else
+                {
+                    var currentStock = await _context.Stock
+                        .OrderByDescending(s => s.StockID)
+                        .FirstOrDefaultAsync();
+
+                    Stock.StockID = currentStock == null ? 1 : currentStock.StockID + 1;
+                    Stock.Available = Stock.Quantity;
+                    _context.Stock.Add(Stock);
+                    await _context.SaveChangesAsync();
+
+                    foreach (var entry in Attributes)
+                    {
+                        var stockSize = new StockSize
+                        {
+                            StockID = Stock.StockID,
+                            AttributeID = entry.Key,
+                            Size = entry.Value
+                        };
+                        _context.StockSize.Add(stockSize);
+                    }
+
+                    await _context.SaveChangesAsync();
+                    Message = "New stock added successfully.";
+                }
             }
 
             return RedirectToPage();

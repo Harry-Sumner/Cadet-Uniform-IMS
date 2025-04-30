@@ -1,0 +1,58 @@
+﻿@page
+@model Cadet_Uniform_IMS.Pages.StockCRUD.ReturnsModel
+
+@{
+    ViewData["Title"] = "Manage Return Stock";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>@ViewData["Title"]</h1>
+</div>
+
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <div class="alert alert-success" role="alert">
+        @Model.Message
+    </div>
+}
+
+@if (Model.ReturnStocks.Any())
+{
+    @foreach (var returnStock in Model.ReturnStocks)
+    {
+        var uniform = Model.Uniforms.FirstOrDefault(u => u.UniformID == returnStock.UniformID);
+        var sizes = Model.ReturnSizes.Where(rs => rs.ReturnID == returnStock.ReturnID).ToList();
+
+        <div class="card mb-3 shadow-sm">
+            <div class="card-body">
+                <h5>@uniform?.Name (Available: @returnStock.Quantity)</h5>
+                <ul class="list-unstyled ms-3">
+                    @foreach (var size in sizes)
+                    {
+                        var attr = Model.SizeAttributes.FirstOrDefault(a => a.AttributeID == size.AttributeID);
+                        <li>@attr?.AttributeName: @size.Size</li>
+                    }
+                </ul>
+                <form method="post" asp-page-handler="Accept" asp-route-returnId="@returnStock.ReturnID" class="d-inline">
+                    <button class="btn btn-success btn-sm">Accept</button>
+                </form>
+                <form method="post" asp-page-handler="Reject" asp-route-returnId="@returnStock.ReturnID" class="d-inline">
+                    <button class="btn btn-danger btn-sm">Reject</button>
+                </form>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="alert alert-info">No return stock available.</div>
+}
+
+@section Scripts {
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+}

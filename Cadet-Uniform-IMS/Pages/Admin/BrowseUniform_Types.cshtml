@@ -6,101 +6,169 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Clothing Types</h1>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>@ViewData["Title"]</h1>
+    <div class="d-flex gap-3">
+        <a asp-page="CreateType" class="btn btn-primary btn-sm">Create New Uniform Type</a>
+        <a asp-page="CreateUniform" class="btn btn-primary btn-sm">Create New Uniform</a>
+    </div>
+</div>
 
-<p>
-    <a asp-page="CreateType">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Size Attributes</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var types in Model.Types)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelTypes => types.TypeName)
-                </td>
-                <td>
-                    @{
-                        var attributes = Model.Attributes
-                        .Where(i => i.TypeID == types.TypeID)
-                        .Select(a => a.AttributeName);
-                    }
-                    @string.Join(", ", attributes)
-                </td>
-                <td>
-                    <a asp-page="./EditType" asp-route-id="@types.TypeID">Edit</a>
-                    <form asp-page-handler="DeleteType" asp-route-id="@types.TypeID" method="post">
-                        <button class="submit" onclick="return confirm('Are you sure you want to delete this item? This will also delete all stock in this category.');">
-                            Delete
-                        </button>
-                    </form>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<ul class="nav nav-tabs mb-3" id="uniformTabs" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="types-tab" data-bs-toggle="tab" href="#types" role="tab">Uniform Types</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="uniform-tab" data-bs-toggle="tab" href="#uniforms" role="tab">Uniforms</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="stock-tab" data-bs-toggle="tab" href="#stock" role="tab">Stock</a>
+    </li>
+</ul>
 
-<h1>Uniform</h1>
 
-<p>
-    <a asp-page="CreateUniform">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Uniform[0].Name)
-            </th>
-            <th>Type Name</th>
-            <th>
-                @Html.DisplayNameFor(model => model.Uniform[0].ImageData)
-            </th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Uniform)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @foreach (var type in Model.Types.Where(i => i.TypeID == item.TypeID))
+<div class="tab-content" id="uniformTabsContent">
+    <div class="tab-pane fade show active" id="types" role="tabpanel">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Size Attributes</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var types in Model.Types)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelTypes => types.TypeName)</td>
+                        <td>
+                            @{
+                                var attributes = Model.Attributes
+                                .Where(i => i.TypeID == types.TypeID)
+                                .Select(a => a.AttributeName);
+                            }
+                            @string.Join(", ", attributes)
+                        </td>
+                        <td>
+                            <a asp-page="./EditType" asp-route-id="@types.TypeID">Edit</a>
+                            <form asp-page-handler="DeleteType" asp-route-id="@types.TypeID" method="post" class="d-inline">
+                                <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item? This will also delete all stock in this category.');">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="tab-pane fade" id="uniforms" role="tabpanel">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Uniform[0].Name)</th>
+                    <th>Type Name</th>
+                    <th>@Html.DisplayNameFor(model => model.Uniform[0].ImageData)</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Uniform)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>
+                            @foreach (var type in Model.Types.Where(i => i.TypeID == item.TypeID))
+                            {
+                                @type.TypeName
+                            }
+                        </td>
+                        <td>
+                            @{
+                                try
+                                {
+                                    <img src="@string.Format("data:image/jpg;base64, {0}", Convert.ToBase64String(item.ImageData))" alt="@Html.DisplayFor(modelItem => item.Name)" style="width:20%; height:20%;" />
+                                }
+                                catch
+                                {
+                                    <img class="img-thumb" src="~/images/empty.png" alt="No Image Provided" style="width:20%; height:20%;" />
+                                }
+                            }
+                        </td>
+                        <td>
+                            <a asp-page="./EditUniform" asp-route-id="@item.UniformID">Edit</a>
+                        </td>
+                        <td>
+                            <form asp-page-handler="DeleteUniform" asp-route-id="@item.UniformID" method="post" class="d-inline">
+                                <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item? This will also delete all stock in this category.');">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="tab-pane fade" id="stock" role="tabpanel">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Uniform Name</th>
+                    <th>Attributes</th>
+                    <th>Quantity</th>
+                    <th>Available</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Stock)
+                {
+                    var uniform = Model.Uniform.FirstOrDefault(i => i.UniformID == item.UniformID);
+                    if (uniform != null)
                     {
-                        @type.TypeName
+                        <tr>
+                            <td>@uniform.Name</td>
+                            <td>
+                                @{
+                                    var attributeLines = new List<string>();
+                                    foreach (var attributes in Model.SizeAttributes.Where(i => i.TypeID == uniform.TypeID))
+                                    {
+                                        var sizes = string.Join(", ", Model.StockSizes
+                                        .Where(i => i.StockID == item.StockID && i.AttributeID == attributes.AttributeID)
+                                        .Select(s => s.Size)
+                                        .Distinct());
+                                        attributeLines.Add($"{attributes.AttributeName}: {sizes}");
+                                    }
+                                }
+                                @string.Join(" | ", attributeLines)
+                            </td>
+                            <td>@item.Quantity</td>
+                            <td>@item.Available</td>
+                            <td>
+                                <form asp-page-handler="Delete" asp-route-id="@item.StockID" method="post" class="d-inline">
+                                    <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this stock entry?');">-</button>
+                                </form>
+                            </td>
+                        </tr>
                     }
-                </td>
-                <td>
-                    @{
-                        //Reads image in bytes from database and then converts to an image and displays alt text for accessability, if no image present for item then black image icon used
-                        try
-                        {
-                            <img src="@string.Format("data:image/jpg;base64, {0}", Convert.ToBase64String(item.ImageData))" alt="@Html.DisplayFor(modelItem => item.Name)" style="width:20%; height:20%;" />
-                        }
-                        catch
-                        {
-                            <img class="img-thumb" src="~/images/empty.png" alt="No Image Provided" style="width:20%; height:20%;" />
-                        }
-                    }
-                </td>
-                <td>
-                    <a asp-page="./EditUniform" asp-route-id="@item.UniformID">Edit</a>
-                    <form asp-page-handler="DeleteUniform" asp-route-id="@item.UniformID" method="post">
-                        <button class="submit" onclick="return confirm('Are you sure you want to delete this item? This will also delete all stock in this category.');">
-                            Delete
-                        </button>
-                    </form>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const triggerTabList = [].slice.call(document.querySelectorAll('#uniformTabs a'));
+            triggerTabList.forEach(function (triggerEl) {
+                const tabTrigger = new bootstrap.Tab(triggerEl);
+                triggerEl.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    tabTrigger.show();
+                });
+            });
+        });
+    </script>
+}

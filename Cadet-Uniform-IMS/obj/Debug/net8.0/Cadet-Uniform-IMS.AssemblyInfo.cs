@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Cadet-Uniform-IMS")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bfc60aa4a6504f785e6e45aa8e302f713d90e1a8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9e45b46c726943ff3a138d9977809121972ff400")]
 [assembly: System.Reflection.AssemblyProductAttribute("Cadet-Uniform-IMS")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Cadet-Uniform-IMS")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

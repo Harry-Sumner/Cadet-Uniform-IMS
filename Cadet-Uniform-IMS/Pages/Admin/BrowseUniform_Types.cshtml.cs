@@ -25,12 +25,21 @@ namespace Cadet_Uniform_IMS.Pages.Admin
         public IList<UniformType> Types { get; set; } = default!;
 
         public IList<SizeAttribute> Attributes { get; set; } = default!;
+        public IList<Stock> Stock { get; set; } = new List<Stock>();
+        public IList<UniformType> UniformTypes { get; set; } = new List<UniformType>();
+        public IList<SizeAttribute> SizeAttributes { get; set; } = new List<SizeAttribute>();
+        public IList<StockSize> StockSizes { get; set; } = new List<StockSize>();
+
+        public int countAttributes = 0;
 
         public async Task<IActionResult> OnGet()
         {
             Types = await _context.UniformType.ToListAsync();
             Uniform = await _context.Uniform.ToListAsync();
             Attributes = await _context.SizeAttribute.ToListAsync();
+            Stock = await _context.Stock.ToListAsync();
+            SizeAttributes = await _context.SizeAttribute.ToListAsync();
+            StockSizes = await _context.StockSize.ToListAsync();
             return Page();
 
         }

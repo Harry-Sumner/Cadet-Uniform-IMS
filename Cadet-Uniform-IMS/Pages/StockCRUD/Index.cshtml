@@ -13,7 +13,7 @@
         <button class="btn active" onclick="filterSelection('all')"> Show all</button>
         @foreach (var type in Model.UniformTypes)
         {
-            <button class="btn" onclick="filterSelection('@type.TypeName')"> @type.TypeName</button>
+            <button class="btn" onclick="filterSelection('@type.TypeName')">@type.TypeName</button>
         }
     </div>
 
@@ -109,10 +109,6 @@
 
                     <form asp-page-handler="Add" asp-route-stockID="@item.StockID" method="post">
                         <button class="submit">Add</button>
-                    </form>
-
-                    <form asp-page-handler="Delete" asp-route-id="@item.StockID" method="post">
-                        <button class="submit">-</button>
                     </form>
                 </div>
             }

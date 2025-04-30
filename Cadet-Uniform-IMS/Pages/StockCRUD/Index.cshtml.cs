@@ -129,31 +129,6 @@ namespace Cadet_Uniform_IMS.Pages.StockCRUD
             }
         }
 
-        public async Task<IActionResult> OnPostDeleteAsync(int id)
-        {
-            var stock = await _context.Stock.FindAsync(id);
-
-            if (stock != null)
-            {
-                if (stock.Quantity == 1)
-                {
-                    var sizesToRemove = _context.StockSize.Where(i => i.StockID == stock.StockID);
-                    _context.StockSize.RemoveRange(sizesToRemove);
-                    _context.Stock.Remove(stock);
-                }
-                else
-                {
-                    stock.Quantity -= 1;
-                    _context.Stock.Update(stock);
-                }
-
-                await _context.SaveChangesAsync();
-            }
-
-            await OnGetAsync();
-            return Page();
-        }
-
         public async Task<IActionResult> OnPostAddAsync(int stockID)
         {
             var user = await _userManager.GetUserAsync(User);

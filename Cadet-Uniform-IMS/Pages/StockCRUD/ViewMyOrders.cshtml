@@ -19,7 +19,6 @@
 
 @if (User.IsInRole("Cadet"))
 {
-    <!-- Tabs Navigation -->
     <ul class="nav nav-tabs mb-3" id="orderTabs" role="tablist">
         <li class="nav-item">
             <a class="nav-link active" id="pending-tab" data-toggle="tab" href="#pending" role="tab">Pending Orders</a>
@@ -30,17 +29,29 @@
     </ul>
 }
 
-<!-- Tab Content -->
 <div class="tab-content" id="orderTabsContent">
-
     @if (User.IsInRole("Cadet"))
     {
         <div class="tab-pane fade show active" id="pending" role="tabpanel">
+            <input type="text" class="form-control mb-3" placeholder="Search pending orders by uniform name..." onkeyup="filterOrders(this, 'pending')">
             @if (Model.PendingOrders.Any())
             {
                 @foreach (var order in Model.PendingOrders)
                 {
-                    <div class="card mb-3">
+                    var itemUniforms = new List<string>();
+                    foreach (var item in Model.PendingOrderItems.Where(i => i.PendingOrderID == order.PendingOrderID))
+                    {
+                        var stock = Model.Stock.FirstOrDefault(s => s.StockID == item.StockID);
+                        var uniform = Model.Uniform.FirstOrDefault(u => u.UniformID == stock?.UniformID);
+                        if (uniform != null)
+                        {
+                            itemUniforms.Add(uniform.Name.ToLowerInvariant());
+                        }
+                    }
+
+                    var uniformNames = string.Join(" ", itemUniforms);
+
+                    <div class="card mb-3 order-card" data-uniforms="@uniformNames">
                         <div class="card-body">
                             <h6>Pending Order ID: @order.PendingOrderID</h6>
                             <ul class="list-unstyled ms-3">
@@ -48,7 +59,16 @@
                                 {
                                     var stock = Model.Stock.FirstOrDefault(s => s.StockID == item.StockID);
                                     var uniform = Model.Uniform.FirstOrDefault(u => u.UniformID == stock?.UniformID);
-                                    <li>@uniform?.Name (@item.Quantity)</li>
+                                    <li>
+                                        @uniform?.Name (@item.Quantity)
+                                        @foreach (var stockSize in Model.StockSizes.Where(s => s.StockID == item.StockID))
+                                        {
+                                            foreach (var attributes in Model.SizeAttributes.Where(sa => sa.AttributeID == stockSize.AttributeID))
+                                            {
+                                                <span> @attributes.AttributeName: @stockSize.Size </span>
+                                            }
+                                        }
+                                    </li>
                                 }
                             </ul>
                         </div>
@@ -62,28 +82,48 @@
         </div>
     }
 
-
     <div class="tab-pane @(User.IsInRole("Cadet") ? "fade" : "fade show active")" id="orders" role="tabpanel">
+        <input type="text" class="form-control mb-3" placeholder="Search order history by uniform name..." onkeyup="filterOrders(this, 'orders')">
         @if (Model.UserOrders.Any())
         {
-            <div class="card mb-4 shadow-sm">
-                <div class="card-body">
-                    @foreach (var order in Model.UserOrders)
+            @foreach (var order in Model.UserOrders)
+            {
+                var itemUniforms = new List<string>();
+                foreach (var item in Model.OrderItems.Where(i => i.OrderID == order.OrderID))
+                {
+                    var stock = Model.Stock.FirstOrDefault(s => s.StockID == item.StockID);
+                    var uniform = Model.Uniform.FirstOrDefault(u => u.UniformID == stock?.UniformID);
+                    if (uniform != null)
                     {
-                        <div class="mb-3">
-                            <h6>Order ID: @order.OrderID</h6>
-                            <ul class="list-unstyled ms-3">
-                                @foreach (var item in Model.OrderItems.Where(i => i.OrderID == order.OrderID))
-                                {
-                                    var stock = Model.Stock.FirstOrDefault(s => s.StockID == item.StockID);
-                                    var uniform = Model.Uniform.FirstOrDefault(u => u.UniformID == stock?.UniformID);
-                                    <li>@uniform?.Name (@item.Quantity)</li>
-                                }
-                            </ul>
-                        </div>
+                        itemUniforms.Add(uniform.Name.ToLowerInvariant());
                     }
+                }
+
+                var uniformNames = string.Join(" ", itemUniforms);
+
+                <div class="card mb-3 order-card" data-uniforms="@uniformNames">
+                    <div class="card-body">
+                        <h6>Order ID: @order.OrderID</h6>
+                        <ul class="list-unstyled ms-3">
+                            @foreach (var item in Model.OrderItems.Where(i => i.OrderID == order.OrderID))
+                            {
+                                var stock = Model.Stock.FirstOrDefault(s => s.StockID == item.StockID);
+                                var uniform = Model.Uniform.FirstOrDefault(u => u.UniformID == stock?.UniformID);
+                                <li>
+                                    @uniform?.Name (@item.Quantity)
+                                    @foreach (var stockSize in Model.StockSizes.Where(s => s.StockID == item.StockID))
+                                    {
+                                        foreach (var attributes in Model.SizeAttributes.Where(sa => sa.AttributeID == stockSize.AttributeID))
+                                        {
+                                            <span> @attributes.AttributeName: @stockSize.Size </span>
+                                        }
+                                    }
+                                </li>
+                            }
+                        </ul>
+                    </div>
                 </div>
-            </div>
+            }
         }
         else
         {
@@ -94,6 +134,15 @@
 
 @section Scripts {
     <script>
+        function filterOrders(input, tabId) {
+            const filter = input.value.toLowerCase();
+            const cards = document.querySelectorAll(`#${tabId} .order-card`);
+            cards.forEach(card => {
+                const uniforms = card.dataset.uniforms || '';
+                card.style.display = uniforms.includes(filter) ? '' : 'none';
+            });
+        }
+
         $(document).ready(function () {
             $('#orderTabs a').on('click', function (e) {
                 e.preventDefault();

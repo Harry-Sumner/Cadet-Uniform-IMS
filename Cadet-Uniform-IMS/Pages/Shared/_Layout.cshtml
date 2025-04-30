@@ -1,4 +1,13 @@
-﻿<!DOCTYPE html>
+﻿@inject UserManager<IMS_User> UserManager
+
+@using Microsoft.AspNetCore.Identity
+@using Cadet_Uniform_IMS.Data
+
+@{
+    var user = await UserManager.GetUserAsync(User);
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -25,9 +34,47 @@
                         <li class ="nav-item">
                             <a class="nav-link text-dark" asp-page="/StockCRUD/Index">Browse Uniform</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-page="/StockCRUD/Create">Add/Return Uniform</a>
-                        </li>
+                        @if (User.IsInRole("Admin") || User.IsInRole("Staff"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-page="/StockCRUD/Create">Add/Return Uniform</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-page="/Measurements/ViewMeasurements">Manage Measurements</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-page="/StockCRUD/ViewOrders">View Orders</a>
+                            </li>
+
+                        }
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-page="/Admin/ManageUsers">Manage Accounts</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-page="/Admin/BrowseUniform_Types">Manage Uniform Data</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Cadet") && user.Head + user.Shoe + user.Leg + user.Height + user.Chest == null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-page="/Measurements/Create">Measure Me</a>
+                            </li>
+
+                        }
+                        else if (User.IsInRole("Cadet"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-page="/Measurements/ViewMeasurementsCadet">View Measurements</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Cadet"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-page="/StockCRUD/ViewMyOrders">My Orders</a>
+                            </li>
+                        }
                     </ul>
                     <partial name ="_LoginPartial" />
                 </div>

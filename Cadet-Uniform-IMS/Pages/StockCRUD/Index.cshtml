@@ -9,6 +9,12 @@
     <link rel="stylesheet" href="~/css/StockPage.css" />
 </head>
 <body>
+    @if (!string.IsNullOrEmpty(Model.Message))
+    {
+        <div class="alert alert-success" role="alert">
+            @Model.Message
+        </div>
+    }
     <div id="btn_container">
         <button class="btn active" onclick="filterSelection('all')"> Show all</button>
         @foreach (var type in Model.UniformTypes)

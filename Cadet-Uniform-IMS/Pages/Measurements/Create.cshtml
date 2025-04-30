@@ -140,6 +140,33 @@
         const submitButton = document.getElementById("submitButton");
         const nextButton = document.querySelector('.btn-primary');
 
+        const ranges = {
+            male: {
+                Height: [120, 210],
+                Head: [50, 60],
+                Neck: [30, 45],
+                Chest: [70, 120],
+                Leg: [70, 110],
+                WaistKnee: [40, 60],
+                Waist: [60, 110],
+                Seat: [80, 120],
+                Hips: [70, 100],
+                Shoe: [5, 12]
+            },
+            female: {
+                Height: [120, 200],
+                Head: [50, 60],
+                Neck: [30, 45],
+                Chest: [70, 110],
+                Leg: [70, 110],
+                WaistKnee: [40, 60],
+                Waist: [60, 100],
+                Seat: null,
+                Hips: [70, 120],
+                Shoe: [3, 10]
+            }
+        };
+
         function getVisibleSteps() {
             return steps.filter(s =>
                 !(gender === "Male" && s.hasAttribute('data-female-only')) &&
@@ -177,6 +204,8 @@
         }
 
         function nextStep() {
+            if (!validateCurrentStep()) return;
+
             do {
                 currentStep++;
             } while (
@@ -203,6 +232,35 @@
                 showStep(currentStep);
             }
         }
+
+        function validateCurrentStep() {
+            const step = steps[currentStep];
+            const input = step.querySelector('input');
+            const span = step.querySelector('.text-danger');
+            if (!input) return true;
+
+            const nameMatch = input.name.match(/Measurements\.(\w+)/);
+            if (!nameMatch) return true;
+
+            const field = nameMatch[1];
+            const value = parseFloat(input.value);
+            const g = gender.toLowerCase();
+            const range = ranges[g][field];
+
+            if (range && (isNaN(value) || value < range[0] || value > range[1])) {
+                span.textContent = `${field} must be between ${range[0]} and ${range[1]}.`;
+                return false;
+            } else {
+                span.textContent = '';
+                return true;
+            }
+        }
+
+        document.querySelector("form").addEventListener("submit", function (e) {
+            if (!validateCurrentStep()) {
+                e.preventDefault();
+            }
+        });
 
         showStep(currentStep);
     </script>

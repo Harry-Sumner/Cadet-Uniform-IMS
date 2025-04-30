@@ -133,7 +133,14 @@ namespace Cadet_Uniform_IMS.Pages.StockCRUD
             }
             await _context.SaveChangesAsync();
             Message = "The uniform selected is now ready for collection and stock has been adjusted successfully.";
-            return RedirectToPage("/StockCRUD/ViewMyOrders");
+            if (!string.IsNullOrEmpty(SelectedCadetId))
+            {
+                return RedirectToPage("/StockCRUD/ViewOrders");
+            } else
+            {
+                return RedirectToPage("/StockCRUD/ViewMyOrders");
+            }
+                
         }
         public async Task<IActionResult> OnPostSubmitCadetAsync()
         {

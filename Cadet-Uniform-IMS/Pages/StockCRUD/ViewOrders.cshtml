@@ -27,7 +27,6 @@
     </div>
 }
 
-
 <div class="tab-content" id="userTabsContent">
     <div class="tab-pane fade show active" id="pending" role="tabpanel">
         <input type="text" class="form-control mb-3" placeholder="Search pending orders..." onkeyup="filterOrders(this, 'pending')">
@@ -36,20 +35,28 @@
             var cadet = Model.Cadets.FirstOrDefault(c => c.Id == order.UID);
             if (cadet != null)
             {
-                <div class="card mb-3" data-user-name="@($"{cadet.FirstName} {cadet.Surname}".ToLower())">
+                <div class="card mb-3" data-search="@($"{cadet.FirstName} {cadet.Surname} {string.Join(" ", Model.PendingOrderItems.Where(i => i.PendingOrderID == order.PendingOrderID).Select(i => Model.Uniform.FirstOrDefault(u => u.UniformID == Model.Stock.FirstOrDefault(s => s.StockID == i.StockID)?.UniformID)?.Name))}".ToLower())">
                     <div class="card-body">
                         <h5 class="card-title">@cadet.Rank @cadet.FirstName @cadet.Surname</h5>
                         <p class="card-subtitle text-muted">@cadet.Email</p>
-
                         <ul class="mt-3">
                             @foreach (var item in Model.PendingOrderItems.Where(i => i.PendingOrderID == order.PendingOrderID))
                             {
                                 var stock = Model.Stock.FirstOrDefault(s => s.StockID == item.StockID);
                                 var uniform = Model.Uniform.FirstOrDefault(u => u.UniformID == stock?.UniformID);
-                                <li>@uniform?.Name (@item.Quantity)</li>
+
+                                <li>
+                                    @uniform?.Name (@item.Quantity)
+                                    @foreach (var stockSize in Model.StockSizes.Where(s => s.StockID == item.StockID))
+                                    {
+                                        foreach (var attributes in Model.SizeAttributes.Where(sa => sa.AttributeID == stockSize.AttributeID))
+                                        {
+                                            <span> @attributes.AttributeName: @stockSize.Size </span>
+                                        }
+                                    }
+                                </li>
                             }
                         </ul>
-
                         <form method="post" asp-page-handler="Accept" asp-route-id="@order.PendingOrderID" class="d-inline">
                             <button class="btn btn-success btn-sm">Accept</button>
                         </form>
@@ -63,49 +70,45 @@
     </div>
 
     <div class="tab-pane fade" id="orders" role="tabpanel">
+        <input type="text" class="form-control mb-3" placeholder="Search order history..." onkeyup="filterOrders(this, 'orders')">
         @foreach (var history in Model.OrderHistory)
         {
             var cadet = Model.Cadets.FirstOrDefault(c => c.Id == history.Cadet);
-            if (cadet != null)
-            {
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">@cadet.Rank @cadet.FirstName @cadet.Surname</h5>
-                        <p class="card-subtitle text-muted">@cadet.Email</p>
+            var staff = Model.Staff.FirstOrDefault(s => s.Id == history.UID);
 
-                        <ul class="mt-3">
-                            @foreach (var item in Model.OrderItems.Where(i => i.OrderID == history.OrderID))
-                            {
-                                var stock = Model.Stock.FirstOrDefault(s => s.StockID == item.StockID);
-                                var uniform = Model.Uniform.FirstOrDefault(u => u.UniformID == stock?.UniformID);
-                                <li>@uniform?.Name (@item.Quantity)</li>
-                            }
-                        </ul>
-                    </div>
-                </div>
-            }
-            else
-            {
-                var staff = Model.Staff.FirstOrDefault(s => s.Id == history.UID);
-                if (staff != null)
-                {
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">@staff.Rank @staff.FirstName @staff.Surname</h5>
-                            <p class="card-subtitle text-muted">@staff.Email</p>
+            var fullName = cadet != null
+            ? $"{cadet.FirstName} {cadet.Surname}"
+            : staff != null ? $"{staff.FirstName} {staff.Surname}" : "";
 
-                            <ul class="mt-3">
-                                @foreach (var item in Model.OrderItems.Where(i => i.OrderID == history.OrderID))
+            var uniformNames = string.Join(" ", Model.OrderItems
+            .Where(i => i.OrderID == history.OrderID)
+            .Select(i => Model.Uniform.FirstOrDefault(u => u.UniformID == Model.Stock.FirstOrDefault(s => s.StockID == i.StockID)?.UniformID)?.Name ?? "")
+            );
+
+            <div class="card mb-3" data-search="@($"{fullName} {uniformNames}".ToLower())">
+                <div class="card-body">
+                    <h5 class="card-title">@((cadet != null) ? $"{cadet.Rank} {cadet.FirstName} {cadet.Surname}" : $"{staff?.Rank} {staff?.FirstName} {staff?.Surname}")</h5>
+                    <p class="card-subtitle text-muted">@((cadet != null) ? cadet.Email : staff?.Email)</p>
+                    <ul class="mt-3">
+                        @foreach (var item in Model.OrderItems.Where(i => i.OrderID == history.OrderID))
+                        {
+                            var stock = Model.Stock.FirstOrDefault(s => s.StockID == item.StockID);
+                            var uniform = Model.Uniform.FirstOrDefault(u => u.UniformID == stock?.UniformID);
+
+                            <li>
+                                @uniform?.Name (@item.Quantity)
+                                @foreach (var stockSize in Model.StockSizes.Where(s => s.StockID == item.StockID))
                                 {
-                                    var stock = Model.Stock.FirstOrDefault(s => s.StockID == item.StockID);
-                                    var uniform = Model.Uniform.FirstOrDefault(u => u.UniformID == stock?.UniformID);
-                                    <li>@uniform?.Name (@item.Quantity)</li>
+                                    foreach (var attributes in Model.SizeAttributes.Where(sa => sa.AttributeID == stockSize.AttributeID))
+                                    {
+                                        <span> @attributes.AttributeName: @stockSize.Size </span>
+                                    }
                                 }
-                            </ul>
-                        </div>
-                    </div>
-                }
-            }
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
         }
     </div>
 </div>
@@ -123,8 +126,8 @@
             const filter = input.value.toLowerCase();
             const cards = document.querySelectorAll(`#${tabId} .card`);
             cards.forEach(card => {
-                const name = card.querySelector('h5').textContent.toLowerCase();
-                card.style.display = name.includes(filter) ? '' : 'none';
+                const data = card.getAttribute("data-search") || "";
+                card.style.display = data.includes(filter) ? '' : 'none';
             });
         }
     </script>

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Cadet_Uniform_IMS.Data;
+using System.IO;
 
 [Authorize(Roles = "Staff, Admin")]
 public class ViewOrdersModel : PageModel
@@ -28,6 +29,8 @@ public class ViewOrdersModel : PageModel
     public List<OrderItem> OrderItems { get; set; } = new();
     public List<Uniform> Uniform { get; set; } = new();
     public List<Stock> Stock { get; set; } = new();
+    public List<StockSize> StockSizes { get; set; } = new();
+    public List<SizeAttribute> SizeAttributes { get; set; } = new();
     public OrderHistory Order = new();
 
     [TempData]
@@ -44,6 +47,8 @@ public class ViewOrdersModel : PageModel
         OrderItems = await _context.OrderItems.ToListAsync();
         Uniform = await _context.Uniform.ToListAsync();
         Stock = await _context.Stock.ToListAsync();
+        StockSizes = await _context.StockSize.ToListAsync();
+        SizeAttributes = await _context.SizeAttribute.ToListAsync();
     }
 
     public async Task<IActionResult> OnPostAcceptAsync(int id)

@@ -37,6 +37,8 @@ namespace Cadet_Uniform_IMS.Pages.StockCRUD
 
         [BindProperty(SupportsGet = true)]
         public bool FilterByUserMeasurements { get; set; } = false;
+        [TempData]
+        public string Message { get; set; }
 
         public async Task OnGetAsync()
         {
@@ -164,6 +166,7 @@ namespace Cadet_Uniform_IMS.Pages.StockCRUD
 
                 await _context.SaveChangesAsync();
             }
+            Message = "Uniform item added to basket.";
             await OnGetAsync();
             return Page();
         }

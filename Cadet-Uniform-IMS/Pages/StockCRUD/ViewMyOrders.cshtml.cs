@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using System.IO;
 
 public class ViewMyOrdersModel : PageModel
 {
@@ -21,12 +22,17 @@ public class ViewMyOrdersModel : PageModel
     public List<PendingOrderItem> PendingOrderItems { get; set; } = new();
     public List<Uniform> Uniform { get; set; } = new();
     public List<Stock> Stock { get; set; } = new();
+    public List<StockSize> StockSizes { get; set; } = new();
+    public List<SizeAttribute> SizeAttributes { get; set; } = new();
 
     [TempData]
     public string Message { get; set; }
 
     public async Task OnGetAsync()
     {
+        StockSizes = await _context.StockSize.ToListAsync();
+        SizeAttributes = await _context.SizeAttribute.ToListAsync();
+
         var user = await _userManager.GetUserAsync(User);
 
         if (User.IsInRole("Cadet"))

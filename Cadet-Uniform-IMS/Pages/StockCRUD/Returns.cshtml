@@ -17,6 +17,8 @@
     </div>
 }
 
+<input type="text" class="form-control mb-3" placeholder="Search by uniform name..." onkeyup="filterReturns(this)">
+
 @if (Model.ReturnStocks.Any())
 {
     @foreach (var returnStock in Model.ReturnStocks)
@@ -24,7 +26,7 @@
         var uniform = Model.Uniforms.FirstOrDefault(u => u.UniformID == returnStock.UniformID);
         var sizes = Model.ReturnSizes.Where(rs => rs.ReturnID == returnStock.ReturnID).ToList();
 
-        <div class="card mb-3 shadow-sm">
+        <div class="card mb-3 shadow-sm return-card" data-uniform-name="@uniform?.Name.ToLower()">
             <div class="card-body">
                 <h5>@uniform?.Name (Available: @returnStock.Quantity)</h5>
                 <ul class="list-unstyled ms-3">
@@ -51,8 +53,17 @@ else
 
 @section Scripts {
     <script>
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip();
-        });
+        function filterReturns(input) {
+            const filter = input.value.toLowerCase();
+            const cards = document.querySelectorAll('.return-card');
+            cards.forEach(card => {
+                const uniformName = card.getAttribute('data-uniform-name');
+                if (uniformName.includes(filter)) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
     </script>
 }

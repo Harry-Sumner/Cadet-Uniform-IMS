@@ -1,0 +1,104 @@
+﻿@page
+@model ViewMyOrdersModel
+
+@{
+    ViewData["Title"] = "My Orders";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>@ViewData["Title"]</h1>
+</div>
+
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <div class="alert alert-success" role="alert">
+        @Model.Message
+    </div>
+}
+
+@if (User.IsInRole("Cadet"))
+{
+    <!-- Tabs Navigation -->
+    <ul class="nav nav-tabs mb-3" id="orderTabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="pending-tab" data-toggle="tab" href="#pending" role="tab">Pending Orders</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="history-tab" data-toggle="tab" href="#orders" role="tab">Order History</a>
+        </li>
+    </ul>
+}
+
+<!-- Tab Content -->
+<div class="tab-content" id="orderTabsContent">
+
+    @if (User.IsInRole("Cadet"))
+    {
+        <div class="tab-pane fade show active" id="pending" role="tabpanel">
+            @if (Model.PendingOrders.Any())
+            {
+                @foreach (var order in Model.PendingOrders)
+                {
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h6>Pending Order ID: @order.PendingOrderID</h6>
+                            <ul class="list-unstyled ms-3">
+                                @foreach (var item in Model.PendingOrderItems.Where(i => i.PendingOrderID == order.PendingOrderID))
+                                {
+                                    var stock = Model.Stock.FirstOrDefault(s => s.StockID == item.StockID);
+                                    var uniform = Model.Uniform.FirstOrDefault(u => u.UniformID == stock?.UniformID);
+                                    <li>@uniform?.Name (@item.Quantity)</li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="alert alert-info">No pending orders found.</div>
+            }
+        </div>
+    }
+
+
+    <div class="tab-pane @(User.IsInRole("Cadet") ? "fade" : "fade show active")" id="orders" role="tabpanel">
+        @if (Model.UserOrders.Any())
+        {
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    @foreach (var order in Model.UserOrders)
+                    {
+                        <div class="mb-3">
+                            <h6>Order ID: @order.OrderID</h6>
+                            <ul class="list-unstyled ms-3">
+                                @foreach (var item in Model.OrderItems.Where(i => i.OrderID == order.OrderID))
+                                {
+                                    var stock = Model.Stock.FirstOrDefault(s => s.StockID == item.StockID);
+                                    var uniform = Model.Uniform.FirstOrDefault(u => u.UniformID == stock?.UniformID);
+                                    <li>@uniform?.Name (@item.Quantity)</li>
+                                }
+                            </ul>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-info">No orders found.</div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#orderTabs a').on('click', function (e) {
+                e.preventDefault();
+                $(this).tab('show');
+            });
+        });
+    </script>
+}

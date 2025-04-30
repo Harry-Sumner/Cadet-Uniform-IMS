@@ -1,0 +1,131 @@
+﻿@page
+@model ViewOrdersModel
+
+@{
+    ViewData["Title"] = "Orders";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>@ViewData["Title"]</h1>
+    <a asp-page="/StockCRUD/ViewMyOrders" class="btn btn-lg btn-primary add-user-btn">My Orders</a>
+</div>
+
+<ul class="nav nav-tabs mb-3" id="userTabs" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="pending-tab" data-toggle="tab" href="#pending" role="tab">Pending Orders</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="order-history-tab" data-toggle="tab" href="#orders" role="tab">Order History</a>
+    </li>
+</ul>
+
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <div class="alert alert-success" role="alert">
+        @Model.Message
+    </div>
+}
+
+
+<div class="tab-content" id="userTabsContent">
+    <div class="tab-pane fade show active" id="pending" role="tabpanel">
+        <input type="text" class="form-control mb-3" placeholder="Search pending orders..." onkeyup="filterOrders(this, 'pending')">
+        @foreach (var order in Model.PendingOrders)
+        {
+            var cadet = Model.Cadets.FirstOrDefault(c => c.Id == order.UID);
+            if (cadet != null)
+            {
+                <div class="card mb-3" data-user-name="@($"{cadet.FirstName} {cadet.Surname}".ToLower())">
+                    <div class="card-body">
+                        <h5 class="card-title">@cadet.Rank @cadet.FirstName @cadet.Surname</h5>
+                        <p class="card-subtitle text-muted">@cadet.Email</p>
+
+                        <ul class="mt-3">
+                            @foreach (var item in Model.PendingOrderItems.Where(i => i.PendingOrderID == order.PendingOrderID))
+                            {
+                                var stock = Model.Stock.FirstOrDefault(s => s.StockID == item.StockID);
+                                var uniform = Model.Uniform.FirstOrDefault(u => u.UniformID == stock?.UniformID);
+                                <li>@uniform?.Name (@item.Quantity)</li>
+                            }
+                        </ul>
+
+                        <form method="post" asp-page-handler="Accept" asp-route-id="@order.PendingOrderID" class="d-inline">
+                            <button class="btn btn-success btn-sm">Accept</button>
+                        </form>
+                        <form method="post" asp-page-handler="Reject" asp-route-id="@order.PendingOrderID" class="d-inline">
+                            <button class="btn btn-danger btn-sm">Reject</button>
+                        </form>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+
+    <div class="tab-pane fade" id="orders" role="tabpanel">
+        @foreach (var history in Model.OrderHistory)
+        {
+            var cadet = Model.Cadets.FirstOrDefault(c => c.Id == history.Cadet);
+            if (cadet != null)
+            {
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">@cadet.Rank @cadet.FirstName @cadet.Surname</h5>
+                        <p class="card-subtitle text-muted">@cadet.Email</p>
+
+                        <ul class="mt-3">
+                            @foreach (var item in Model.OrderItems.Where(i => i.OrderID == history.OrderID))
+                            {
+                                var stock = Model.Stock.FirstOrDefault(s => s.StockID == item.StockID);
+                                var uniform = Model.Uniform.FirstOrDefault(u => u.UniformID == stock?.UniformID);
+                                <li>@uniform?.Name (@item.Quantity)</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            }
+            else
+            {
+                var staff = Model.Staff.FirstOrDefault(s => s.Id == history.UID);
+                if (staff != null)
+                {
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">@staff.Rank @staff.FirstName @staff.Surname</h5>
+                            <p class="card-subtitle text-muted">@staff.Email</p>
+
+                            <ul class="mt-3">
+                                @foreach (var item in Model.OrderItems.Where(i => i.OrderID == history.OrderID))
+                                {
+                                    var stock = Model.Stock.FirstOrDefault(s => s.StockID == item.StockID);
+                                    var uniform = Model.Uniform.FirstOrDefault(u => u.UniformID == stock?.UniformID);
+                                    <li>@uniform?.Name (@item.Quantity)</li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                }
+            }
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#userTabs a').on('click', function (e) {
+                e.preventDefault();
+                $(this).tab('show');
+            });
+        });
+
+        function filterOrders(input, tabId) {
+            const filter = input.value.toLowerCase();
+            const cards = document.querySelectorAll(`#${tabId} .card`);
+            cards.forEach(card => {
+                const name = card.querySelector('h5').textContent.toLowerCase();
+                card.style.display = name.includes(filter) ? '' : 'none';
+            });
+        }
+    </script>
+}

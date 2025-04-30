@@ -133,8 +133,7 @@ namespace Cadet_Uniform_IMS.Pages.StockCRUD
             }
             await _context.SaveChangesAsync();
             Message = "The uniform selected is now ready for collection and stock has been adjusted successfully.";
-            await OnGetAsync();
-            return Page();
+            return RedirectToPage("/StockCRUD/ViewMyOrders");
         }
         public async Task<IActionResult> OnPostSubmitCadetAsync()
         {
@@ -173,8 +172,7 @@ namespace Cadet_Uniform_IMS.Pages.StockCRUD
             }
             await _context.SaveChangesAsync();
             Message = "Your uniform request has been placed and staff have been notified. Please visit uniform stores on your next parade night and speak to staff to collect your order.";
-            await OnGetAsync();
-            return Page();
+            return RedirectToPage("/StockCRUD/ViewOrders");
         }
     }
 }

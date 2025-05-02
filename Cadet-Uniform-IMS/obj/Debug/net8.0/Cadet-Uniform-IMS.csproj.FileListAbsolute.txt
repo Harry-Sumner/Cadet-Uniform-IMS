@@ -321,3 +321,5 @@ C:\Users\Harry S\source\repos\Harry-Sumner\Cadet-Uniform-IMS\Cadet-Uniform-IMS\o
 C:\Users\Harry S\source\repos\Harry-Sumner\Cadet-Uniform-IMS\Cadet-Uniform-IMS\obj\Debug\net8.0\Cadet-Uniform-IMS.pdb
 C:\Users\Harry S\source\repos\Harry-Sumner\Cadet-Uniform-IMS\Cadet-Uniform-IMS\obj\Debug\net8.0\Cadet-Uniform-IMS.genruntimeconfig.cache
 C:\Users\Harry S\source\repos\Harry-Sumner\Cadet-Uniform-IMS\Cadet-Uniform-IMS\obj\Debug\net8.0\ref\Cadet-Uniform-IMS.dll
+C:\Users\Harry S\source\repos\Harry-Sumner\Cadet-Uniform-IMS\Cadet-Uniform-IMS\bin\Debug\net8.0\Select.Html.dep
+C:\Users\Harry S\source\repos\Harry-Sumner\Cadet-Uniform-IMS\Cadet-Uniform-IMS\bin\Debug\net8.0\Select.HtmlToPdf.dll

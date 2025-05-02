@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
+using Cadet_Uniform_IMS.Pages;
 
 namespace Cadet_Uniform_IMS.Data
 {
@@ -24,8 +25,13 @@ namespace Cadet_Uniform_IMS.Data
             modelBuilder.Entity<BasketStock>().HasKey(t => new { t.StockID, t.UID });
             modelBuilder.Entity<PendingOrderItem>().HasKey(t => new { t.PendingOrderID, t.StockID });
             modelBuilder.Entity<OrderItem>().HasKey(t => new { t.OrderID, t.StockID });
+            modelBuilder.Entity<StockReportItem>().HasNoKey().ToView(null);
+            modelBuilder.Entity<PendingReportItem>().HasNoKey().ToView(null);
+            modelBuilder.Entity<ReturnReportItem>().HasNoKey().ToView(null);
         }
-
+        public DbSet<StockReportItem> StockReportItem { get; set; }
+        public DbSet<PendingReportItem> PendingReportItem { get; set; }
+        public DbSet<ReturnReportItem> ReturnReportItem { get; set; }
         public DbSet<IMS_User> User { get; set; }
         public DbSet<IMS_Cadet> Cadet { get; set; }
         public DbSet<IMS_Staff> Staff { get; set; }

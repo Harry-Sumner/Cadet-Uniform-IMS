@@ -40,20 +40,22 @@
                                 <a class="nav-link text-dark" asp-page="/StockCRUD/Create">Add/Return Uniform</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-page="/Measurements/ViewMeasurements">Manage Measurements</a>
+                                <a class="nav-link text-dark" asp-page="/Measurements/ViewMeasurements">Measurements</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-page="/StockCRUD/ViewOrders">View Orders</a>
+                                <a class="nav-link text-dark" asp-page="/StockCRUD/ViewOrders">Orders</a>
                             </li>
-
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-page="/Report">Reports</a>
+                            </li>
                         }
                         @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-page="/Admin/ManageUsers">Manage Accounts</a>
+                                <a class="nav-link text-dark" asp-page="/Admin/ManageUsers">Accounts</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-page="/Admin/BrowseUniform_Types">Manage Uniform Data</a>
+                                <a class="nav-link text-dark" asp-page="/Admin/BrowseUniform_Types">Uniform Data</a>
                             </li>
                         }
                         @if (User.IsInRole("Cadet") && user.Head + user.Shoe + user.Leg + user.Height + user.Chest == null)
@@ -66,13 +68,13 @@
                         else if (User.IsInRole("Cadet"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-page="/Measurements/ViewMeasurementsCadet">View Measurements</a>
+                                <a class="nav-link text-dark" asp-page="/Measurements/ViewMeasurementsCadet">Measurements</a>
                             </li>
                         }
                         @if (User.IsInRole("Cadet"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-page="/StockCRUD/ViewMyOrders">My Orders</a>
+                                <a class="nav-link text-dark" asp-page="/StockCRUD/ViewMyOrders">Orders</a>
                             </li>
                         }
                     </ul>

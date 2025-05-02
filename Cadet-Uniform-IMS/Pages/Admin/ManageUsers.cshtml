@@ -129,7 +129,7 @@
             e.preventDefault();
             $(this).tab('show');
         });
-
+        // Code adapted from (W3Schools.com, n.d.-e)
         function filterUsers(input, tabId) {
             const filter = input.value.toLowerCase();
             const cards = document.querySelectorAll(`#${tabId} .card`);
@@ -138,5 +138,6 @@
                 card.style.display = name.includes(filter) ? '' : 'none';
             });
         }
+        // End of code adapted
     </script>
 }

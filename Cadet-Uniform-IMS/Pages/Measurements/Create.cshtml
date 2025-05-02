@@ -7,11 +7,13 @@
 
 <h1 class="mb-4">Uniform Measurements</h1>
 
-<!-- Progress Bar -->
+@* Code adapted from (W3Schools.com, n.d.-a) *@ 
 <div class="progress mb-4">
     <div id="progressBar" class="progress-bar" style="width: 0%" role="progressbar"></div>
 </div>
+@* End of code adapted *@
 
+@* (W3Schools.com, n.d.-b) *@
 <form method="post">
     <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
     <div class="step" id="step-0">
@@ -125,6 +127,7 @@
         <button type="submit" class="btn btn-success d-none" id="submitButton">Save Measurements</button>
     </div>
 </form>
+@* End of code adapted *@
 
 @section Scripts {
     @{
@@ -139,7 +142,7 @@
         const progressBar = document.getElementById("progressBar");
         const submitButton = document.getElementById("submitButton");
         const nextButton = document.querySelector('.btn-primary');
-
+        // Code adapted from (W3Schools.com, n.d.-d)
         const ranges = {
             male: {
                 Height: [120, 210],
@@ -166,7 +169,7 @@
                 Shoe: [3, 10]
             }
         };
-
+        // End of code adapted
         function getVisibleSteps() {
             return steps.filter(s =>
                 !(gender === "Male" && s.hasAttribute('data-female-only')) &&
@@ -187,9 +190,9 @@
             const visibleSteps = getVisibleSteps();
             const currentVisibleIndex = visibleSteps.indexOf(steps[index]);
             const totalSteps = visibleSteps.length;
-
+            // Code adapted from (W3Schools.com, n.d.-a)
             progressBar.style.width = `${((currentVisibleIndex + 1) / totalSteps) * 100}%`;
-
+            // End of code adpated
             const isLastStep = currentVisibleIndex === totalSteps - 1;
             const isGenderStep = steps[index].id === "step-0";
 

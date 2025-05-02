@@ -121,7 +121,7 @@
                 $(this).tab('show');
             });
         });
-
+        // Code adapted from (W3Schools.com, n.d.-e)
         function filterOrders(input, tabId) {
             const filter = input.value.toLowerCase();
             const cards = document.querySelectorAll(`#${tabId} .card`);
@@ -130,5 +130,6 @@
                 card.style.display = data.includes(filter) ? '' : 'none';
             });
         }
+        // End of adapted
     </script>
 }

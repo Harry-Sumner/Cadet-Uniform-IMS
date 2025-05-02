@@ -15,6 +15,7 @@
             @Model.Message
         </div>
     }
+    @* Code adapted from (W3Schools.com, n.d.-c) *@
     <div id="btn_container">
         <button class="btn active" onclick="filterSelection('all')"> Show all</button>
         @foreach (var type in Model.UniformTypes)
@@ -120,7 +121,7 @@
             }
         }
     </div>
-
+    @* End of code adapted *@
     <script>
         filterSelection("all");
 

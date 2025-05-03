@@ -29,7 +29,8 @@
         <input type="text" id="clientSearch" placeholder="Search uniform by name..." style="max-width: 250px; padding: 8px;" onkeyup="searchUniforms()" />
 
         <form method="get" style="display: flex; gap: 10px; align-items: center;">
-            <select id="sizeFilter" name="Size" style="max-width: 250px; padding: 8px;">
+            <select asp-for="SelectedSize" id="sizeFilter" name="SelectedSize"
+                    style="max-width: 250px; padding: 8px;" onchange="this.form.submit()">
                 <option value="">All Sizes</option>
                 @foreach (var type in Model.UniformTypes)
                 {
@@ -37,11 +38,16 @@
 
                     foreach (var attr in sizeAttributes)
                     {
-                        var sizes = Model.StockSizes
-                        .Where(ss => ss.AttributeID == attr.AttributeID)
-                        .Select(ss => ss.Size)
+                        var sizes = Model.Stock
+                        .Where(s => s.Available > 0)
+                        .Join(Model.StockSizes,
+                        stock => stock.StockID,
+                        ss => ss.StockID,
+                        (stock, ss) => new { ss.Size, ss.AttributeID })
+                        .Where(x => x.AttributeID == attr.AttributeID)
+                        .Select(x => x.Size)
                         .Distinct()
-                        .OrderBy(s => s)
+                        .OrderBy(size => size)
                         .ToList();
 
                         if (sizes.Any())
@@ -49,21 +55,23 @@
                             <optgroup label="@type.TypeName - @attr.AttributeName" data-type="@type.TypeName">
                                 @foreach (var size in sizes)
                                 {
-                                    <option value="@size">@size</option>
+                                    <option value="@size" selected="@(Model.SelectedSize == size ? "selected" : null)">
+                                        @size
+                                    </option>
                                 }
                             </optgroup>
                         }
                     }
                 }
             </select>
+
             <label>
-                <input type="checkbox" name="FilterByUserMeasurements" value="true" @(Model.FilterByUserMeasurements ? "checked" : "") onchange="this.form.submit()" />
+                <input type="checkbox" name="FilterByUserMeasurements" value="true"
+                @(Model.FilterByUserMeasurements ? "checked" : "")
+                       onchange="this.form.submit()" />
                 My Size Only
             </label>
-
-            <button type="submit">Submit</button>
         </form>
-
         <a href="/StockCRUD">
             <button type="button">Clear</button>
         </a>

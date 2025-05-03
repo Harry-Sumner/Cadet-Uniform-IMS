@@ -5,9 +5,9 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<div class="container mt-5">
-    <h2>Generate Report</h2>
+<h1>@ViewData["Title"]</h1>
 
+<div class="container mt-5">
     @if (!string.IsNullOrEmpty(Model.StatusMessage))
     {
         <div class="alert alert-info">

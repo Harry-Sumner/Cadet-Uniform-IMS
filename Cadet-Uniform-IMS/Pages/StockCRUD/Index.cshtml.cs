@@ -105,7 +105,7 @@ namespace Cadet_Uniform_IMS.Pages.StockCRUD
                             {
                                 if (int.TryParse(sizeStr, out int sizeVal))
                                 {
-                                    int threshold = attr.AttributeName.Equals("Shoe Size", StringComparison.OrdinalIgnoreCase) ? 1 : 3;
+                                    int threshold = attr.AttributeName.Equals("Shoe Size", StringComparison.OrdinalIgnoreCase) ? 1 : 2;
                                     if (Math.Abs(sizeVal - userMeasurement.Value) <= threshold)
                                     {
                                         sizeMatch = true;

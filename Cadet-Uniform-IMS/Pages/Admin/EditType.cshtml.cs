@@ -63,19 +63,36 @@ namespace Cadet_Uniform_IMS.Pages.Admin
                 .Where(a => a.TypeID == Type.TypeID)
                 .ToListAsync();
 
-            var postedIds = SizeAttributes.Where(a => a.AttributeID != 0).Select(a => a.AttributeID).ToHashSet();
-            var toDelete = existingAttributes.Where(a => !postedIds.Contains(a.AttributeID)).ToList();
-            _context.SizeAttribute.RemoveRange(toDelete);
+            var postedIds = SizeAttributes
+                .Where(a => a.AttributeID != 0)
+                .Select(a => a.AttributeID)
+                .ToHashSet();
+
+            var toDelete = existingAttributes
+                .Where(a => !postedIds.Contains(a.AttributeID))
+                .ToList();
+
+            foreach (var attr in toDelete)
+            {
+                // Remove related entries from ReturnSize
+                var returnSizes = await _context.ReturnSize
+                    .Where(rs => rs.AttributeID == attr.AttributeID)
+                    .ToListAsync();
+                _context.ReturnSize.RemoveRange(returnSizes);
+
+                // Remove related entries from StockSize
+                var stockSizes = await _context.StockSize
+                    .Where(ss => ss.AttributeID == attr.AttributeID)
+                    .ToListAsync();
+                _context.StockSize.RemoveRange(stockSizes);
+
+                _context.SizeAttribute.Remove(attr);
+            }
 
             foreach (var attr in SizeAttributes)
             {
                 if (attr.AttributeID == 0 && !string.IsNullOrWhiteSpace(attr.AttributeName))
                 {
-                    var currentAttribute = _context.SizeAttribute
-                        .OrderByDescending(b => b.AttributeID)
-                        .FirstOrDefault();
-
-                    attr.AttributeID = currentAttribute?.AttributeID + 1 ?? 1;
                     attr.TypeID = Type.TypeID;
                     _context.SizeAttribute.Add(attr);
                 }
@@ -91,8 +108,7 @@ namespace Cadet_Uniform_IMS.Pages.Admin
             }
 
             await _context.SaveChangesAsync();
-
-            return RedirectToPage("./BrowseUniform_Types");
+            return RedirectToPage("./BrowseUniformTypes");
         }
     }
 }

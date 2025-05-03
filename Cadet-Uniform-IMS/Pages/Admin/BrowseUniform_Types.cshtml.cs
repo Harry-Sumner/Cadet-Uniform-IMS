@@ -48,36 +48,69 @@ namespace Cadet_Uniform_IMS.Pages.Admin
         {
             var uniforms = await _context.Uniform.Where(u => u.TypeID == id).ToListAsync();
 
-            foreach (var uniform in uniforms)
+            if (uniforms.Any())
             {
-                var stocks = await _context.Stock.Where(s => s.UniformID == uniform.UniformID).ToListAsync();
-
-                foreach (var stock in stocks)
+                foreach (var uniform in uniforms)
                 {
-                    _context.BasketStock.RemoveRange(await _context.BasketStock.Where(b => b.StockID == stock.StockID).ToListAsync());
-                    _context.PendingOrderItems.RemoveRange(await _context.PendingOrderItems.Where(p => p.StockID == stock.StockID).ToListAsync());
-                    _context.OrderItems.RemoveRange(await _context.OrderItems.Where(o => o.StockID == stock.StockID).ToListAsync());
-                    _context.ReturnStock.RemoveRange(await _context.ReturnStock.Where(r => r.ReturnID == stock.StockID).ToListAsync());
-                    _context.ReturnSize.RemoveRange(await _context.ReturnSize.Where(rs => rs.ReturnID == stock.StockID).ToListAsync());
-                    _context.StockSize.RemoveRange(await _context.StockSize.Where(s => s.StockID == stock.StockID).ToListAsync());
+                    var stocks = await _context.Stock
+                        .Where(s => s.UniformID == uniform.UniformID)
+                        .ToListAsync();
+
+                    if (stocks.Any())
+                    {
+                        foreach (var stock in stocks)
+                        {
+                            var orderItems = await _context.OrderItems.Where(os => os.StockID == stock.StockID).ToListAsync();
+                            _context.OrderItems.RemoveRange(orderItems);
+
+                            var basketItems = await _context.BasketStock.Where(bs => bs.StockID == stock.StockID).ToListAsync();
+                            _context.BasketStock.RemoveRange(basketItems);
+
+                            var pendingItems = await _context.PendingOrderItems.Where(p => p.StockID == stock.StockID).ToListAsync();
+                            _context.PendingOrderItems.RemoveRange(pendingItems);
+
+                            var stockSizes = await _context.StockSize.Where(ss => ss.StockID == stock.StockID).ToListAsync();
+                            _context.StockSize.RemoveRange(stockSizes);
+
+                            await _context.SaveChangesAsync();
+                        }
+
+                        _context.Stock.RemoveRange(stocks);
+                    }
+
+                    var returns = await _context.ReturnStock.Where(r => r.UniformID == uniform.UniformID).ToListAsync();
+                    foreach (var ret in returns)
+                    {
+                        var returnSizes = await _context.ReturnSize.Where(rs => rs.ReturnID == ret.ReturnID).ToListAsync();
+                        _context.ReturnSize.RemoveRange(returnSizes);
+                    }
+                    _context.ReturnStock.RemoveRange(returns);
+
+                    _context.Uniform.Remove(uniform);
+                }
+            }
+
+            var attributes = await _context.SizeAttribute.Where(i => i.TypeID == id).ToListAsync();
+
+            if (attributes.Any())
+            {
+                foreach (var attribute in attributes)
+                {
+                    var stockSizes = await _context.StockSize.Where(ss => ss.AttributeID == attribute.AttributeID).ToListAsync();
+                    _context.StockSize.RemoveRange(stockSizes);
+
+                    var returnSizes = await _context.ReturnSize.Where(rs => rs.AttributeID == attribute.AttributeID).ToListAsync();
+                    _context.ReturnSize.RemoveRange(returnSizes);
                 }
 
-                _context.Stock.RemoveRange(stocks);
-                _context.Uniform.Remove(uniform);
+                _context.SizeAttribute.RemoveRange(attributes);
             }
 
-            var attributes = await _context.SizeAttribute.Where(a => a.TypeID == id).ToListAsync();
-
-            foreach (var attr in attributes)
-            {
-                _context.StockSize.RemoveRange(await _context.StockSize.Where(s => s.AttributeID == attr.AttributeID).ToListAsync());
-                _context.ReturnSize.RemoveRange(await _context.ReturnSize.Where(r => r.AttributeID == attr.AttributeID).ToListAsync());
-            }
-
-            _context.SizeAttribute.RemoveRange(attributes);
             var type = await _context.UniformType.FindAsync(id);
             if (type != null)
+            {
                 _context.UniformType.Remove(type);
+            }
 
             await _context.SaveChangesAsync();
             await OnGet();
@@ -86,26 +119,47 @@ namespace Cadet_Uniform_IMS.Pages.Admin
 
         public async Task<IActionResult> OnPostDeleteUniformAsync(int id)
         {
-            var uniform = await _context.Uniform.FindAsync(id);
-            if (uniform == null)
-                return NotFound();
+            var uniforms = await _context.Uniform.Where(u => u.UniformID == id).ToListAsync();
 
-            var stocks = await _context.Stock
-                .Where(s => s.UniformID == uniform.UniformID)
-                .ToListAsync();
-
-            foreach (var stock in stocks)
+            if (uniforms.Any())
             {
-                _context.BasketStock.RemoveRange(await _context.BasketStock.Where(b => b.StockID == stock.StockID).ToListAsync());
-                _context.PendingOrderItems.RemoveRange(await _context.PendingOrderItems.Where(p => p.StockID == stock.StockID).ToListAsync());
-                _context.OrderItems.RemoveRange(await _context.OrderItems.Where(o => o.StockID == stock.StockID).ToListAsync());
-                _context.ReturnStock.RemoveRange(await _context.ReturnStock.Where(r => r.ReturnID == stock.StockID).ToListAsync());
-                _context.ReturnSize.RemoveRange(await _context.ReturnSize.Where(rs => rs.ReturnID == stock.StockID).ToListAsync());
-                _context.StockSize.RemoveRange(await _context.StockSize.Where(s => s.StockID == stock.StockID).ToListAsync());
-            }
+                foreach (var uniform in uniforms)
+                {
+                    var stocks = await _context.Stock.Where(s => s.UniformID == uniform.UniformID).ToListAsync();
 
-            _context.Stock.RemoveRange(stocks);
-            _context.Uniform.Remove(uniform);
+                    if (stocks.Any())
+                    {
+                        foreach (var stock in stocks)
+                        {
+                            var orderItems = await _context.OrderItems.Where(os => os.StockID == stock.StockID).ToListAsync();
+                            _context.OrderItems.RemoveRange(orderItems);
+
+                            var basketItems = await _context.BasketStock.Where(bs => bs.StockID == stock.StockID).ToListAsync();
+                            _context.BasketStock.RemoveRange(basketItems);
+
+                            var pendingItems = await _context.PendingOrderItems.Where(p => p.StockID == stock.StockID).ToListAsync();
+                            _context.PendingOrderItems.RemoveRange(pendingItems);
+
+                            var stockSizes = await _context.StockSize.Where(ss => ss.StockID == stock.StockID).ToListAsync();
+                            _context.StockSize.RemoveRange(stockSizes);
+
+                            await _context.SaveChangesAsync();
+                        }
+
+                        _context.Stock.RemoveRange(stocks);
+                    }
+
+                    var returns = await _context.ReturnStock.Where(r => r.UniformID == uniform.UniformID).ToListAsync();
+                    foreach (var ret in returns)
+                    {
+                        var returnSizes = await _context.ReturnSize.Where(rs => rs.ReturnID == ret.ReturnID).ToListAsync();
+                        _context.ReturnSize.RemoveRange(returnSizes);
+                    }
+                    _context.ReturnStock.RemoveRange(returns);
+
+                    _context.Uniform.Remove(uniform);
+                }
+            }
 
             await _context.SaveChangesAsync();
             await OnGet();

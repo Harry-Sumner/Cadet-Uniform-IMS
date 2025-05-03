@@ -35,7 +35,6 @@ namespace Cadet_Uniform_IMS.Pages
         {
             UniformTypes = await _context.UniformType.ToListAsync();
 
-            // Check if a report type was selected
             if (string.IsNullOrEmpty(ReportType))
             {
                 StatusMessage = "Please select a report type.";

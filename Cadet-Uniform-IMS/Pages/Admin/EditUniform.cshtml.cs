@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Cadet_Uniform_IMS.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Cadet_Uniform_IMS.Pages.Admin
 {
+    [Authorize(Roles = "Admin")]
     public class EditUniformModel : PageModel
     {
         private readonly Cadet_Uniform_IMS.Data.IMS_Context _context;

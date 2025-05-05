@@ -1,5 +1,5 @@
 ﻿@page
-@model IndexModel
+@model Cadet_Uniform_IMS.Areas.Identity.Pages.Account.Manage.IndexModel
 @{
     ViewData["Title"] = "Profile";
     ViewData["ActivePage"] = ManageNavPages.Index;
@@ -9,18 +9,56 @@
 <partial name="_StatusMessage" for="StatusMessage" />
 <div class="row">
     <div class="col-md-6">
-        <form id="profile-form" method="post">
+        <form id="profile-form" method="post" asp-page-handler="Save">
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
             <div class="form-floating mb-3">
-                <input asp-for="Username" class="form-control" placeholder="Please choose your username." disabled />
-                <label asp-for="Username" class="form-label"></label>
+                <select asp-for="Input.Rank" class="form-control">
+                    <option value="">Select Rank</option>
+
+                    @if (Model.Input.Flight != null)
+                    {
+                        <option value="JCdt">Junior Cadet</option>
+                        <option value="Cdt">Cadet</option>
+                        <option value="Cpl">Corporal</option>
+                        <option value="Sgt">Sergeant</option>
+                        <option value="FS">Flight Sergeant</option>
+                        <option value="CWO">Cadet Warrant Officer</option>
+                    }
+                    else
+                    {
+                        <option value="CI">Civilian Instructor</option>
+                        <option value="Sgt">Sergeant</option>
+                        <option value="FS">Flight Sergeant</option>
+                        <option value="WO">Warrant Officer</option>
+                    }
+                </select>
+                <label asp-for="Input.Rank" class="form-label"></label>
+                <span asp-validation-for="Input.Rank" class="text-danger"></span>
             </div>
+
             <div class="form-floating mb-3">
-                <input asp-for="Input.PhoneNumber" class="form-control" placeholder="Please enter your phone number."/>
-                <label asp-for="Input.PhoneNumber" class="form-label"></label>
-                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                <input asp-for="Input.FirstName" class="form-control" placeholder="Enter your first name." />
+                <label asp-for="Input.FirstName" class="form-label"></label>
+                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
             </div>
-            <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
+
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Surname" class="form-control" placeholder="Enter your surname." />
+                <label asp-for="Input.Surname" class="form-label"></label>
+                <span asp-validation-for="Input.Surname" class="text-danger"></span>
+            </div>
+
+            @if (Model.Input.Flight != null)
+            {
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Flight" class="form-control" placeholder="Enter your flight (cadet only)." />
+                    <label asp-for="Input.Flight" class="form-label"></label>
+                    <span asp-validation-for="Input.Flight" class="text-danger"></span>
+                </div>
+            }
+
+            <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary" asp-page-handler="Save">Save</button>
         </form>
     </div>
 </div>

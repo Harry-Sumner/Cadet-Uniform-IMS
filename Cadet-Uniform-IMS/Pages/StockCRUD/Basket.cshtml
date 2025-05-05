@@ -1,12 +1,14 @@
 ﻿@page
 @model Cadet_Uniform_IMS.Pages.StockCRUD.BasketModel
 @{
+    ViewData["Title"] = "Basket";
 }
 
 <head>
     <link rel="stylesheet" href="~/css/Basket.css" />
 </head>
 <body>
+    <h1>@ViewData["Title"]</h1>
     @if (!string.IsNullOrEmpty(Model.Message))
     {
         <div class="alert alert-success" role="alert">
@@ -92,7 +94,7 @@
             else
             {
                 <form asp-page-handler="SubmitCadet" method="post">
-                    <button class="submit">Place Uniform Request</button>
+                    <button class="place">Place Uniform Request</button>
                 </form>
             }
         </div>

@@ -59,7 +59,6 @@
             div.classList.add("input-group", "mb-2", "attribute-entry");
 
             div.innerHTML = `
-                <input type="hidden" name="SizeAttributes[${attributeIndex}].AttributeID" value="0" />
                 <input type="text" name="SizeAttributes[${attributeIndex}].AttributeName" class="form-control" />
                 <button type="button" class="btn btn-danger" onclick="removeAttribute(this)">Remove</button>
             `;
@@ -71,7 +70,6 @@
         function hideAttribute(button, attributeId) {
             const row = button.closest(".attribute-row");
 
-            // Add to deleted list if needed
             if (attributeId !== 0) {
                 const deletedInput = document.getElementById("DeletedAttributeIds");
                 let currentValue = deletedInput.value.trim();
@@ -83,12 +81,10 @@
                 }
             }
 
-            // Just hide the row
             row.style.display = "none";
 
-            // Disable input fields so they are not submitted
             const inputs = row.querySelectorAll("input, select, textarea");
             inputs.forEach(i => i.disabled = true);
         }
     </script>
-    }
+}

@@ -1,15 +1,10 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
-// The .NET Foundation licenses this file to you under the MIT license.
-#nullable disable
-
-using System;
+﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
-using System.Text.Encodings.Web;
+using System.Linq;
 using System.Threading.Tasks;
-using Cadet_Uniform_IMS.Data;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Cadet_Uniform_IMS.Data;
 
 namespace Cadet_Uniform_IMS.Areas.Identity.Pages.Account.Manage
 {
@@ -26,52 +21,45 @@ namespace Cadet_Uniform_IMS.Areas.Identity.Pages.Account.Manage
             _signInManager = signInManager;
         }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         public string Username { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         [TempData]
         public string StatusMessage { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         [BindProperty]
         public InputModel Input { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         public class InputModel
         {
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
-            [Phone]
-            [Display(Name = "Phone number")]
-            public string PhoneNumber { get; set; }
+            [Display(Name = "Rank")]
+            public string Rank { get; set; }
+
+            [Display(Name = "First Name")]
+            public string FirstName { get; set; }
+
+            [Display(Name = "Surname")]
+            public string Surname { get; set; }
+
+            [Display(Name = "Flight")]
+            public string Flight { get; set; }
         }
 
         private async Task LoadAsync(IMS_User user)
         {
             var userName = await _userManager.GetUserNameAsync(user);
-            var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
-
             Username = userName;
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                Rank = user.Rank,
+                FirstName = user.FirstName,
+                Surname = user.Surname
             };
+
+            if (user is IMS_Cadet cadet)
+            {
+                Input.Flight = cadet.Flight;
+            }
         }
 
         public async Task<IActionResult> OnGetAsync()
@@ -86,7 +74,7 @@ namespace Cadet_Uniform_IMS.Areas.Identity.Pages.Account.Manage
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostSaveAsync()
         {
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
@@ -96,21 +84,37 @@ namespace Cadet_Uniform_IMS.Areas.Identity.Pages.Account.Manage
 
             if (!ModelState.IsValid)
             {
+                foreach (var modelError in ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    Console.WriteLine(modelError.ErrorMessage);  
+                }
                 await LoadAsync(user);
                 return Page();
             }
 
-            var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
-            if (Input.PhoneNumber != phoneNumber)
+     
+            user.Rank = Input.Rank;
+            user.FirstName = Input.FirstName;
+            user.Surname = Input.Surname;
+
+            if (user is IMS_Cadet cadet)
             {
-                var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, Input.PhoneNumber);
-                if (!setPhoneResult.Succeeded)
-                {
-                    StatusMessage = "Unexpected error when trying to set phone number.";
-                    return RedirectToPage();
-                }
+                cadet.Flight = Input.Flight;
             }
 
+            var result = await _userManager.UpdateAsync(user);
+            if (!result.Succeeded)
+            {
+
+                StatusMessage = "Unexpected error when updating profile.";
+                foreach (var error in result.Errors)
+                {
+                    StatusMessage += $" Error: {error.Description}";
+                }
+                return RedirectToPage();
+            }
+
+    
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";
             return RedirectToPage();

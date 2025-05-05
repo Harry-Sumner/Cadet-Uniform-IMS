@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Cadet_Uniform_IMS.Pages.Admin
 {
+    [Authorize(Roles = "Admin")]
     public class CreateTypeModel : PageModel
     {
         private readonly Cadet_Uniform_IMS.Data.IMS_Context _context;
@@ -48,23 +49,19 @@ namespace Cadet_Uniform_IMS.Pages.Admin
                 return Page();
             }
 
-            // Determine the next TypeID
             var currentType = _context.UniformType
                 .OrderByDescending(b => b.TypeID)
                 .FirstOrDefault();
 
             Type.TypeID = currentType?.TypeID + 1 ?? 1;
 
-            // Save UniformType
             _context.UniformType.Add(Type);
             await _context.SaveChangesAsync();
 
-            // Get the next AttributeID
             int nextAttributeId = _context.SizeAttribute.Any()
                 ? _context.SizeAttribute.Max(sa => sa.AttributeID) + 1
                 : 1;
 
-            // Save each SizeAttribute
             foreach (var name in AttributeNames.Where(a => !string.IsNullOrWhiteSpace(a)))
             {
                 var attribute = new SizeAttribute

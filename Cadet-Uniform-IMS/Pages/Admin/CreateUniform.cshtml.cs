@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Cadet_Uniform_IMS.Pages.Admin
 {
+    [Authorize(Roles = "Admin")]
     public class CreateUniformModel : PageModel
     {
         private readonly Cadet_Uniform_IMS.Data.IMS_Context _context;

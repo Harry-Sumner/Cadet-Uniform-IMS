@@ -1,12 +1,14 @@
 using System.Threading.Tasks;
 using Cadet_Uniform_IMS.Data;
 using Cadet_Uniform_IMS.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Cadet_Uniform_IMS.Pages.Measurements
 {
+    [Authorize]
     public class CreateModel : PageModel
     {
         [BindProperty]

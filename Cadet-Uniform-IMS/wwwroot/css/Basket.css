@@ -1,58 +1,93 @@
-﻿/* Center website */
-.main {
-    max-width: 1000px;
-    margin: auto;
-}
+﻿/* Code adapted from W3Schools(n.d.-c) */
 
-/* Code adapted from W3Schools(n.d.-c) */
 .uniform {
-    margin: 8px -16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: flex-start;
+    margin-top: 20px;
 }
 
-    .uniform,
-    .uniform > .item {
-        padding: 8px;
-    }
-
-/* Seperates each item into 3 sections */
 .item {
-    float: left;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 16px;
     width: 20%;
-    display: block;
+    display: none;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-@media only screen and (max-width: 1400px) { /* sets the items to adjust when the width is 1400px or less */
+@media (max-width: 1400px) {
     .item {
-        width: 24.5%;
-        margin: 5px 0;
+        width: 24%;
     }
 }
 
-@media only screen and (max-width: 1200px) { /* sets the items to adjust when the width is 1200px or less */
+@media (max-width: 1200px) {
     .item {
-        width: 33%;
-        margin: 5px 0;
+        width: 32%;
     }
 }
 
-@media only screen and (max-width: 800px) { /* sets the items to adjust when the width is 800px or less */
+@media (max-width: 800px) {
     .item {
-        width: 50%;
-        margin: 5px 0;
+        width: 48%;
     }
 }
 
-/* Clears floats after each item */
-.uniform:after {
-    content: "";
-    display: table;
-    clear: both;
+@media (max-width: 500px) {
+    .item {
+        width: 100%;
+    }
 }
 
-/* Content inside the items*/
 .content {
-    padding: 10px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: 100%;
 }
 
-/* End of code adapted */
+    .content img {
+        max-width: 100%;
+        max-height: 250px;
+        object-fit: contain;
+        margin: 0 auto 10px auto;
+        display: block;
+    }
+
+    .content h4,
+    .content h5,
+    .content p {
+        margin: 4px 0;
+    }
+
+    .content form {
+        margin-top: auto;
+        display: flex;
+        justify-content: center;
+    }
+
+.submit {
+    padding: 6px 12px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+    .submit:hover {
+        background-color: #c82333;
+    }
+
+.display {
+    display: flex !important;
+}
+
+
+/* End Code adapted */

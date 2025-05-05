@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Cadet_Uniform_IMS.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Cadet_Uniform_IMS.Pages.Admin
 {
+    [Authorize(Roles = "Admin")]
     public class EditTypeModel : PageModel
     {
         private readonly IMS_Context _context;
@@ -88,11 +90,14 @@ namespace Cadet_Uniform_IMS.Pages.Admin
 
                 _context.SizeAttribute.Remove(attr);
             }
-
+            int nextAttributeId = _context.SizeAttribute.Any()
+                ? _context.SizeAttribute.Max(sa => sa.AttributeID) + 1
+                : 1;
             foreach (var attr in SizeAttributes)
             {
                 if (attr.AttributeID == 0 && !string.IsNullOrWhiteSpace(attr.AttributeName))
                 {
+                    attr.AttributeID = nextAttributeId++;
                     attr.TypeID = Type.TypeID;
                     _context.SizeAttribute.Add(attr);
                 }
@@ -108,7 +113,7 @@ namespace Cadet_Uniform_IMS.Pages.Admin
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToPage("./BrowseUniformTypes");
+            return RedirectToPage("./BrowseUniform_Types");
         }
     }
 }

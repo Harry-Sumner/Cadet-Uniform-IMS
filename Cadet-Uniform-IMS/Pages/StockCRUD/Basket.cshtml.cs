@@ -1,4 +1,5 @@
 using Cadet_Uniform_IMS.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -6,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Cadet_Uniform_IMS.Pages.StockCRUD
 {
+    [Authorize]
     public class BasketModel : PageModel
     {
         private readonly IMS_Context _context;
@@ -46,8 +48,6 @@ namespace Cadet_Uniform_IMS.Pages.StockCRUD
             Cadets = (await _UserManager.GetUsersInRoleAsync("Cadet"))
             .OrderBy(c => c.Surname)
             .ToList();
-
-
         }
 
         public async Task<IActionResult> OnPostDeleteAsync(int stockID)
@@ -80,7 +80,7 @@ namespace Cadet_Uniform_IMS.Pages.StockCRUD
                     await _context.SaveChangesAsync();
                 }
             }
-
+            Message = "This item has been removed from your basket.";
             await OnGetAsync();
             return Page();
         }

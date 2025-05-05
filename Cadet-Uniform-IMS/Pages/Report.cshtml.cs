@@ -5,9 +5,11 @@ using Cadet_Uniform_IMS.Data;
 using SelectPdf;
 using System.Text;
 using Microsoft.Data.SqlClient;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Cadet_Uniform_IMS.Pages
 {
+    [Authorize(Roles = "Staff, Admin")]
     public class ReportModel : PageModel
     {
         private readonly IMS_Context _context;

@@ -1,49 +1,159 @@
 is_global = true
 build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
 build_property.PlatformNeutralAssembly = 
 build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Cadet_Uniform_IMS
 build_property.RootNamespace = Cadet_Uniform_IMS
-build_property.ProjectDir = C:\Users\Harry S\source\repos\Harry-Sumner\Cadet-Uniform-IMS\Cadet-Uniform-IMS\
+build_property.ProjectDir = C:\Users\2109505\Source\Repos\Cadet-Uniform-IMS1\Cadet-Uniform-IMS\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Harry S\source\repos\Harry-Sumner\Cadet-Uniform-IMS\Cadet-Uniform-IMS
+build_property.MSBuildProjectDirectory = C:\Users\2109505\Source\Repos\Cadet-Uniform-IMS1\Cadet-Uniform-IMS
 build_property._RazorSourceGeneratorDebug = 
-build_property.EffectiveAnalysisLevelStyle = 8.0
-build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/Harry S/source/repos/Harry-Sumner/Cadet-Uniform-IMS/Cadet-Uniform-IMS/Pages/Error.cshtml]
+[C:/Users/2109505/Source/Repos/Cadet-Uniform-IMS1/Cadet-Uniform-IMS/Areas/Identity/Pages/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2109505/Source/Repos/Cadet-Uniform-IMS1/Cadet-Uniform-IMS/Areas/Identity/Pages/Account/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2109505/Source/Repos/Cadet-Uniform-IMS1/Cadet-Uniform-IMS/Areas/Identity/Pages/Account/Manage/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2109505/Source/Repos/Cadet-Uniform-IMS1/Cadet-Uniform-IMS/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX01hbmFnZU5hdi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2109505/Source/Repos/Cadet-Uniform-IMS1/Cadet-Uniform-IMS/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2109505/Source/Repos/Cadet-Uniform-IMS1/Cadet-Uniform-IMS/Areas/Identity/Pages/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2109505/Source/Repos/Cadet-Uniform-IMS1/Cadet-Uniform-IMS/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2109505/Source/Repos/Cadet-Uniform-IMS1/Cadet-Uniform-IMS/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2109505/Source/Repos/Cadet-Uniform-IMS1/Cadet-Uniform-IMS/Areas/Identity/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2109505/Source/Repos/Cadet-Uniform-IMS1/Cadet-Uniform-IMS/Areas/Identity/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2109505/Source/Repos/Cadet-Uniform-IMS1/Cadet-Uniform-IMS/Pages/Admin/BrowseUniform_Types.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQnJvd3NlVW5pZm9ybV9UeXBlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2109505/Source/Repos/Cadet-Uniform-IMS1/Cadet-Uniform-IMS/Pages/Admin/CreateType.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ3JlYXRlVHlwZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2109505/Source/Repos/Cadet-Uniform-IMS1/Cadet-Uniform-IMS/Pages/Admin/CreateUniform.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ3JlYXRlVW5pZm9ybS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2109505/Source/Repos/Cadet-Uniform-IMS1/Cadet-Uniform-IMS/Pages/Admin/EditType.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRWRpdFR5cGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2109505/Source/Repos/Cadet-Uniform-IMS1/Cadet-Uniform-IMS/Pages/Admin/EditUniform.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRWRpdFVuaWZvcm0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2109505/Source/Repos/Cadet-Uniform-IMS1/Cadet-Uniform-IMS/Pages/Admin/ManageUsers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlVXNlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2109505/Source/Repos/Cadet-Uniform-IMS1/Cadet-Uniform-IMS/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Harry S/source/repos/Harry-Sumner/Cadet-Uniform-IMS/Cadet-Uniform-IMS/Pages/Index.cshtml]
+[C:/Users/2109505/Source/Repos/Cadet-Uniform-IMS1/Cadet-Uniform-IMS/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Harry S/source/repos/Harry-Sumner/Cadet-Uniform-IMS/Cadet-Uniform-IMS/Pages/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+[C:/Users/2109505/Source/Repos/Cadet-Uniform-IMS1/Cadet-Uniform-IMS/Pages/Measurements/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVhc3VyZW1lbnRzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Harry S/source/repos/Harry-Sumner/Cadet-Uniform-IMS/Cadet-Uniform-IMS/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/2109505/Source/Repos/Cadet-Uniform-IMS1/Cadet-Uniform-IMS/Pages/Measurements/ViewMeasurements.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVhc3VyZW1lbnRzXFZpZXdNZWFzdXJlbWVudHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2109505/Source/Repos/Cadet-Uniform-IMS1/Cadet-Uniform-IMS/Pages/Measurements/ViewMeasurementsCadet.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVhc3VyZW1lbnRzXFZpZXdNZWFzdXJlbWVudHNDYWRldC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2109505/Source/Repos/Cadet-Uniform-IMS1/Cadet-Uniform-IMS/Pages/Report.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVwb3J0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2109505/Source/Repos/Cadet-Uniform-IMS1/Cadet-Uniform-IMS/Pages/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2109505/Source/Repos/Cadet-Uniform-IMS1/Cadet-Uniform-IMS/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Harry S/source/repos/Harry-Sumner/Cadet-Uniform-IMS/Cadet-Uniform-IMS/Pages/_ViewImports.cshtml]
+[C:/Users/2109505/Source/Repos/Cadet-Uniform-IMS1/Cadet-Uniform-IMS/Pages/StockCRUD/Basket.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RvY2tDUlVEXEJhc2tldC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2109505/Source/Repos/Cadet-Uniform-IMS1/Cadet-Uniform-IMS/Pages/StockCRUD/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RvY2tDUlVEXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2109505/Source/Repos/Cadet-Uniform-IMS1/Cadet-Uniform-IMS/Pages/StockCRUD/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RvY2tDUlVEXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2109505/Source/Repos/Cadet-Uniform-IMS1/Cadet-Uniform-IMS/Pages/StockCRUD/Returns.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RvY2tDUlVEXFJldHVybnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2109505/Source/Repos/Cadet-Uniform-IMS1/Cadet-Uniform-IMS/Pages/StockCRUD/ViewMyOrders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RvY2tDUlVEXFZpZXdNeU9yZGVycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2109505/Source/Repos/Cadet-Uniform-IMS1/Cadet-Uniform-IMS/Pages/StockCRUD/ViewOrders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RvY2tDUlVEXFZpZXdPcmRlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2109505/Source/Repos/Cadet-Uniform-IMS1/Cadet-Uniform-IMS/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Harry S/source/repos/Harry-Sumner/Cadet-Uniform-IMS/Cadet-Uniform-IMS/Pages/_ViewStart.cshtml]
+[C:/Users/2109505/Source/Repos/Cadet-Uniform-IMS1/Cadet-Uniform-IMS/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Harry S/source/repos/Harry-Sumner/Cadet-Uniform-IMS/Cadet-Uniform-IMS/Pages/Shared/_Layout.cshtml]
+[C:/Users/2109505/Source/Repos/Cadet-Uniform-IMS1/Cadet-Uniform-IMS/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-znps74dudq

@@ -170,7 +170,9 @@ namespace Cadet_Uniform_IMS.Pages.Admin
         {
             var stock = await _context.Stock.FindAsync(id);
             if (stock == null)
+            {
                 return NotFound();
+            }
 
             int quantityToRemove = 1;
 
@@ -191,46 +193,39 @@ namespace Cadet_Uniform_IMS.Pages.Admin
                 else
                 {
                     item.Quantity -= quantityToRemove;
+                    quantityToRemove = 0;
                     _context.BasketStock.Update(item);
-                    quantityToRemove = 0;
                 }
             }
 
-            var pendingItems = await _context.PendingOrderItems
-                .Where(p => p.StockID == id)
-                .ToListAsync();
-            foreach (var item in pendingItems)
+            if (quantityToRemove > 0)
             {
-                if (quantityToRemove <= 0) break;
+                var pendingItems = await _context.PendingOrderItems
+                    .Where(p => p.StockID == id)
+                    .OrderByDescending(p => p.Quantity)
+                    .ToListAsync();
 
-                if (item.Quantity <= quantityToRemove)
+                foreach (var item in pendingItems)
                 {
-                    quantityToRemove -= item.Quantity;
-                    _context.PendingOrderItems.Remove(item);
-                }
-                else
-                {
-                    item.Quantity -= quantityToRemove;
-                    _context.PendingOrderItems.Update(item);
-                    quantityToRemove = 0;
+                    if (quantityToRemove <= 0) break;
+
+                    if (item.Quantity <= quantityToRemove)
+                    {
+                        quantityToRemove -= item.Quantity;
+                        _context.PendingOrderItems.Remove(item);
+                    }
+                    else
+                    {
+                        item.Quantity -= quantityToRemove;
+                        quantityToRemove = 0;
+                        _context.PendingOrderItems.Update(item);
+                    }
                 }
             }
-
-            stock.Quantity -= 1;
-            stock.Available -= 1;
-
-            if (stock.Quantity <= 0)
+            if (stock.Quantity > 0)
             {
-                var stockSizes = await _context.StockSize.Where(ss => ss.StockID == id).ToListAsync();
-                _context.StockSize.RemoveRange(stockSizes);
-
-                var orderItems = await _context.OrderItems.Where(o => o.StockID == id).ToListAsync();
-                _context.OrderItems.RemoveRange(orderItems);
-
-                _context.Stock.Remove(stock);
-            }
-            else
-            {
+                stock.Quantity = Math.Max(0, stock.Quantity - 1);
+                stock.Available = Math.Max(0, stock.Available - 1);
                 _context.Stock.Update(stock);
             }
 

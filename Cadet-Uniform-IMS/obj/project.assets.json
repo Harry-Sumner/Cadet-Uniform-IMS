@@ -8611,24 +8611,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Harry S\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\2109505\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS.csproj",
+      "projectUniqueName": "C:\\Users\\2109505\\Source\\Repos\\Cadet-Uniform-IMS1\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS.csproj",
       "projectName": "Cadet-Uniform-IMS",
-      "projectPath": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS.csproj",
-      "packagesPath": "C:\\Users\\Harry S\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Harry S\\source\\repos\\Harry-Sumner\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS\\obj\\",
+      "projectPath": "C:\\Users\\2109505\\Source\\Repos\\Cadet-Uniform-IMS1\\Cadet-Uniform-IMS\\Cadet-Uniform-IMS.csproj",
+      "packagesPath": "C:\\Users\\2109505\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\2109505\\Source\\Repos\\Cadet-Uniform-IMS1\\Cadet-Uniform-IMS\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Harry S\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\2109505\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8653,8 +8648,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.200"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -8722,7 +8716,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

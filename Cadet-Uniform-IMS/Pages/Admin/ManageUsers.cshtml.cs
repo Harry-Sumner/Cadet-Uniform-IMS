@@ -14,11 +14,13 @@ namespace Cadet_Uniform_IMS.Pages.Admin
     {
         private readonly UserManager<IMS_User> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly Cadet_Uniform_IMS.Data.IMS_Context _context;
 
-        public ManageUsersModel(UserManager<IMS_User> userManager, RoleManager<IdentityRole> roleManager)
+        public ManageUsersModel(UserManager<IMS_User> userManager, RoleManager<IdentityRole> roleManager, IMS_Context context)
         {
             _userManager = userManager;
             _roleManager = roleManager;
+            _context = context;
         }
 
         [BindProperty]
@@ -92,6 +94,48 @@ namespace Cadet_Uniform_IMS.Pages.Admin
                 return NotFound();
             }
 
+            var basketItems = _context.BasketStock.Where(b => b.UID == userId).ToList();
+            foreach (var item in basketItems)
+            {
+                var stock = _context.Stock.FirstOrDefault(s => s.StockID == item.StockID);
+                if (stock != null)
+                {
+                    stock.Available += item.Quantity;
+                    _context.Stock.Update(stock);
+                }
+            }
+            _context.BasketStock.RemoveRange(basketItems);
+            await _context.SaveChangesAsync();
+
+            var orders = _context.OrderHistory.Where(o => o.UID == userId || o.Cadet == userId).ToList();
+            foreach (var order in orders)
+            {
+                var orderItems = _context.OrderItems.Where(oi => oi.OrderID == order.OrderID).ToList();
+                _context.OrderItems.RemoveRange(orderItems);
+            }
+            await _context.SaveChangesAsync();
+            _context.OrderHistory.RemoveRange(orders);
+            await _context.SaveChangesAsync();
+
+            var pendingOrders = _context.PendingOrder.Where(po => po.UID == userId).ToList();
+            foreach (var po in pendingOrders)
+            {
+                var pendingItems = _context.PendingOrderItems.Where(poi => poi.PendingOrderID == po.PendingOrderID).ToList();
+                foreach (var pitem in pendingItems)
+                {
+                    var stock = _context.Stock.FirstOrDefault(s => s.StockID == pitem.StockID);
+                    if (stock != null)
+                    {
+                        stock.Available += pitem.Quantity;
+                        _context.Stock.Update(stock);
+                    }
+                }
+                _context.PendingOrderItems.RemoveRange(pendingItems);
+            }
+            await _context.SaveChangesAsync();
+            _context.PendingOrder.RemoveRange(pendingOrders);
+            await _context.SaveChangesAsync();
+
             var result = await _userManager.DeleteAsync(user);
             if (!result.Succeeded)
             {
@@ -99,10 +143,12 @@ namespace Cadet_Uniform_IMS.Pages.Admin
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
-                await OnGetAsync(); // Repopulate the model
+
+                await OnGetAsync();
                 return Page();
             }
-            Message = user.Name + " account has been deleted.";
+
+            Message = user.Name + "'s account has been deleted.";
             return RedirectToPage();
         }
     }
